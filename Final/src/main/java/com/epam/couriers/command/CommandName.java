@@ -1,0 +1,19 @@
+package com.epam.couriers.command;
+
+public enum CommandName {
+
+    SIGN_IN,
+    SIGN_OUT,
+    SET_LOCALE,
+    COURIER_REGISTRATION,
+    CUSTOMER_SIGN_UP,
+    ADD_FILLED_CUSTOMER_ORDER,
+
+    GET_NEW_COURIERS_RECORDS,
+    GET_ALL_COURIERS,
+    GET_ALL_ORDERS,
+    GET_ALL_TRANSPORT,
+    GET_ALL_GOODS,
+    TABLE_PAGINATION
+
+}

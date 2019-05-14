@@ -1,0 +1,130 @@
+package com.epam.couriers.dao.impl;
+
+import com.epam.couriers.constants.GeneralConstant;
+import com.epam.couriers.dao.CourierDAO;
+import com.epam.couriers.dao.exception.DAOException;
+import com.epam.couriers.entity.*;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+public class CourierDAOImpl extends CourierDAO {
+
+    private static final String QUERY_ADD_NEW_COURIER_RECORD = "INSERT INTO courierrecord (userId, markQuality, markPoliteness, markPunctuality, " +
+            "markCommon, status) VALUES (?,?,?,?,?,?);";
+    private static final String SQL_GET_COURIER_RECORD_INF = "SELECT courierRecordId, status, markQuality, markPoliteness, markPunctuality," +
+            " markCommon FROM courierRecord WHERE userId= ?";
+
+    private static final String SQL_GET_COURIER_INF = "SELECT cr.courierRecordId, u.login, cr.markCommon " +
+            "FROM courierRecord cr INNER JOIN User u ON cr.userId = u.userId  WHERE cr.status = '1';";
+
+
+    private static final String SQL_GET_NEW_COURIER_INF = "SELECT cr.courierRecordId, u.login " +
+            "FROM courierRecord cr INNER JOIN User u ON cr.userId = u.userId  WHERE cr.status = '0';";
+
+    private static final String SQL_GET_ORDERS_ID = "SELECT orderId from courier_has_customerorder WHERE courierId = ?";
+
+
+
+
+    @Override
+    public CourierRecord insert(CourierRecord courierRecord) throws DAOException {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(QUERY_ADD_NEW_COURIER_RECORD, Statement.RETURN_GENERATED_KEYS)) {
+                preparedStatement.setInt(1, courierRecord.getCourier().getId());
+                preparedStatement.setDouble(2, courierRecord.getMarkQuality());
+                preparedStatement.setDouble(3, courierRecord.getMarkPoliteness());
+                preparedStatement.setDouble(4, courierRecord.getMarkPunctuality());
+                preparedStatement.setDouble(5, courierRecord.getMarkCommon());
+                preparedStatement.setInt(6, courierRecord.getStatus());
+                if (preparedStatement.executeUpdate() == 0) {
+                    throw new SQLException("Creating courierRecord failed, no rows affected.");
+                }
+                ResultSet keys = preparedStatement.getGeneratedKeys();
+                if (keys.next()) {
+                    courierRecord.setId(keys.getInt(1));
+                } else {
+                    throw new SQLException("Creating courierRecord failed, no ID obtained.");
+                }
+            } catch (SQLException e) {
+                throw new DAOException(e);
+            }
+            return courierRecord;
+        }
+
+    @Override
+    public CourierRecord get(CourierRecord courierRecord) throws DAOException {
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_COURIER_RECORD_INF)) {
+            preparedStatement.setInt(1, courierRecord.getCourier().getId());
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                courierRecord.setId(rs.getInt(GeneralConstant.COURIER_RECORD_ID));
+                courierRecord.setStatus(rs.getInt(GeneralConstant.STATUS));
+                courierRecord.setMarkQuality(rs.getDouble(GeneralConstant.MARK_QUALITY));
+                courierRecord.setMarkPoliteness(rs.getDouble(GeneralConstant.MARK_POLITENESS));
+                courierRecord.setMarkPunctuality(rs.getDouble(GeneralConstant.MARK_PUNCTUALITY));
+                courierRecord.setMarkCommon(rs.getDouble(GeneralConstant.MARK_COMMON));
+            }
+            return courierRecord;
+
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    @Override
+    public List<CourierRecord> getAllCouriersRecords() throws DAOException {
+        List<CourierRecord> listCourierRecords = new ArrayList<>();
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_COURIER_INF)) {
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                CourierRecord courierRecord = new CourierRecord();
+                courierRecord.setId(rs.getInt(GeneralConstant.COURIER_RECORD_ID));
+                courierRecord.setCourier(new User(rs.getString(GeneralConstant.USER_LOGIN)));
+                courierRecord.setMarkCommon(rs.getDouble(GeneralConstant.MARK_COMMON));
+                listCourierRecords.add(courierRecord);
+            }
+            return listCourierRecords;
+
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    @Override
+    public List<CourierRecord> getNewCouriersRecords() throws DAOException {
+        List<CourierRecord> listNewCourierRecords = new ArrayList<>();
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_NEW_COURIER_INF)) {
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                CourierRecord newCourierRecord = new CourierRecord();
+                newCourierRecord.setId(rs.getInt(GeneralConstant.COURIER_RECORD_ID));
+                newCourierRecord.setCourier(new User(rs.getString(GeneralConstant.USER_LOGIN)));
+                listNewCourierRecords.add(newCourierRecord);
+            }
+            return listNewCourierRecords;
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    @Override
+    public List<Integer> getAllOrderId(int courierId) throws DAOException {
+        List<Integer> allOrderId = new ArrayList<>();
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_ORDERS_ID)) {
+            preparedStatement.setInt(1, courierId);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int orderId = rs.getInt(GeneralConstant.ORDER_ID);
+                allOrderId.add(orderId);
+            }
+            return allOrderId;
+
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+}
