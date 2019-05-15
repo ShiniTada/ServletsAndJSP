@@ -13,7 +13,6 @@
 <%--    <link rel="stylesheet" href="../styles/main.css">--%>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <fmt:setLocale value="${sessionScope.locale}"/>
     <fmt:setBundle basename="local" var="loc"/>
     <fmt:message bundle="${loc}" key="local.header.language" var="language"/>
@@ -26,12 +25,20 @@
     <fmt:message bundle="${loc}" key="local.admin.transport" var="transport"/>
     <fmt:message bundle="${loc}" key="local.courier.first_message" var="first_message"/>
 
+    <fmt:message bundle="${loc}" key="local.courier.marks" var="marks"/>
+    <fmt:message bundle="${loc}" key="local.courier.quality" var="quality"/>
+    <fmt:message bundle="${loc}" key="local.courier.politeness" var="politeness"/>
+    <fmt:message bundle="${loc}" key="local.courier.punctuality" var="punctuality"/>
+    <fmt:message bundle="${loc}" key="local.courier.common" var="common"/>
+    <fmt:message bundle="${loc}" key="local.courier.orders" var="orders"/>
+
     <fmt:message bundle="${loc}" key="local.courier.order.customer" var="customer"/>
      <fmt:message bundle="${loc}" key="local.courier.order.from" var="from"/>
     <fmt:message bundle="${loc}" key="local.courier.order.to" var="to"/>
      <fmt:message bundle="${loc}" key="local.courier.order.introduction_date" var="introduction_date"/>
     <fmt:message bundle="${loc}" key="local.courier.order.status" var="status"/>
      <fmt:message bundle="${loc}" key="local.courier.order.goods_description" var="goods_description"/>
+     <fmt:message bundle="${loc}" key="local.courier.table_empty" var="table_empty"/>
 
     <fmt:message bundle="${loc}" key="local.main_footer" var="main_footer"/>
 
@@ -44,7 +51,7 @@
         Good-Couriers.com
     </a>
     <my:headName role="${sessionScope.user.role}" login="${sessionScope.user.login}" settings="${settings}" sign_out="${sign_out}"/>
-    <my:headLanguage language="${language}"/>
+    <my:headLanguage/>
 </div>
 
     <!-- Page Container -->
@@ -59,24 +66,24 @@
 
                 <div class="w3-white w3-text-grey w3-card-4">
                     <div class="w3-container">
-                        <p class="w3-large"><b><i class="w3-margin-right w3-text-teal"></i>Marks</b></p>
-                        <p>Quality</p>
+                        <p class="w3-large"><b><i class="w3-margin-right w3-text-teal"></i>${marks}</b></p>
+                        <p>${quality}</p>
                         <div class="w3-light-grey w3-round-xlarge w3-small">
                             <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:${sessionScope.courierRecord.markQuality}%">
                                 ${sessionScope.courierRecord.markQuality}%</div>
                         </div>
-                        <p>Politeness</p>
+                        <p>${politeness}</p>
                         <div class="w3-light-grey w3-round-xlarge w3-small">
                             <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:${sessionScope.courierRecord.markPoliteness}%">
                                 ${sessionScope.courierRecord.markPoliteness}%</div>
                         </div>
-                        <p>Punctuality</p>
+                        <p>${punctuality}</p>
                         <div class="w3-light-grey w3-round-xlarge w3-small">
                             <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:${sessionScope.courierRecord.markPunctuality}%">
                                 ${sessionScope.courierRecord.markPunctuality}%</div>
                         </div>
                         <hr>
-                        <p>Common</p>
+                        <p>${common}</p>
                         <div class="w3-light-grey w3-round-xlarge w3-small">
                             <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:${sessionScope.courierRecord.markCommon}%">
                                 ${sessionScope.courierRecord.markCommon}%</div>
@@ -121,15 +128,17 @@
                                 <c:when test="${sessionScope.courierRecord.status eq 0}">
                                     <h3>${first_message}</h3>
                                 </c:when>
-                                <c:when test="${sessionScope.courierRecord.status eq 2}">
-                                    <h3>You are deleted!</h3>
-                                </c:when>
+<%--                                <c:when test="${sessionScope.courierRecord.status eq 2}">--%>
+<%--                                    <h3>You are deleted!</h3>--%>
+<%--                                </c:when>--%>
                                 <c:otherwise>
                                     <c:choose>
-                                            <c:when test="${sessionScope.listCustomerOrder eq null}">
-                                                <h3>TABLE IS EMPTY</h3>
-                                            </c:when>
-                                            <c:otherwise>
+                                        <c:when test="${sessionScope.listCustomerOrder eq null}">
+                                            <h3>${table_empty}</h3>
+                                        </c:when>
+                                        <c:otherwise>
+                                        <div class="w3-container">
+                                            <p class="w3-large"><b><i class="w3-margin-right w3-opacity w3-text-teal"></i>${orders}</b></p>
                                                 <table class="w3-table-all">
                                                     <thead>
                                                     <tr class="w3-teal">
@@ -149,10 +158,22 @@
                                                             <td><c:out value="${elem.to}"/> </td>
                                                             <td><c:out value="${elem.introductionDate}"/> </td>
                                                             <td><c:out value="${elem.goodsDescription}"/> </td>
-                                                            <td><c:out value="${elem.status.getValue()}"/> </td>
+                                                            <c:choose>
+                                                                <c:when test="${elem.status.getValue() eq 'completed'}">
+                                                                    <td class="w3-green"><c:out value="${elem.status.getValue()}"/> </td>
+                                                                </c:when>
+                                                                <c:when test="${elem.status.getValue() eq 'posted'}">
+                                                                    <td class="w3-light-blue"><c:out value="${elem.status.getValue()}"/> </td>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <td class="w3-light-red"><c:out value="${elem.status.getValue()}"/> </td>
+                                                                </c:otherwise>
+                                                            </c:choose>
                                                         </tr>
                                                     </c:forEach>
                                                 </table>
+                                                </div>
+                                            <br>
                                             </c:otherwise>
                                     </c:choose>
                                 </c:otherwise>
@@ -189,7 +210,7 @@
         text-align: center;
     }
     body {
-        background: url(../img/ground.png);
+        background: url(http://fondopantalla.com.es/file/935/2560x1600/crop/carretera-hacia-un-nuevo-planeta.jpg);
         -moz-background-size: 100%;
         -webkit-background-size: 100%;
         -o-background-size: 100%;

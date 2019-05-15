@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="my" uri="mine" %>
-<%--<%@ taglib prefix="my" uri="/jsp/tld/mine.tld" %>--%>
 <html>
 <head>
     <title>
@@ -13,7 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="shortcut icon" href="${pageContext.servletContext.contextPath}/img/greenlogo.png" type="image/png">
-<%--    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/styles/main.css">--%>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
 
 
     <fmt:setLocale value="${sessionScope.locale}"/>
@@ -49,24 +49,24 @@
 
 <div class="main-page">
     <div class="w3-container w3-teal main-panel-header ">
-        <a href="<c:url value="/"/>" class="w3-bar-item w3-button w3-left"><img src="img/logo.jpg" style="height:30px;"></a>
         <a href="<c:url value="/"/>" class="w3-bar-item w3-button w3-padding-large w3-hide-small">
             Good-Couriers.com
         </a>
 
 
-        <my:headLanguage language="${language}"/>
+        <my:headLanguage/>
+        <div class="w3-right">
+            <form action="Controller" method="get">
+                <input type="hidden" name="command" value="open_sign_in"/>
+                <button class="w3-btn w3-right w3-bar-item w3-button w3-teal btn-block w3-padding-large">${header_sign_in}</button>
+            </form>
+        </div>
 
-
-        <a class="w3-btn w3-right w3-bar-item w3-button w3-teal
-        w3-padding-large" href="${pageContext.servletContext.contextPath}/jsp/sign_in.jsp">${header_sign_in}</a>
+        <div class="w3-container col-xs-12 w3-display-topmiddle" style="margin-top:100px;">
+            <h1 class="title w3-animate-top w3-text-teal w3-hover-text-black" style="text-shadow:1px 1px 0 #444">
+                <span>${title}</span></h1>
+        </div>
     </div>
-
-    <div class="w3-container col-xs-12 w3-display-topmiddle" style="margin-top:100px;">
-        <h1 class="title w3-animate-top w3-text-teal w3-hover-text-black" style="text-shadow:1px 1px 0 #444">
-            <span>${title}</span></h1>
-    </div>
-
     <!-- The Grid -->
     <div class="w3-content w3-row w3-row-padding w3-center " style="max-width:900px; margin-top:220px ">
         <div class="w3-col" style="width:20%"><p></p></div>
@@ -80,9 +80,13 @@
                     <p>${to_couriers_first}</p>
                     <p>${to_couriers_second}</p>
                     <p>${to_couriers_third}</p>
-                    <a class="w3-button w3-round w3-text-black w3-border w3-boarder-white
-<%--                                    w3-teal  w3-section w3-padding" href="<c:url value="courier_sign_up.jsp"/>">${to_couriers_button}</a>--%>
-                                    w3-teal  w3-section w3-padding" href="${pageContext.request.contextPath}/jsp/courier_sign_up.jsp">${to_couriers_button}</a>
+                    <form action="Controller" method="get">
+                        <input type="hidden" name="command" value="open_courier_registration"/>
+                        <button class="w3-round w3-text-black w3-border w3-boarder-white w3-teal w3-section w3-padding">${to_couriers_button}</button>
+                    </form>
+<%--                    <a class="w3-button w3-round w3-text-black w3-border w3-boarder-white--%>
+<%--                                    w3-teal w3-section w3-padding" href="${pageContext.request.contextPath}--%>
+<%--                                    /jsp/courier_sign_up.jsp">${to_couriers_button}</a>--%>
                 </div>
             </div>
             <!-- End Left Column -->
@@ -96,8 +100,10 @@
                     <p>${to_customers_first}</p>
                     <p>${to_customers_second}</p>
                     <p>${to_customers_third}</p>
-                    <a class="w3-button w3-round w3-text-black w3-border w3-boarder-white
-                                    w3-teal  w3-section w3-padding" href="${pageContext.servletContext.contextPath}/">${to_customers_button}</a>
+                    <form action="Controller" method="get">
+                        <input type="hidden" name="command" value="open_customer_registration"/>
+                        <button class="w3-round w3-text-black w3-border w3-boarder-white w3-teal w3-section w3-padding">${to_customers_button}</button>
+                    </form>
                 </div>
             </div>
             <!-- End Right Column -->
@@ -124,7 +130,8 @@
         text-align: center;
     }
     body {
-        background: url(img/ground.png);
+        /*background: url(img/ground.png);*/
+        background: url(http://fondopantalla.com.es/file/935/2560x1600/crop/carretera-hacia-un-nuevo-planeta.jpg);
         -moz-background-size: 100%;
         -webkit-background-size: 100%;
         -o-background-size: 100%;

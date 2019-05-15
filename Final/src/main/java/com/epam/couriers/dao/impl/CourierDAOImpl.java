@@ -26,9 +26,13 @@ public class CourierDAOImpl extends CourierDAO {
     private static final String SQL_GET_NEW_COURIER_INF = "SELECT cr.courierRecordId, u.login " +
             "FROM courierRecord cr INNER JOIN User u ON cr.userId = u.userId  WHERE cr.status = '0';";
 
+    private static final String SQL_GET_COURIER_RECORD_INF_BY_ID = "SELECT u.login, cr.markCommon, " +
+            "cr.markQuality, cr.markPoliteness, cr.markPunctuality FROM courierRecord cr " +
+            "INNER JOIN User u ON cr.userId = u.userId  WHERE cr.courierRecordId = ?";
+
     private static final String SQL_GET_ORDERS_ID = "SELECT orderId from courier_has_customerorder WHERE courierId = ?";
 
-
+    private static final String QUERY_UPDATE_COURIER_RECORD_STATUS = " UPDATE courierrecord SET status= ? WHERE courierRecordId = ?";
 
 
     @Override
@@ -56,7 +60,9 @@ public class CourierDAOImpl extends CourierDAO {
         }
 
     @Override
-    public CourierRecord get(CourierRecord courierRecord) throws DAOException {
+    public CourierRecord get(int courierId) throws DAOException {
+        CourierRecord courierRecord = new CourierRecord();
+        courierRecord.setCourier(new User(courierId));
         try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_COURIER_RECORD_INF)) {
             preparedStatement.setInt(1, courierRecord.getCourier().getId());
             ResultSet rs = preparedStatement.executeQuery();
@@ -76,6 +82,24 @@ public class CourierDAOImpl extends CourierDAO {
     }
 
     @Override
+    public CourierRecord get(CourierRecord courierRecord) throws DAOException {
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_COURIER_RECORD_INF_BY_ID)) {
+            preparedStatement.setInt(1, courierRecord.getId());
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                courierRecord.setCourier(new User(rs.getString(GeneralConstant.USER_LOGIN)));
+                courierRecord.setMarkQuality(rs.getDouble(GeneralConstant.MARK_QUALITY));
+                courierRecord.setMarkPoliteness(rs.getDouble(GeneralConstant.MARK_POLITENESS));
+                courierRecord.setMarkPunctuality(rs.getDouble(GeneralConstant.MARK_PUNCTUALITY));
+                courierRecord.setMarkCommon(rs.getDouble(GeneralConstant.MARK_COMMON));
+            }
+            return courierRecord;
+
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+    @Override
     public List<CourierRecord> getAllCouriersRecords() throws DAOException {
         List<CourierRecord> listCourierRecords = new ArrayList<>();
         try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_COURIER_INF)) {
@@ -85,6 +109,7 @@ public class CourierDAOImpl extends CourierDAO {
                 courierRecord.setId(rs.getInt(GeneralConstant.COURIER_RECORD_ID));
                 courierRecord.setCourier(new User(rs.getString(GeneralConstant.USER_LOGIN)));
                 courierRecord.setMarkCommon(rs.getDouble(GeneralConstant.MARK_COMMON));
+                courierRecord.setStatus(1);
                 listCourierRecords.add(courierRecord);
             }
             return listCourierRecords;
@@ -103,6 +128,7 @@ public class CourierDAOImpl extends CourierDAO {
                 CourierRecord newCourierRecord = new CourierRecord();
                 newCourierRecord.setId(rs.getInt(GeneralConstant.COURIER_RECORD_ID));
                 newCourierRecord.setCourier(new User(rs.getString(GeneralConstant.USER_LOGIN)));
+                newCourierRecord.setStatus(0);
                 listNewCourierRecords.add(newCourierRecord);
             }
             return listNewCourierRecords;
@@ -118,11 +144,32 @@ public class CourierDAOImpl extends CourierDAO {
             preparedStatement.setInt(1, courierId);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                int orderId = rs.getInt(GeneralConstant.ORDER_ID);
-                allOrderId.add(orderId);
+                allOrderId.add(rs.getInt(GeneralConstant.ORDER_ID));
             }
             return allOrderId;
 
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    @Override
+    public void acceptCourier(int courierRecordId) throws DAOException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE_COURIER_RECORD_STATUS)) {
+            preparedStatement.setInt(1, 1);
+            preparedStatement.setInt(2,courierRecordId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    @Override
+    public void rejectCourier(int courierRecordId) throws DAOException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE_COURIER_RECORD_STATUS)) {
+            preparedStatement.setInt(1, 2);
+            preparedStatement.setInt(2,courierRecordId);
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DAOException(e);
         }

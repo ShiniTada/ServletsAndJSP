@@ -15,17 +15,15 @@ public class AdminDAOImpl extends AdminDAO {
 
 
     private static final String SQL_GET_ORDERS_INF = "SELECT co.orderId, us.login AS customer, u.login AS courier, co.from, " +
-            "co.to, co.introductionDate, co.status from CustomerOrder co " +
+            "co.to, co.introductionDate, co.goodsDescription, co.status from CustomerOrder co " +
             "INNER JOIN User us ON us.userId = co.customerId " +
             "INNER JOIN courier_has_CustomerOrder chc ON co.orderId = chc.orderId " +
             "INNER JOIN User u ON chc.courierId = u.userId;";
 
-
-
     @Override
     public List<CustomerOrder> getCustomerOrders() throws DAOException {
         List<CustomerOrder> listOrders = new ArrayList<>();
-        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_ORDERS_INF)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_ORDERS_INF)) {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 CustomerOrder order = new CustomerOrder();
@@ -35,6 +33,7 @@ public class AdminDAOImpl extends AdminDAO {
                 order.setFrom(rs.getString(GeneralConstant.FROM));
                 order.setTo(rs.getString(GeneralConstant.TO));
                 order.setIntroductionDate(rs.getString(GeneralConstant.INTRODUCTION_DATE));
+                order.setGoodsDescription(rs.getString(GeneralConstant.GOOD_DESCRIPTION));
                 String status = StatusEnum.toEnumFormat(rs.getString(GeneralConstant.STATUS));
                 order.setStatus(StatusEnum.valueOf(status));
                 listOrders.add(order);
@@ -45,6 +44,7 @@ public class AdminDAOImpl extends AdminDAO {
             throw new DAOException(e);
         }
     }
+
 
 
 }

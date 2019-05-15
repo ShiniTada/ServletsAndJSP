@@ -41,28 +41,11 @@
     <fmt:message bundle="${loc}" key="local.registration_form.warning.not_equal" var="not_equal"/>
     <fmt:message bundle="${loc}" key="local.registration_form.warning.empty_transport" var="empty_transport"/>
     <fmt:message bundle="${loc}" key="local.registration_form.warning.empty_goods" var="empty_goods"/>
+    <fmt:message bundle="${loc}" key="local.courier.bad_login" var="bad_login"/>
 
     <fmt:message bundle="${loc}" key="local.back" var="back"/>
 
     <fmt:message bundle="${loc}" key="local.main_footer" var="main_footer"/>
-    <style>
-        .main-footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: teal;
-            color: white;
-            text-align: center;
-        }
-        body {
-            background: url(../img/ground.png);
-            -moz-background-size: 100%;
-            -webkit-background-size: 100%;
-            -o-background-size: 100%;
-            background-size: 100%;
-        }
-    </style>
 
     <script>
         function validateForm() {
@@ -118,7 +101,7 @@
         Good-Couriers.com
     </a>
 
-    <my:headLanguage language="${language}"/>
+    <my:headLanguage/>
 </div>
 
 <div class="w3-container col-xs-12 w3-display-topmiddle" style="margin-top:100px;">
@@ -180,8 +163,32 @@
             <div class="w3-container  w3-cell" style="width:25%;"> </div>
         </div>
     </form>
+<c:choose>
+    <c:when test="${not empty requestScope.message}">
+            <h5 class="w3-text-flat-alizarin">${bad_login}</h5>
+    </c:when>
+</c:choose>
+
 </div>
 <footer class="main-footer">
     ${main_footer}
 </footer>
 </body>
+<style>
+    .main-footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: teal;
+        color: white;
+        text-align: center;
+    }
+    body {
+        background: url(http://fondopantalla.com.es/file/935/2560x1600/crop/carretera-hacia-un-nuevo-planeta.jpg);
+        -moz-background-size: 100%;
+        -webkit-background-size: 100%;
+        -o-background-size: 100%;
+        background-size: 100%;
+    }
+</style>

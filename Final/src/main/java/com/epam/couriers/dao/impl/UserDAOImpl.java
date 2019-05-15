@@ -1,5 +1,6 @@
 package com.epam.couriers.dao.impl;
 
+import com.epam.couriers.constants.GeneralConstant;
 import com.epam.couriers.dao.UserDAO;
 import com.epam.couriers.entity.RoleEnum;
 import com.epam.couriers.entity.User;
@@ -7,18 +8,42 @@ import com.epam.couriers.dao.exception.DAOException;
 
 import javax.swing.plaf.nimbus.State;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAOImpl extends UserDAO {
 
+    private static final String QUERY_GET_ALL_USERS_NAMES = "SELECT userId, login FROM user;";
     private static final String QUERY_GET_USER = "SELECT userId, login, role FROM user WHERE login= ? AND hashPassword= ?;";
     private static final String QUERY_FIND_USER_BY_LOGIN = "SELECT userId FROM user WHERE login= ?;";
     private static final String QUERY_ADD_NEW_USER = "INSERT INTO user (login, hashPassword,  role) VALUES (?,?,?);";
-    private static final String QUERY_UPDATE_USER = " UPDATE user SET login= ?, login= ? ,hashPassword= ? WHERE userId= ? ";
+    private static final String QUERY_UPDATE_USER = " UPDATE user SET login= ?, login= ? ,hashPassword= ? WHERE userId= ?;";
     private static final String QUERY_DELETE_USER = "DELETE FROM user WHERE userId = ?;";
 
-    private static final String USER_ID = "userId";
-    private static final String LOGIN = "login";
-    private static final String ROLE = "role";
+    /**
+     * ////////////////////////////////////////////////////////////////////////////////////////////////////
+     * NULL POINER
+     * @return
+     * @throws DAOException
+     */
+
+    @Override
+    public List<User> getAllUsers() throws DAOException {
+        List<User> users = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QUERY_GET_ALL_USERS_NAMES)) {
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt(GeneralConstant.USER_ID));
+                user.setLogin(rs.getString(GeneralConstant.USER_LOGIN));
+                users.add(user);
+            }
+            return users;
+
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
 
     /**
      * Check if there is a user in the database. If he is, give all the information about him.
@@ -34,9 +59,9 @@ public class UserDAOImpl extends UserDAO {
             ResultSet rs = preparedStatement.executeQuery();
             String role = null;
             while (rs.next()) {
-                user.setId(rs.getInt(USER_ID));
+                user.setId(rs.getInt(GeneralConstant.USER_ID));
 //                user.setLogin(rs.getString(NAME));
-                role = RoleEnum.toEnumFormat(rs.getString(ROLE));
+                role = RoleEnum.toEnumFormat(rs.getString(GeneralConstant.USER_ROLE));
                 user.setRole(RoleEnum.valueOf(role));
             }
             if(role != null) {

@@ -8,6 +8,8 @@
     <title>Good-Couriers</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="shortcut icon" href="../img/greenlogo.png" type="image/png">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
 <%--    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/styles/main.css">--%>
     <fmt:setLocale value="${sessionScope.locale}"/>
     <fmt:setBundle basename="local" var="loc"/>
@@ -26,8 +28,12 @@
     <fmt:message bundle="${loc}" key="local.admin.couriers_table.first" var="Id"/>
     <fmt:message bundle="${loc}" key="local.admin.couriers_table.second" var="Name"/>
 
-    <fmt:message bundle="${loc}" key="local.admin.couriers_table.accept" var="Accept"/>
-    <fmt:message bundle="${loc}" key="local.admin.couriers_table.reject" var="Reject"/>
+    <fmt:message bundle="${loc}" key="local.admin.couriers_table.accept" var="accept"/>
+    <fmt:message bundle="${loc}" key="local.admin.couriers_table.reject" var="reject"/>
+    <fmt:message bundle="${loc}" key="local.admin.couriers_table.empty_new_table_message" var="empty_new_table_message"/>
+
+    <fmt:message bundle="${loc}" key="local.admin.orders_table.more_details" var="more_details"/>
+
     <fmt:message bundle="${loc}" key="local.main_footer" var="main_footer"/>
 </head>
 <body>
@@ -40,10 +46,7 @@
         </a>
 
         <my:headName role="${sessionScope.user.role}" login="${sessionScope.user.login}" settings="${settings}" sign_out="${sign_out}"/>
-        <my:headLanguage language="${language}"/>
-
-
-
+        <my:headLanguage/>
 
     </div>
 
@@ -94,105 +97,173 @@
     </div>
 
     <!-- TABLE-->
-    <div style="margin-left:20%; margin-right:30%;">
+    <div style="margin-left:20%; margin-right:15%;">
         <div class="w3-container w3-center">
             <h2 class="title w3-text-teal" style="margin-top:100px;">${couriers}</h2>
-            <table class="w3-table-all">
-                <thead>
-                <tr class="w3-teal">
-                    <th >${Id}</th>
-                    <th>${Name}</th>
-                </tr>
-                </thead>
-                <c:choose>
-                    <c:when test="${requestScope.pagination eq 2}">
-                        <c:forEach var="elem" items="${sessionScope.listNewCourierRecords}" begin="5" end="9">
-                            <tr class="w3-hover-light-blue">
-                                <td><c:out value="${elem.id}"/> </td>
-                                <td><c:out value="${elem.courier.login}"/> </td>
-                            </tr>
-                        </c:forEach>
-                    </c:when>
-                    <c:when test="${requestScope.pagination eq 3}">
-                        <c:forEach var="elem" items="${sessionScope.listNewCourierRecords}" begin="10" end="14">
-                            <tr class="w3-hover-light-blue">
-                                <td><c:out value="${elem.id}"/> </td>
-                                <td><c:out value="${elem.courier.login}"/> </td>
-                            </tr>
-                        </c:forEach>
-                    </c:when>
-                    <c:when test="${requestScope.pagination eq 4}">
-                        <c:forEach var="elem" items="${sessionScope.listNewCourierRecords}" begin="15" end="19">
-                            <tr class="w3-hover-light-blue">
-                                <td><c:out value="${elem.id}"/> </td>
-                                <td><c:out value="${elem.courier.login}"/> </td>
-                            </tr>
-                        </c:forEach>
-                    </c:when>
-                    <c:otherwise>
-                        <c:forEach var="elem" items="${sessionScope.listNewCourierRecords}" begin="0" end="4">
-                            <tr class="w3-hover-light-blue">
-                                <td><c:out value="${elem.id}"/> </td>
-                                <td><c:out value="${elem.courier.login}"/> </td>
-                            </tr>
-                        </c:forEach>
-                    </c:otherwise>
-                </c:choose>
-            </table>
-            <br>
             <c:choose>
-                <c:when test="${requestScope.pagination eq 2}">
-                    <form action="Controller" method="get">
-                        <input type="hidden" name="command" value="table-pagination"/>
-                        <div class="w3-bar">
-                            <label>«</label>
-                            <button name= "pagination" value = "1" class="w3-button w3-round">1</button>
-                            <button name= "pagination" value = "2" class="w3-button w3-teal w3-round">2</button>
-                            <button name= "pagination" value = "3" class="w3-button w3-round">3</button>
-                            <button name= "pagination" value = "4" class="w3-button w3-round">4</button>
-                            <label>»</label>
-                        </div>
-                    </form>
-                </c:when>
-                <c:when test="${requestScope.pagination eq 3}">
-                    <form action="Controller" method="get">
-                        <input type="hidden" name="command" value="table-pagination"/>
-                        <div class="w3-bar">
-                            <label>«</label>
-                            <button name= "pagination" value = "1" class="w3-button w3-round">1</button>
-                            <button name= "pagination" value = "2" class="w3-button w3-round">2</button>
-                            <button name= "pagination" value = "3" class="w3-button w3-teal w3-round">3</button>
-                            <button name= "pagination" value = "4" class="w3-button w3-round">4</button>
-                            <label>»</label>
-                        </div>
-                    </form>
-                </c:when>
-                <c:when test="${requestScope.pagination eq 4}">
-                    <form action="Controller" method="get">
-                        <input type="hidden" name="command" value="table-pagination"/>
-                        <button class="w3-bar-item w3-button btn-lg btn-block w3-padding-large">${orders}</button>
-                        <div class="w3-bar">
-                            <label>«</label>
-                            <button name= "pagination" value = "1" class="w3-button w3-round">1</button>
-                            <button name= "pagination" value = "2" class="w3-button w3-round">2</button>
-                            <button name= "pagination" value = "3" class="w3-button w3-round">3</button>
-                            <button name= "pagination" value = "4" class="w3-button w3-teal w3-round">4</button>
-                            <label>»</label>
-                        </div>
-                    </form>
+                <c:when test="${sessionScope.listNewCourierRecords eq null}">
+                    <h3>${empty_new_table_message}</h3>
                 </c:when>
                 <c:otherwise>
-                    <form action="Controller" method="get">
-                        <input type="hidden" name="command" value="table-pagination"/>
-                        <div class="w3-bar">
-                            <label>«</label>
-                            <button name= "pagination" value = "1" class="w3-button w3-teal w3-round">1</button>
-                            <button name= "pagination" value = "2" class="w3-button w3-round">2</button>
-                            <button name= "pagination" value = "3" class="w3-button w3-round">3</button>
-                            <button name= "pagination" value = "4" class="w3-button w3-round">4</button>
-                            <label>»</label>
-                        </div>
-                    </form>
+                    <table class="w3-table-all">
+                        <thead>
+                        <tr class="w3-teal">
+                            <th >${Id}</th>
+                            <th>${Name}</th>
+                            <td>${more_details}</td>
+                        </tr>
+                        </thead>
+                        <c:choose>
+                            <c:when test="${requestScope.pagination eq 2}">
+                                <c:forEach var="elem" items="${sessionScope.listNewCourierRecords}" begin="5" end="9">
+                                    <tr>
+                                        <td><c:out value="${elem.id}"/> </td>
+                                        <td><c:out value="${elem.courier.login}"/> </td>
+                                        <td>
+                                            <form action="Controller" method="post">
+                                                <input type="hidden" name="command" value="accept_courier"/>
+                                                <button class="w3-block w3-round w3-center w3-flat-nephritis w3-button" name="accept" value="${elem.id}" style="max-width:150px;">${accept}</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="Controller" method="post">
+                                                <input type="hidden" name="command" value="reject_courier"/>
+                                                <button class="w3-block w3-round w3-center w3-flat-alizarin w3-button" name="reject" value="${elem.id}" style="max-width:150px;">${reject}</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="Controller" method="post">
+                                                <input type="hidden" name="command" value="more_details"/>
+                                                <button class="w3-block w3-round w3-center w3-teal w3-button" name="courierRecordId" value="${elem.id}" style="max-width:150px">${more_details}</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </c:when>
+                            <c:when test="${requestScope.pagination eq 3}">
+                                <c:forEach var="elem" items="${sessionScope.listNewCourierRecords}" begin="10" end="14">
+                                    <tr>
+                                        <td><c:out value="${elem.id}"/> </td>
+                                        <td><c:out value="${elem.courier.login}"/></td>
+                                        <td>
+                                            <form action="Controller" method="post">
+                                                <input type="hidden" name="command" value="accept_courier"/>
+                                                <button class="w3-block w3-round w3-center w3-flat-nephritis w3-button" name="accept" style="max-width:150px;" value="${elem.id}">${accept}</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="Controller" method="post">
+                                                <input type="hidden" name="command" value="reject_courier"/>
+                                                <button class="w3-block w3-round w3-center w3-flat-alizarin w3-button" name="reject" style="max-width:150px;" value="${elem.id}">${reject}</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="Controller" method="post">
+                                                <input type="hidden" name="command" value="more_details"/>
+                                                <button class="w3-block w3-round w3-center w3-teal w3-button" name="courierRecordId" value="${elem.id}" style="max-width:150px">${more_details}</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </c:when>
+                            <c:when test="${requestScope.pagination eq 4}">
+                                <c:forEach var="elem" items="${sessionScope.listNewCourierRecords}" begin="15" end="19">
+                                    <tr>
+                                        <td><c:out value="${elem.id}"/> </td>
+                                        <td><c:out value="${elem.courier.login}"/> </td>
+                                        <td>
+                                            <form action="Controller" method="post">
+                                                <input type="hidden" name="command" value="accept_courier"/>
+                                                <button class="w3-block w3-round w3-center w3-flat-nephritis w3-button" name="accept" style="max-width:150px;" value="${elem.id}">${accept}</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="Controller" method="post">
+                                                <input type="hidden" name="command" value="reject-courier"/>
+                                                <button class="w3-block w3-round w3-center w3-flat-alizarin w3-button" name="reject" style="max-width:150px;" value="${elem.id}">${reject}</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="Controller" method="post">
+                                                <input type="hidden" name="command" value="more_details"/>
+                                                <button class="w3-block w3-round w3-center w3-teal w3-button" name="courierRecordId" value="${elem.id}" style="max-width:150px">${more_details}</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </c:when>
+                            <c:otherwise>
+                                <c:forEach var="elem" items="${sessionScope.listNewCourierRecords}" begin="0" end="4">
+                                    <tr>
+                                        <td><c:out value="${elem.id}"/> </td>
+                                        <td><c:out value="${elem.courier.login}"/> </td>
+                                        <td>
+                                            <form action="Controller" method="post">
+                                                <input type="hidden" name="command" value="more_details"/>
+                                                <button class="w3-block w3-round w3-center w3-teal w3-button" name="courierRecordId" value="${elem.id}" style="max-width:150px">${more_details}</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </c:otherwise>
+                        </c:choose>
+                    </table>
+                    <br>
+                    <c:choose>
+                        <c:when test="${requestScope.pagination eq 2}">
+                            <form action="Controller" method="get">
+                                <input type="hidden" name="command" value="table-pagination"/>
+                                <div class="w3-bar">
+                                    <label>«</label>
+                                    <button name= "pagination" value = "1" class="w3-button w3-round">1</button>
+                                    <button name= "pagination" value = "2" class="w3-button w3-teal w3-round">2</button>
+                                    <button name= "pagination" value = "3" class="w3-button w3-round">3</button>
+                                    <button name= "pagination" value = "4" class="w3-button w3-round">4</button>
+                                    <label>»</label>
+                                </div>
+                            </form>
+                        </c:when>
+                        <c:when test="${requestScope.pagination eq 3}">
+                            <form action="Controller" method="get">
+                                <input type="hidden" name="command" value="table-pagination"/>
+                                <div class="w3-bar">
+                                    <label>«</label>
+                                    <button name= "pagination" value = "1" class="w3-button w3-round">1</button>
+                                    <button name= "pagination" value = "2" class="w3-button w3-round">2</button>
+                                    <button name= "pagination" value = "3" class="w3-button w3-teal w3-round">3</button>
+                                    <button name= "pagination" value = "4" class="w3-button w3-round">4</button>
+                                    <label>»</label>
+                                </div>
+                            </form>
+                        </c:when>
+                        <c:when test="${requestScope.pagination eq 4}">
+                            <form action="Controller" method="get">
+                                <input type="hidden" name="command" value="table-pagination"/>
+                                <button class="w3-bar-item w3-button btn-lg btn-block w3-padding-large">${orders}</button>
+                                <div class="w3-bar">
+                                    <label>«</label>
+                                    <button name= "pagination" value = "1" class="w3-button w3-round">1</button>
+                                    <button name= "pagination" value = "2" class="w3-button w3-round">2</button>
+                                    <button name= "pagination" value = "3" class="w3-button w3-round">3</button>
+                                    <button name= "pagination" value = "4" class="w3-button w3-teal w3-round">4</button>
+                                    <label>»</label>
+                                </div>
+                            </form>
+                        </c:when>
+                        <c:otherwise>
+                            <form action="Controller" method="get">
+                                <input type="hidden" name="command" value="table-pagination"/>
+                                <div class="w3-bar">
+                                    <label>«</label>
+                                    <button name= "pagination" value = "1" class="w3-button w3-teal w3-round">1</button>
+                                    <button name= "pagination" value = "2" class="w3-button w3-round">2</button>
+                                    <button name= "pagination" value = "3" class="w3-button w3-round">3</button>
+                                    <button name= "pagination" value = "4" class="w3-button w3-round">4</button>
+                                    <label>»</label>
+                                </div>
+                            </form>
+                        </c:otherwise>
+                    </c:choose>
                 </c:otherwise>
             </c:choose>
         </div>
@@ -217,7 +288,7 @@
         text-align: center;
     }
     body {
-        background: url(../../img/ground.png);
+        background: url(http://fondopantalla.com.es/file/935/2560x1600/crop/carretera-hacia-un-nuevo-planeta.jpg);
         -moz-background-size: 100%;
         -webkit-background-size: 100%;
         -o-background-size: 100%;

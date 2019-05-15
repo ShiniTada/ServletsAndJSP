@@ -1,6 +1,5 @@
 package com.epam.couriers.filter;
 
-
 import com.epam.couriers.constants.GeneralConstant;
 
 import javax.servlet.*;
@@ -17,8 +16,7 @@ import java.util.List;
  */
 @WebFilter(urlPatterns = {"/*"}, initParams = {
         @WebInitParam(name = "defaultLocale", value = "ru"),
-        @WebInitParam(name = "supportedLocales", value = "en,ru")
-})
+        @WebInitParam(name = "supportedLocales", value = "en,ru")})
 public class LocaleFilter implements Filter {
 
     private String defaultLocale;

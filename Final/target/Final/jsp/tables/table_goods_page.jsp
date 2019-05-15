@@ -39,7 +39,7 @@
         </a>
 
         <my:headName role="${sessionScope.user.role}" login="${sessionScope.user.login}" settings="${settings}" sign_out="${sign_out}"/>
-        <my:headLanguage language="${language}"/>
+        <my:headLanguage/>
     </div>
 
     <!-- Sidebar -->
@@ -212,7 +212,7 @@
         text-align: center;
     }
     body {
-        background: url(../../img/ground.png);
+        background: url(http://fondopantalla.com.es/file/935/2560x1600/crop/carretera-hacia-un-nuevo-planeta.jpg);
         -moz-background-size: 100%;
         -webkit-background-size: 100%;
         -o-background-size: 100%;

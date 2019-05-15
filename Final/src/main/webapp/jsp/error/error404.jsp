@@ -14,7 +14,6 @@
     <fmt:message bundle="${loc}" key="local.main_footer" var="main_footer"/>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="shortcut icon" href="../img/greenlogo.png" type="image/png">
-    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/styles/main.css">
     <title>${title}</title>
 </head>
 <body>
@@ -52,4 +51,22 @@
     ${main_footer}
 </footer>
 </body>
+<style>
+    .main-footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: teal;
+        color: white;
+        text-align: center;
+    }
+    body {
+        background: url(http://fondopantalla.com.es/file/935/2560x1600/crop/carretera-hacia-un-nuevo-planeta.jpg);
+        -moz-background-size: 100%;
+        -webkit-background-size: 100%;
+        -o-background-size: 100%;
+        background-size: 100%;
+    }
+</style>
 </html>
