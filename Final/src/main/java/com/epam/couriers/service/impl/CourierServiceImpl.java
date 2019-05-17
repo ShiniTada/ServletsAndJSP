@@ -3,7 +3,6 @@ package com.epam.couriers.service.impl;
 import com.epam.couriers.dao.*;
 import com.epam.couriers.dao.exception.DAOException;
 import com.epam.couriers.dao.factory.DAOFactory;
-import com.epam.couriers.dao.impl.AdminDAOImpl;
 import com.epam.couriers.dao.manager.TransactionManager;
 import com.epam.couriers.entity.*;
 import com.epam.couriers.service.CourierSevrice;
@@ -45,27 +44,8 @@ public class CourierServiceImpl implements CourierSevrice {
 
     @Override
     public CourierRecord getCourierRecord(int courierId) throws ServiceException {
-        TransactionManager transactionManager = new TransactionManager();
-        try {
-            CourierDAO courierDAO = DAOFactory.getCourierDAO();
-            transactionManager.beginTransaction(courierDAO);
-            CourierRecord courierRecord = courierDAO.get(courierId);
-            transactionManager.commit();
-            transactionManager.endTransaction();
-            return courierRecord;
-        } catch (DAOException e) {
-            try {
-                transactionManager.rollback();
-                transactionManager.endTransaction();
-            } catch (DAOException ex) {
-                throw new ServiceException("Error access database", e);
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public CourierRecord getCourierRecord(CourierRecord courierRecord) throws ServiceException {
+        CourierRecord courierRecord = new CourierRecord();
+        courierRecord.setCourier(new User(courierId));
         TransactionManager transactionManager = new TransactionManager();
         try {
             CourierDAO courierDAO = DAOFactory.getCourierDAO();
@@ -173,22 +153,24 @@ public class CourierServiceImpl implements CourierSevrice {
     }
 
     @Override
-    public List<CustomerOrder> getCustomerOrdersOfOneCourier(String courierLogin) throws ServiceException {
+    public List<CustomerOrder> getCustomerOrdersOfOneCourier(int courierId) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         try {
-            AdminDAO adminDAO = new AdminDAOImpl();
-            transactionManager.beginTransaction(adminDAO);
-            List<CustomerOrder> orders = adminDAO.getCustomerOrders();
-            List<CustomerOrder> needOrders = new ArrayList<>();
-            for(CustomerOrder order : orders){
-                if(order.getCourier().getLogin().equals(courierLogin)){
-                    needOrders.add(order);
-                }
+            CourierDAO courierDAO = DAOFactory.getCourierDAO();
+            transactionManager.beginTransaction(courierDAO);
+            List<Integer> allOrderId = courierDAO.getAllOrderId(courierId);
+            if(allOrderId == null) {
+                return  null;
             }
-
+            CustomerDAO customerDAO = DAOFactory.getCustomerDAO();
+            List<CustomerOrder> listOrder = new ArrayList<>();
+            for(int orderId : allOrderId){
+                CustomerOrder order = customerDAO.get(orderId);
+                listOrder.add(order);
+            }
             transactionManager.commit();
             transactionManager.endTransaction();
-            return needOrders;
+            return listOrder;
 
         } catch (DAOException e) {
             try {

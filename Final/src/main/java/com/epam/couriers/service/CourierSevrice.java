@@ -10,7 +10,8 @@ public interface CourierSevrice {
      * Registers courier
      *
      * @param courierId - courier id
-     * @return {@link CourierRecord} entity of added courier record.
+     ** @return {@link CourierRecord} entity of added courier record.
+     *
      * @throws ServiceException if error happens during execution
      */
     CourierRecord addCourierRecord(int courierId) throws ServiceException;
@@ -19,20 +20,11 @@ public interface CourierSevrice {
      * Get information about status and marks of courier
      *
      * @param courierId - courier id
-     * @return {@link CourierRecord} entity of added courier record.
+     ** @return {@link CourierRecord} entity of added courier record.
+     *
      * @throws ServiceException if error happens during execution
      */
     CourierRecord getCourierRecord(int courierId) throws ServiceException;
-
-
-    /**
-     *
-     * Get information about marks of courier
-     * @param courierRecord - consist only {@code courierRecordId}
-     * @return {@link CourierRecord} entity of courier record.
-     * @throws ServiceException if error happens during execution
-     */
-    CourierRecord getCourierRecord(CourierRecord courierRecord) throws ServiceException;
 
     /**
      * Add to courier his transport
@@ -75,9 +67,9 @@ public interface CourierSevrice {
 
 
     /**
-     * @param courierLogin - the name of courier
+     * @param courierId - the id of courier
      * @return customer order which courier should does
      * @throws ServiceException if error happens during execution
      */
-    List<CustomerOrder>  getCustomerOrdersOfOneCourier(String courierLogin) throws ServiceException;
+    List<CustomerOrder>  getCustomerOrdersOfOneCourier(int courierId) throws ServiceException;
 }

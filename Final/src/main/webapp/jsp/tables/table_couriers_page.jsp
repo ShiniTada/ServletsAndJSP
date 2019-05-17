@@ -8,7 +8,6 @@
     <title>Good-Couriers</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="shortcut icon" href="../img/greenlogo.png" type="image/png">
-
 <%--    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/styles/main.css">--%>
     <fmt:setLocale value="${sessionScope.locale}"/>
     <fmt:setBundle basename="local" var="loc"/>
@@ -28,8 +27,6 @@
     <fmt:message bundle="${loc}" key="local.admin.couriers_table.second" var="Name"/>
     <fmt:message bundle="${loc}" key="local.admin.couriers_table.third" var="Mark"/>
     <fmt:message bundle="${loc}" key="local.main_footer" var="main_footer"/>
-
-    <fmt:message bundle="${loc}" key="local.admin.orders_table.more_details" var="more_details"/>
 </head>
 <body>
 
@@ -41,7 +38,7 @@
             </a>
 
             <my:headName role="${sessionScope.user.role}" login="${sessionScope.user.login}" settings="${settings}" sign_out="${sign_out}"/>
-            <my:headLanguage/>
+            <my:headLanguage language="${language}"/>
 
 
 
@@ -105,7 +102,6 @@
                         <th>${Id}</th>
                         <th>${Name}</th>
                         <th>${Mark}</th>
-                        <td>${more_details}</td>
                     </tr>
                     </thead>
 
@@ -117,12 +113,6 @@
                                     <td><c:out value="${elem.id}"/> </td>
                                     <td><c:out value="${elem.courier.login}"/> </td>
                                     <td><c:out value="${elem.markCommon}"/> </td>
-                                    <td>
-                                        <form action="Controller" method="post">
-                                            <input type="hidden" name="command" value="more_details"/>
-                                            <button class="w3-block w3-round w3-center w3-teal w3-button" name="courierRecordId" value="${elem.id}" style="max-width:150px">${more_details}</button>
-                                        </form>
-                                    </td>
                                 </tr>
                             </c:forEach>
                         </c:when>
@@ -133,12 +123,6 @@
                                     <td><c:out value="${elem.id}"/> </td>
                                     <td><c:out value="${elem.courier.login}"/> </td>
                                     <td><c:out value="${elem.markCommon}"/> </td>
-                                    <td>
-                                        <form action="Controller" method="post">
-                                            <input type="hidden" name="command" value="more_details"/>
-                                            <button class="w3-block w3-round w3-center w3-teal w3-button" name="courierRecordId" value="${elem.id}" style="max-width:150px">${more_details}</button>
-                                        </form>
-                                    </td>
                                 </tr>
                             </c:forEach>
                         </c:when>
@@ -149,12 +133,6 @@
                                     <td><c:out value="${elem.id}"/> </td>
                                     <td><c:out value="${elem.courier.login}"/> </td>
                                     <td><c:out value="${elem.markCommon}"/> </td>
-                                    <td>
-                                        <form action="Controller" method="post">
-                                            <input type="hidden" name="command" value="more_details"/>
-                                            <button class="w3-block w3-round w3-center w3-teal w3-button" name="courierRecordId" value="${elem.id}" style="max-width:150px">${more_details}</button>
-                                        </form>
-                                    </td>
                                 </tr>
                             </c:forEach>
                         </c:when>
@@ -165,12 +143,6 @@
                                     <td><c:out value="${elem.id}"/> </td>
                                     <td><c:out value="${elem.courier.login}"/> </td>
                                     <td><c:out value="${elem.markCommon}"/> </td>
-                                    <td>
-                                        <form action="Controller" method="post">
-                                            <input type="hidden" name="command" value="more_details"/>
-                                            <button class="w3-block w3-round w3-center w3-teal w3-button" name="courierRecordId" value="${elem.id}" style="max-width:150px">${more_details}</button>
-                                        </form>
-                                    </td>
                                 </tr>
                             </c:forEach>
                         </c:otherwise>
@@ -252,7 +224,7 @@
         text-align: center;
     }
     body {
-        background:	url(http://fondopantalla.com.es/file/935/2560x1600/crop/carretera-hacia-un-nuevo-planeta.jpg);
+        background: url(../../img/ground.png);
         -moz-background-size: 100%;
         -webkit-background-size: 100%;
         -o-background-size: 100%;

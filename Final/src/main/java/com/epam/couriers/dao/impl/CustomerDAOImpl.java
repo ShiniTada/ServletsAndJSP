@@ -8,14 +8,10 @@ import com.epam.couriers.entity.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class CustomerDAOImpl extends CustomerDAO {
-
     private static final String SQL_GET_CUSTOMER_ORDER_INF = "SELECT co.from, co.to, co.customerId, co.introductionDate, " +
-            "co.goodsDescription, co.status from customerorder co WHERE co.orderId = ?;";
-
+            "co.goodsDescription, co.status FROM customerorder co WHERE co.orderId= ?";
 
     @Override
     public CustomerOrder get(int orderId) throws DAOException {

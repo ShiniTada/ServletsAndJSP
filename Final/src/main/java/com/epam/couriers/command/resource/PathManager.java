@@ -15,12 +15,9 @@ public final class PathManager {
 
     public static final String ADMIN_PAGE = "page.admin_page";
     public static final String COURIER_PAGE = "page.courier_page";
-    public static final String COURIER_PUBLIC_PAGE = "page.courier_public_page";
     public static final String CUSTOMER_PAGE = "page.customer_page";
 
     public static final String SIGN_IN_PAGE = "page.sign_in_page";
-    public static final String COURIER_REGISTRATION_PAGE = "page.courier_sign_up_page";
-    public static final String CUSTOMER_REGISTRATION_PAGE = "page.customer_sign_up_page";
 
     public static final String TABLE_NEW_COURIERS_PAGE = "page.table_new_couriers_page";
     public static final String TABLE_COURIERS_PAGE = "page.table_couriers_page";
@@ -29,6 +26,10 @@ public final class PathManager {
     public static final String TABLE_GOODS_PAGE = "page.table_goods_page";
 
 
+
+    public static final String PLACE_ORDER_PAGE = "page.place_order_page";
+    public static final String USER_SETTINGS_PAGE = "page.user_settings_page";
+    public static final String FORGOT_PASSWORD_PAGE = "page.forgot_password_page";
 
 
 

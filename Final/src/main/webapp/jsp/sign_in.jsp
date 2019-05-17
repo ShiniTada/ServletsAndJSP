@@ -60,7 +60,8 @@
         <a href="<c:url value="/"/>" class="w3-bar-item w3-button w3-padding-large w3-hide-small">
             Good-Couriers.com
         </a>
-        <my:headLanguage/>
+
+            <my:headLanguage language="${language}"/>
     </div>
 
 
@@ -74,17 +75,21 @@
     <input type="hidden" name="command" value="sign-in"/>
         <div class="w3-cell-row">
             <div class="w3-container w3-cell">
+                        <c:if test="${not empty requestScope.message}">
+                            <label>${error_login_or_passwors}</label>
+                        </c:if>
                         <br>
                             <input class="w3-input w3-border" id ="login" type="text"  placeholder="${enter_login}"  name="login">
                         <br>
                             <input class="w3-input w3-border" id="password" type="password"  placeholder="${enter_password}" name="password">
                         <br>
+
             </div>
         </div>
         <div class="w3-cell-row ">
             <div class="w3-container  w3-cell" style="width:10%;"> </div>
             <div class="w3-container  w3-cell" style="width:40%;">
-                <button class="w3-button w3-round btn-block w3-green"  type="submit">${sign_in}</button>
+                <button class="w3-button w3-round btn-block w3-green "  type="submit">${sign_in}</button>
                 <br>
             </div>
 <%--            <div class="w3-container  w3-cell" style="width:1%;"> </div>--%>
@@ -97,11 +102,6 @@
             <div class="w3-container  w3-cell" style="width:10%;"> </div>
         </div>
     </form>
-        <c:choose>
-            <c:when test="${not empty requestScope.message}">
-                    <h5 class="w3-text-flat-alizarin">${error_login_or_passwors}</h5>
-            </c:when>
-        </c:choose>
     </div>
 
     <footer class="main-footer">
@@ -120,7 +120,7 @@
         text-align: center;
     }
     body {
-        background:  url(http://fondopantalla.com.es/file/935/2560x1600/crop/carretera-hacia-un-nuevo-planeta.jpg);
+        background: url(../img/ground.png);
         -moz-background-size: 100%;
         -webkit-background-size: 100%;
         -o-background-size: 100%;
