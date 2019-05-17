@@ -10,8 +10,7 @@ public interface CourierSevrice {
      * Registers courier
      *
      * @param courierId - courier id
-     ** @return {@link CourierRecord} entity of added courier record.
-     *
+     * @return {@link CourierRecord} entity of added courier record.
      * @throws ServiceException if error happens during execution
      */
     CourierRecord addCourierRecord(int courierId) throws ServiceException;
@@ -20,11 +19,20 @@ public interface CourierSevrice {
      * Get information about status and marks of courier
      *
      * @param courierId - courier id
-     ** @return {@link CourierRecord} entity of added courier record.
-     *
+     * @return {@link CourierRecord} entity of added courier record.
      * @throws ServiceException if error happens during execution
      */
     CourierRecord getCourierRecord(int courierId) throws ServiceException;
+
+
+    /**
+     *
+     * Get information about marks of courier
+     * @param courierRecord - consist only {@code courierRecordId}
+     * @return {@link CourierRecord} entity of courier record.
+     * @throws ServiceException if error happens during execution
+     */
+    CourierRecord getCourierRecord(CourierRecord courierRecord) throws ServiceException;
 
     /**
      * Add to courier his transport
@@ -67,9 +75,16 @@ public interface CourierSevrice {
 
 
     /**
-     * @param courierId - the id of courier
+     * @param courierLogin - the name of courier
      * @return customer order which courier should does
      * @throws ServiceException if error happens during execution
      */
-    List<CustomerOrder>  getCustomerOrdersOfOneCourier(int courierId) throws ServiceException;
+    List<CustomerOrder>  getCustomerOrdersOfOneCourier(String courierLogin) throws ServiceException;
+
+    /**
+     * @param customerLogin - the name of customer
+     * @return customer order
+     * @throws ServiceException if error happens during execution
+     */
+    List<CustomerOrder>  getCustomerOrdersOfOneCustomer(String customerLogin) throws ServiceException;
 }

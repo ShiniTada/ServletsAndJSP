@@ -9,14 +9,10 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
     <link rel="shortcut icon" href="../img/greenlogo.png" type="image/png">
-<%--    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/styles/main.css">--%>
 
 
     <fmt:setLocale value="${sessionScope.locale}"/>
     <fmt:setBundle basename="local" var="loc"/>
-    <fmt:message bundle="${loc}" key="local.header.language" var="language"/>
-    <fmt:message bundle="${loc}" key="local.header.language.english" var="english"/>
-    <fmt:message bundle="${loc}" key="local.header.language.russian" var="russian"/>
 
     <fmt:message bundle="${loc}" key="local.registration_form.header" var="header_registration"/>
     <fmt:message bundle="${loc}" key="local.registration_form.login" var="login"/>
@@ -41,71 +37,14 @@
     <fmt:message bundle="${loc}" key="local.registration_form.warning.not_equal" var="not_equal"/>
     <fmt:message bundle="${loc}" key="local.registration_form.warning.empty_transport" var="empty_transport"/>
     <fmt:message bundle="${loc}" key="local.registration_form.warning.empty_goods" var="empty_goods"/>
+    <fmt:message bundle="${loc}" key="local.courier.bad_login" var="bad_login"/>
 
     <fmt:message bundle="${loc}" key="local.back" var="back"/>
 
     <fmt:message bundle="${loc}" key="local.main_footer" var="main_footer"/>
-    <style>
-        .main-footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: teal;
-            color: white;
-            text-align: center;
-        }
-        body {
-            background: url(../img/ground.png);
-            -moz-background-size: 100%;
-            -webkit-background-size: 100%;
-            -o-background-size: 100%;
-            background-size: 100%;
-        }
-    </style>
-
-    <script>
-        function validateForm() {
-            var x1 = document.forms["courier-registration-form"]["login"].value;
-            if (x1 == "") {
-                alert("${empty_login}");
-                return false;
-            }
-            var x2 = document.forms["courier-registration-form"]["password"].value;
-            if (x2 == "") {
-                alert("${empty_password}");
-                return false;
-            }
-            var x3 = document.forms["courier-registration-form"]["repeated_password"].value;
-            if (x2 == "") {
-                alert("${empty_repeated_password}");
-                return false;
-            }
-            if (x2 != x3) {
-                alert("${not_equal}");
-                return false;
-            }
-            var t1 = document.forms["courier-registration-form"]["cycle"].checked;
-            var t2 = document.forms["courier-registration-form"]["motorcycle"].checked;
-            var t3 = document.forms["courier-registration-form"]["cycle"].checked;
-            var t4 = document.forms["courier-registration-form"]["truck"].checked;
-            if (t1 == false && t2 == false && t3 == false && t4 == false) {
-                alert ("${empty_transport}");
-                return false;
-            }
-            var g1 = document.forms["courier-registration-form"]["food"].checked;
-            var g2 = document.forms["courier-registration-form"]["tech"].checked;
-            var g3 = document.forms["courier-registration-form"]["furniture"].checked;
-            var g4 = document.forms["courier-registration-form"]["easy-to-beat"].checked;
-            if (g1 == false && g2 == false && g3 == false && g4 == false) {
-                alert ("${empty_goods}");
-                return false;
-            }
-        }
-    </script>
 
     <title>
-        ${"header_registration"}
+        ${header_registration}
     </title>
 </head>
 
@@ -113,12 +52,11 @@
 <body>
 
 <div class="w3-container w3-teal main-panel-header ">
-    <a href="<c:url value="/"/>" class="w3-bar-item w3-button w3-left"><img src="../img/logo.jpg" style="height:30px;"></a>
     <a href="<c:url value="/"/>" class="w3-bar-item w3-button w3-padding-large w3-hide-small">
         Good-Couriers.com
     </a>
 
-    <my:headLanguage language="${language}"/>
+    <my:headLanguage/>
 </div>
 
 <div class="w3-container col-xs-12 w3-display-topmiddle" style="margin-top:100px;">
@@ -126,8 +64,8 @@
         <span>${header_registration}</span></h2>
 </div>
 
-<div class="w3-container w3-round w3-border w3-border-black w3-teal" style="margin-left:32%; margin-right:32%; margin-top:140px;">
-    <form name="courier-registration-form" onsubmit="return validateForm()" method="post" action="Controller">
+<div class="w3-container w3-round w3-card-4 w3-border w3-border-black w3-teal" style="margin-left:32%; margin-right:32%; margin-top:140px;">
+    <form name="courier-registration-form" method="post" action="Controller">
         <input type="hidden" name="command" value="courier-registration"/>
         <div class="w3-cell-row">
             <div class="w3-container w3-cell" style="width:45%">
@@ -137,7 +75,7 @@
                 <div>${password}</div>
                 <input class="w3-input w3-border" id="password" type="password"  name="password"> <br>
                 <div>${repeated_password}</div>
-                <input class="w3-input w3-border" id="repeated_password" type="password"  name="repeated_password">
+                <input class="w3-input w3-border" id="repeatedPassword" type="password"  name="repeatedPassword">
                 <br><br>
             </div>
             <div class="w3-container w3-cell" style="width:10%;"> </div>
@@ -180,8 +118,49 @@
             <div class="w3-container  w3-cell" style="width:25%;"> </div>
         </div>
     </form>
+    <c:choose>
+        <c:when test="${requestScope.message eq 'loginBad'}">
+            <h5 class="w3-text-flat-alizarin  w3-center">${bad_login}</h5>
+        </c:when>
+        <c:when test="${requestScope.message eq 'notEqualsPasswords'}">
+            <h5 class="w3-text-flat-alizarin w3-center">${not_equal}</h5>
+        </c:when>
+        <c:when test="${requestScope.message eq 'emptyLogin'}">
+            <h5 class="w3-text-flat-alizarin w3-center">${empty_login}</h5>
+        </c:when>
+        <c:when test="${requestScope.message eq 'emptyPassword'}">
+            <h5 class="w3-text-flat-alizarin w3-center">${empty_password}</h5>
+        </c:when>
+        <c:when test="${requestScope.message eq 'emptyTransport'}">
+            <h5 class="w3-text-flat-alizarin w3-center">${empty_transport}</h5>
+        </c:when>
+        <c:when test="${requestScope.message eq 'emptyGoods'}">
+            <h5 class="w3-text-flat-alizarin w3-center">${empty_goods}</h5>
+        </c:when>
+    </c:choose>
+
 </div>
 <footer class="main-footer">
     ${main_footer}
 </footer>
 </body>
+<style>
+    .main-footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: teal;
+        color: white;
+        text-align: center;
+    }
+    body {
+        background: url(http://fondopantalla.com.es/file/935/2560x1600/crop/carretera-hacia-un-nuevo-planeta.jpg);
+        -moz-background-size: 100%;
+        -webkit-background-size: 100%;
+        -o-background-size: 100%;
+        background-size: 100%;
+    }
+</style>
+
+</html>

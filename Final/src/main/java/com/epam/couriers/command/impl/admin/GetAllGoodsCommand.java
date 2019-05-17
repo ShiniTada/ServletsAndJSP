@@ -1,10 +1,10 @@
-package com.epam.couriers.command.impl;
+package com.epam.couriers.command.impl.admin;
 
 import com.epam.couriers.command.Command;
 import com.epam.couriers.command.exception.CommandException;
 import com.epam.couriers.command.resource.PathManager;
-import com.epam.couriers.entity.CourierRecord;
-import com.epam.couriers.entity.Transport;
+import com.epam.couriers.constants.GeneralConstant;
+import com.epam.couriers.entity.Goods;
 import com.epam.couriers.service.AdminService;
 import com.epam.couriers.service.exception.ServiceException;
 import com.epam.couriers.service.impl.AdminServiceImpl;
@@ -13,22 +13,19 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * This command shows the types of transport to which goods are delivered
+ * This command shows the types of products transported
  */
-public class GetAllTransportCommand implements Command {
-
-    private static final String LIST_TRANSPORTS = "listTransports";
-    private static final String PAGE_ATTRIBUTE = "page";
+public class GetAllGoodsCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         String page;
         try {
             AdminService adminService = new AdminServiceImpl();
-            List<Transport> transports = adminService.getCourierTransports();
-            request.getSession().setAttribute(LIST_TRANSPORTS, transports);
-            page = PathManager.getProperty(PathManager.TABLE_TRANSPORTS_PAGE);
-            request.getSession().setAttribute(PAGE_ATTRIBUTE, page);
+            List<Goods> goods = adminService.getCourierGoods();
+            request.getSession().setAttribute(GeneralConstant.LIST_GOODS, goods);
+            page = PathManager.getProperty(PathManager.TABLE_GOODS_PAGE);
+            request.getSession().setAttribute(GeneralConstant.PAGE_ATTRIBUTE, page);
             return page;
         } catch (ServiceException e) {
             throw new CommandException(e);

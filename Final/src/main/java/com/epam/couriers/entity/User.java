@@ -17,6 +17,11 @@ public class User extends Entity {
         this.login = login;
     }
 
+    public User(int id, String login) {
+        super(id);
+        this.login = login;
+    }
+
     public User(int id, String login, String password, RoleEnum role) {
         super(id);
         this.login = login;

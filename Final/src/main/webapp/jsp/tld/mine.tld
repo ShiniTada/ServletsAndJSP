@@ -9,11 +9,6 @@
         <name>headLanguage</name>
         <tag-class>com.epam.couriers.tag.HeadLanguageTag</tag-class>
         <body-content>empty</body-content>
-        <attribute>
-            <name>language</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
     </tag>
     <tag>
         <name>headName</name>

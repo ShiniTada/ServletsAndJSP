@@ -10,6 +10,10 @@ public class CourierRecord extends Entity {
     private double markCommon;
     private int status;
 
+    public CourierRecord(int id) {
+        super(id);
+    }
+
     public CourierRecord(int id, User courier, double mark, int status) {
         super(id);
         this.courier = courier;

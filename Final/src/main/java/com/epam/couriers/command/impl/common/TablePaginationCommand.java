@@ -1,4 +1,4 @@
-package com.epam.couriers.command.impl;
+package com.epam.couriers.command.impl.common;
 
 import com.epam.couriers.command.Command;
 import com.epam.couriers.command.exception.CommandException;

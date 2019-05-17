@@ -1,15 +1,20 @@
 package com.epam.couriers.service;
 
-import com.epam.couriers.entity.CourierRecord;
-import com.epam.couriers.entity.CustomerOrder;
-import com.epam.couriers.entity.Goods;
-import com.epam.couriers.entity.Transport;
+import com.epam.couriers.entity.*;
 import com.epam.couriers.service.exception.ServiceException;
 
 import java.util.List;
 
 public interface AdminService {
 
+    /**
+     * Gets users
+     *
+     * @return {@link List<User>} list of users
+     *
+     * @throws ServiceException  if error happens during execution
+     */
+    List<User> getAllUsers() throws ServiceException;
     /**
      * Get courier's new records
      *
@@ -53,4 +58,22 @@ public interface AdminService {
      * @throws ServiceException if error happens during execution
      */
     List<Goods> getCourierGoods() throws ServiceException;
+
+    /**
+     * Set active status to courier
+     *
+     * @param courierRecordId - courier courier record id
+     *
+     * @throws ServiceException if error happens during execution
+     */
+    void acceptCourier(int courierRecordId) throws ServiceException;
+
+    /**
+     * Set not available status to courier
+     *
+     * @param courierRecordId - courier courier record id
+     *
+     * @throws ServiceException if error happens during execution
+     */
+    void rejectCourier(int courierRecordId) throws ServiceException;
 }

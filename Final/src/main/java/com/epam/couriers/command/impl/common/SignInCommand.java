@@ -1,15 +1,17 @@
-package com.epam.couriers.command.impl;
+package com.epam.couriers.command.impl.common;
 
 import com.epam.couriers.command.Command;
 import com.epam.couriers.command.exception.CommandException;
 import com.epam.couriers.command.resource.PathManager;
 import com.epam.couriers.constants.GeneralConstant;
 import com.epam.couriers.entity.*;
+import com.epam.couriers.service.AdminService;
 import com.epam.couriers.service.CourierSevrice;
 import com.epam.couriers.service.UserService;
 import com.epam.couriers.service.errormessage.AllErrorMessages;
 import com.epam.couriers.service.errormessage.Message;
 import com.epam.couriers.service.exception.ServiceException;
+import com.epam.couriers.service.impl.AdminServiceImpl;
 import com.epam.couriers.service.impl.CourierServiceImpl;
 import com.epam.couriers.service.impl.UserServiceImpl;
 import org.apache.logging.log4j.LogManager;
@@ -30,11 +32,7 @@ import static org.apache.logging.log4j.core.impl.ThrowableFormatOptions.MESSAGE;
 public class SignInCommand implements Command {
 
     private static final Logger LOGGER = LogManager.getLogger(SignInCommand.class);
-    private static final String USER = "user";
-    private static final String LOGIN = "login";
-    private static final String PASSWORD = "password";
 //    private static final int  LIVE_TIME = 60 * 10;
-    private static final String PAGE_ATTRIBUTE = "page";
 
 
 
@@ -45,18 +43,23 @@ public class SignInCommand implements Command {
         try {
             User user;
                 UserService userService = new UserServiceImpl();
-                user = userService.logIn(request.getParameter(LOGIN), request.getParameter(PASSWORD));
+                user = userService.logIn(request.getParameter(GeneralConstant.USER_LOGIN), request.getParameter(GeneralConstant.USER_PASSWORD));
                 if (user != null) {
-                    session.setAttribute(USER, user);
+                    session.removeAttribute(GeneralConstant.LIST_USERS);
+                    session.setAttribute(GeneralConstant.USER, user);
 //                    session.setMaxInactiveInterval(LIVE_TIME);
-//                    request.setAttribute(USER, user);
+
+                    List<CustomerOrder> listCustomerOrder;
+                    List<CustomerOrder> existedOrders;
+                    List<CustomerOrder>  completedOrders;
+                    CourierSevrice courierSevrice;
                     LOGGER.debug("User \"" + user.getLogin() + "\" signed in");
                     switch (user.getRole().getValue()) {
                         case "admin":
                             page = PathManager.getProperty(PathManager.ADMIN_PAGE);
                             break;
                         case "courier":
-                            CourierSevrice courierSevrice = new CourierServiceImpl();
+                            courierSevrice = new CourierServiceImpl();
                             CourierRecord courierRecord = courierSevrice.getCourierRecord(user.getId());
                             List<Transport> transport = courierSevrice.getTransportsOfOneCourier(courierRecord.getId());
                             List<String> listTransport = new ArrayList<>();
@@ -68,25 +71,49 @@ public class SignInCommand implements Command {
                             for (Goods g : goods){
                                 listGoods.add(g.getTypeGoods().getValue());
                             }
-                            List<CustomerOrder> listCustomerOrder = courierSevrice.getCustomerOrdersOfOneCourier(user.getId());
+                            listCustomerOrder = courierSevrice.getCustomerOrdersOfOneCourier(user.getLogin());
+                            existedOrders = new ArrayList<>();
+                            completedOrders = new ArrayList<>();
+                            for(CustomerOrder order : listCustomerOrder){
+                                if(order.getStatus().getValue().equals("posted") || order.getStatus().getValue().equals("delivered")){
+                                    existedOrders.add(order);
+                                }else {
+                                    completedOrders.add(order);
+                                }
+                            }
                             session.setAttribute(GeneralConstant.COURIER_RECORD, courierRecord);
                             session.setAttribute(GeneralConstant.LIST_TRANSPORT, listTransport);
                             session.setAttribute(GeneralConstant.LIST_GOODS, listGoods);
-                            session.setAttribute(GeneralConstant.CUSTOMER_ORDERS, listCustomerOrder);
+                            session.setAttribute(GeneralConstant.EXISTED_ORDERS, existedOrders);
+                            session.setAttribute(GeneralConstant.COMPLETED_ORDERS, completedOrders);
                             page = PathManager.getProperty(PathManager.COURIER_PAGE);
                             break;
                         case "customer":
+                            courierSevrice = new CourierServiceImpl();
+                            List<CustomerOrder> orders = courierSevrice.getCustomerOrdersOfOneCustomer(user.getLogin());
+
+                            existedOrders = new ArrayList<>();
+                            completedOrders = new ArrayList<>();
+                            for(CustomerOrder order : orders){
+                                if(order.getStatus().getValue().equals("posted") || order.getStatus().getValue().equals("delivered")){
+                                    existedOrders.add(order);
+                                }else {
+                                    completedOrders.add(order);
+                                }
+                            }
+                            session.setAttribute(GeneralConstant.EXISTED_ORDERS, existedOrders);
+                            session.setAttribute(GeneralConstant.COMPLETED_ORDERS, completedOrders);
                             page = PathManager.getProperty(PathManager.CUSTOMER_PAGE);
                             break;
                     }
                 } else {
-                    request.setAttribute(MESSAGE, Message.getInstanse().getMessage());
+                    request.setAttribute(GeneralConstant.MESSAGE_ATRIBUTE, AllErrorMessages.NOT_CORRECT_LOGIN_OR_PASSWORD);
                     page = PathManager.getProperty(PathManager.SIGN_IN_PAGE);
                 }
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
-        session.setAttribute(PAGE_ATTRIBUTE, page);
+        session.setAttribute(GeneralConstant.PAGE_ATTRIBUTE, page);
         return page;
     }
 

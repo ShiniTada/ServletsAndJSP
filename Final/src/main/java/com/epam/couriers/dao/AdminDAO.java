@@ -7,9 +7,8 @@ import java.util.List;
 
 public abstract class AdminDAO extends BaseDAO<User> {
 
-
     /**
-     * Get list of customer's orderss.
+     * Get list of customer's orders.
      *
      * This method get only:
      *      *               <br> - {@link CustomerOrder #orderId}
@@ -18,9 +17,10 @@ public abstract class AdminDAO extends BaseDAO<User> {
      *      *               <br> - {@link CustomerOrder #from}
      *      *               <br> - {@link CustomerOrder #to}
      *      *               <br> - {@link CustomerOrder #introductionDate}
+     *      *               <br> - {@link CustomerOrder #goodsDescription}
      *      *               <br> - {@link CustomerOrder #status}
      *
-     * @return  listOrders - list of customer's orders
+     * @return  list of customer's orders
      * @throws DAOException if something went wrong
      */
     public abstract List<CustomerOrder> getCustomerOrders() throws DAOException;

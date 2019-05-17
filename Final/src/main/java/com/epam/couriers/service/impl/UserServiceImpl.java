@@ -50,10 +50,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User courierRegistration(String login, String password) throws ServiceException {
+    public User registration(String login, String password, RoleEnum role) throws ServiceException {
         User user = new User();
         user.setLogin(login);
-        user.setRole(RoleEnum.COURIER);
+        user.setRole(role);
         String hashPassword = DigestUtils.md5Hex(password);
         user.setPassword(hashPassword);
         TransactionManager transactionManager = new TransactionManager();
@@ -75,4 +75,5 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
 }

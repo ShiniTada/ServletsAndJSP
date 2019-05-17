@@ -3,133 +3,143 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="my" uri="mine" %>
+
 <html>
 <head>
     <title>Good-Couriers</title>
+    <meta charset="utf-8">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="shortcut icon" href="../img/greenlogo.png" type="image/png">
-<%--    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/styles/main.css">--%>
-
+    <%--    <link rel="stylesheet" href="../styles/main.css">--%>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
     <fmt:setLocale value="${sessionScope.locale}"/>
     <fmt:setBundle basename="local" var="loc"/>
-    <fmt:message bundle="${loc}" key="local.header.language" var="language"/>
-    <fmt:message bundle="${loc}" key="local.header.language.english" var="english"/>
-    <fmt:message bundle="${loc}" key="local.header.language.russian" var="russian"/>
+
     <fmt:message bundle="${loc}" key="local.header.sign_out" var="sign_out"/>
     <fmt:message bundle="${loc}" key="local.header.settings" var="settings"/>
-
-    <fmt:message bundle="${loc}" key="local.admin.courier_applications" var="courier_applications"/>
     <fmt:message bundle="${loc}" key="local.admin.couriers" var="couriers"/>
-    <fmt:message bundle="${loc}" key="local.admin.orders" var="orders"/>
-    <fmt:message bundle="${loc}" key="local.admin.goods" var="goods"/>
-    <fmt:message bundle="${loc}" key="local.admin.transport" var="transport"/>
+    <fmt:message bundle="${loc}" key="local.admin.couriers_table.first" var="Id"/>
+    <fmt:message bundle="${loc}" key="local.admin.couriers_table.second" var="Name"/>
+    <fmt:message bundle="${loc}" key="local.admin.couriers_table.third" var="Mark"/>
+    <fmt:message bundle="${loc}" key="local.main_footer" var="main_footer"/>
+    <fmt:message bundle="${loc}" key="local.courier.order.goods_description" var="goods_description"/>
+    <fmt:message bundle="${loc}" key="local.customer.all_couriers.info_header" var="info_header"/>
+    <fmt:message bundle="${loc}" key="local.customer.all_couriers.info" var="info"/>
+    <fmt:message bundle="${loc}" key="local.courier.back" var="back"/>
 
-    <fmt:message bundle="${loc}" key="local.admin.transports_or_goods_table.first" var="Type"/>
-    <fmt:message bundle="${loc}" key="local.admin.transports_or_goods_table.second" var="Courier"/>
+
+    <fmt:message bundle="${loc}" key="local.admin.orders_table.more_details" var="more_details"/>
+
     <fmt:message bundle="${loc}" key="local.main_footer" var="main_footer"/>
 
 </head>
 <body>
 
-<div>
-    <div class="w3-container w3-teal main-panel-header ">
-        <a href="<c:url value="/"/>" class="w3-bar-item w3-button w3-left"><img src="../img/logo.jpg" style="height:30px;"></a>
-        <a href="<c:url value="/"/>" class="w3-bar-item w3-button w3-padding-large w3-hide-small">
-            Good-Couriers.com
-        </a>
+<div class="w3-container w3-teal main-panel-header ">
+    <a href="<c:url value="/"/>" class="w3-bar-item w3-button w3-left"><img src="../img/logo.jpg" style="height:30px;"></a>
+    <a href="<c:url value="/"/>" class="w3-bar-item w3-button w3-padding-large w3-hide-small">
+        Good-Couriers.com
+    </a>
+    <my:headName role="${sessionScope.user.role}" login="${sessionScope.user.login}" settings="${settings}" sign_out="${sign_out}"/>
+    <my:headLanguage/>
+</div>
 
-        <my:headName role="${sessionScope.user.role}" login="${sessionScope.user.login}" settings="${settings}" sign_out="${sign_out}"/>
-        <my:headLanguage/>
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+    <br><br><br>
+        <div class="w3-panel w3-pale-blue w3-border w3-margin-bottom">
+            <h3>${info_header}</h3>
+            <p>${info}</p>
+        </div>
+    <br>
+
+    <div class="w3-container w3-margin-bottom">
+        <form action="Controller" method="post">
+            <input type="hidden" name="command" value="back_after_details"/>
+            <button class="w3-block w3-round w3-center w3-red w3-button w3-cell w3-right" name="back" value="afterAllCouriers"
+                    style="max-width:100px">${back}</button>
+        </form>
     </div>
-
-    <!-- Sidebar -->
-    <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%">
-        <h5 class="w3-bar-item">Menu</h5>
-
-        <!-- Command 1-->
-        <div class="sign-in">
-            <form action="Controller" method="get">
-                <input type="hidden" name="command" value="get-new-couriers-records"/>
-                <button class="w3-button w3-bar-item w3-padding-large btn-lg btn-block " type="submit">${courier_applications}</button>
-            </form>
-        </div>
-
-
-        <!-- Command 2-->
-        <div class="sign-in">
-            <form action="Controller" method="get">
-                <input type="hidden" name="command" value="get-all-couriers"/>
-                <button class="w3-bar-item w3-button w3-padding-large btn-lg btn-block">${couriers}</button>
-            </form>
-        </div>
-
-        <!-- Command 3-->
-        <div class="sign-in">
-            <form action="Controller" method="get">
-                <input type="hidden" name="command" value="get-all-orders"/>
-                <button class="w3-bar-item w3-button btn-lg btn-block w3-padding-large">${orders}</button>
-            </form>
-        </div>
-
-        <!-- Command 4-->
-        <div class="sign-in">
-            <form action="Controller" method="get">
-                <input type="hidden" name="command" value="get-all-goods"/>
-                <button class="w3-bar-item w3-button btn-lg w3-teal btn-block w3-padding-large">${goods}</button>
-            </form>
-        </div>
-
-        <!-- Command 5-->
-        <div class="sign-in">
-            <form action="Controller" method="get">
-                <input type="hidden" name="command" value="get-all-transport"/>
-                <button class="w3-bar-item w3-button btn-lg btn-block w3-padding-large">${transport}</button>
-            </form>
-        </div>
-    </div>
-
+    <br><br>
 
     <!-- TABLE-->
-    <div style="margin-left:20%; margin-right:15%;">
+
         <div class="w3-container w3-center">
-            <h2 class="title w3-text-teal" style="margin-top:100px;">${goods}</h2>
+            <h2 class="title w3-text-black" style="margin-top:100px;">${couriers}</h2>
+
             <table class="w3-table-all">
                 <thead>
                 <tr class="w3-teal">
-                    <th>${Type}</th>
-                    <th>${Courier}</th>
+                    <th>${Id}</th>
+                    <th>${Name}</th>
+                    <th>${Mark}</th>
+                    <td>${more_details}</td>
                 </tr>
                 </thead>
+
                 <c:choose>
                     <c:when test="${requestScope.pagination eq 2}">
-                        <c:forEach var="elem" items="${sessionScope.listGoods}" begin="5" end="9">
+                        <c:forEach var="elem" items="${sessionScope.listCourierRecords}"
+                                   begin="5" end="9" >
                             <tr class="w3-hover-light-blue">
-                                <td><c:out value="${elem.typeGoods.getValue()}"/> </td>
+                                <td><c:out value="${elem.id}"/> </td>
                                 <td><c:out value="${elem.courier.login}"/> </td>
+                                <td><c:out value="${elem.markCommon}"/> </td>
+                                <td>
+                                    <form action="Controller" method="post">
+                                        <input type="hidden" name="command" value="more_details"/>
+                                        <button class="w3-block w3-round w3-center w3-teal w3-button" name="courierRecordId" value="${elem.id}" style="max-width:150px">${more_details}</button>
+                                    </form>
+                                </td>
                             </tr>
                         </c:forEach>
                     </c:when>
                     <c:when test="${requestScope.pagination eq 3}">
-                        <c:forEach var="elem" items="${sessionScope.listGoods}" begin="10" end="14" >
+                        <c:forEach var="elem" items="${sessionScope.listCourierRecords}"
+                                   begin="10" end="14" >
                             <tr class="w3-hover-light-blue">
-                                <td><c:out value="${elem.typeGoods.getValue()}"/> </td>
+                                <td><c:out value="${elem.id}"/> </td>
                                 <td><c:out value="${elem.courier.login}"/> </td>
+                                <td><c:out value="${elem.markCommon}"/> </td>
+                                <td>
+                                    <form action="Controller" method="post">
+                                        <input type="hidden" name="command" value="more_details"/>
+                                        <button class="w3-block w3-round w3-center w3-teal w3-button" name="courierRecordId" value="${elem.id}" style="max-width:150px">${more_details}</button>
+                                    </form>
+                                </td>
                             </tr>
                         </c:forEach>
                     </c:when>
                     <c:when test="${requestScope.pagination eq 4}">
-                        <c:forEach var="elem" items="${sessionScope.listGoods}" begin="15" end="19">
+                        <c:forEach var="elem" items="${sessionScope.listCourierRecords}"
+                                   begin="15" end="19" >
                             <tr class="w3-hover-light-blue">
-                                <td><c:out value="${elem.typeGoods.getValue()}"/> </td>
+                                <td><c:out value="${elem.id}"/> </td>
                                 <td><c:out value="${elem.courier.login}"/> </td>
+                                <td><c:out value="${elem.markCommon}"/> </td>
+                                <td>
+                                    <form action="Controller" method="post">
+                                        <input type="hidden" name="command" value="more_details"/>
+                                        <button class="w3-block w3-round w3-center w3-teal w3-button" name="courierRecordId" value="${elem.id}" style="max-width:150px">${more_details}</button>
+                                    </form>
+                                </td>
                             </tr>
                         </c:forEach>
                     </c:when>
                     <c:otherwise>
-                        <c:forEach var="elem" items="${sessionScope.listGoods}" begin="0" end="4">
+                        <c:forEach var="elem" items="${sessionScope.listCourierRecords}"
+                                   begin="0" end="4" >
                             <tr class="w3-hover-light-blue">
-                                <td><c:out value="${elem.typeGoods.getValue()}"/> </td>
+                                <td><c:out value="${elem.id}"/> </td>
                                 <td><c:out value="${elem.courier.login}"/> </td>
+                                <td><c:out value="${elem.markCommon}"/> </td>
+                                <td>
+                                    <form action="Controller" method="post">
+                                        <input type="hidden" name="command" value="more_details"/>
+                                        <button class="w3-block w3-round w3-center w3-teal w3-button" name="courierRecordId" value="${elem.id}" style="max-width:150px">${more_details}</button>
+                                    </form>
+                                </td>
                             </tr>
                         </c:forEach>
                     </c:otherwise>
@@ -166,7 +176,6 @@
                 <c:when test="${requestScope.pagination eq 4}">
                     <form action="Controller" method="get">
                         <input type="hidden" name="command" value="table-pagination"/>
-                        <button class="w3-bar-item w3-button btn-lg btn-block w3-padding-large">${orders}</button>
                         <div class="w3-bar">
                             <label>«</label>
                             <button name= "pagination" value = "1" class="w3-button w3-round">1</button>
@@ -193,9 +202,11 @@
             </c:choose>
         </div>
 
-    </div>
 
+<!-- End Page Container -->
 </div>
+
+
 <footer class="main-footer">
     ${main_footer}
 </footer>

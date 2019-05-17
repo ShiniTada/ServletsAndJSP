@@ -1,5 +1,6 @@
 package com.epam.couriers.service;
 
+import com.epam.couriers.entity.RoleEnum;
 import com.epam.couriers.entity.User;
 import com.epam.couriers.service.exception.ServiceException;
 
@@ -16,14 +17,15 @@ public interface UserService {
     User logIn(String login, String password) throws ServiceException;
 
     /**
-     * Registers courier
+     * Registers user
      *
-     * @param login of a courier
-     * @param password of a courier
+     * @param login of a user
+     * @param password of a user
      ** @return {@link User} entity of registered user.
      *
      * @throws ServiceException     if error happens during execution
      */
-    User courierRegistration(String login, String password) throws ServiceException;
+    User registration(String login, String password, RoleEnum role) throws ServiceException;
+
 
 }

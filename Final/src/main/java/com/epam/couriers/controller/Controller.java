@@ -47,6 +47,7 @@ public class Controller extends HttpServlet {
             page = PathManager.getProperty(PathManager.ERROR_PAGE_404);
         }
             request.getRequestDispatcher(page).forward(request, response);
+//            response.sendRedirect(page);
 
     }
 }

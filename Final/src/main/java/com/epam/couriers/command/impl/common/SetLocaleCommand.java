@@ -1,14 +1,11 @@
-package com.epam.couriers.command.impl;
+package com.epam.couriers.command.impl.common;
 
 import com.epam.couriers.command.Command;
 import com.epam.couriers.command.exception.CommandException;
 import com.epam.couriers.command.resource.PathManager;
-import com.epam.couriers.entity.User;
-import com.epam.couriers.service.UserService;
 import org.apache.logging.log4j.LogManager;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class SetLocaleCommand implements Command {
