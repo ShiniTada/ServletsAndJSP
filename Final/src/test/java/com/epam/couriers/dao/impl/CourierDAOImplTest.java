@@ -3,13 +3,11 @@ package com.epam.couriers.dao.impl;
 import com.epam.couriers.dao.CourierDAO;
 import com.epam.couriers.dao.exception.DAOException;
 import com.epam.couriers.entity.CourierRecord;
-import com.epam.couriers.service.CourierSevrice;
+import com.epam.couriers.service.CourierService;
 import com.epam.couriers.service.exception.ServiceException;
 import com.epam.couriers.service.impl.CourierServiceImpl;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import static org.testng.Assert.*;
 
 public class CourierDAOImplTest {
 
@@ -19,8 +17,8 @@ public class CourierDAOImplTest {
         int userId = 2;
         int expectedCourierId = 1;
         //when
-        CourierSevrice courierSevrice = new CourierServiceImpl();
-        CourierRecord cr = courierSevrice.getCourierRecord(userId);
+        CourierService courierService = new CourierServiceImpl();
+        CourierRecord cr = courierService.getCourierRecord(userId);
         System.out.println(cr);
         int actualCourierId = cr.getId();
         //then

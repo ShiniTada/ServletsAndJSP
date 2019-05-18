@@ -25,7 +25,7 @@ public  abstract class CourierDAO extends BaseDAO<CourierRecord>{
     public abstract CourierRecord insert(CourierRecord courierRecord) throws DAOException;
 
     /**
-     * Get courierRecord  from database
+     * Get courierRecord from database
      *
      * @param courierId - id of courier.
      *     The method gets only:
@@ -41,12 +41,38 @@ public  abstract class CourierDAO extends BaseDAO<CourierRecord>{
      */
     public abstract CourierRecord get(int courierId) throws DAOException;
 
+
+    /**
+     * @param courierLogin - courier login
+     * The method gets only:
+     *      *      *               <br> - {@link CourierRecord #recordId}
+     *      *      *               <br> - {@link CourierRecord #markQuality}
+     *      *      *               <br> - {@link CourierRecord #markPoliteness}
+     *      *      *               <br> - {@link CourierRecord #markPunctuality}
+     *      *      *               <br> - {@link CourierRecord #markCommon}
+     *      *      *               <br> - {@link CourierRecord #votesNumber}
+     * @return {@link CourierRecord } with filled marks and id of record
+     * @throws DAOException if something went wrong
+     */
+    public abstract CourierRecord  getMarksAndIdOfOneCourier(String courierLogin) throws DAOException;
+
+    /**
+     * The method updates:
+     *      *               <br> - {@link CourierRecord #markQuality}
+     *      *               <br> - {@link CourierRecord #markPoliteness}
+     *      *               <br> - {@link CourierRecord #markPunctuality}
+     *      *               <br> - {@link CourierRecord #markCommon}
+     *     *               <br> - {@link CourierRecord #votesNumber}
+     * @throws DAOException if something went wrong
+     */
+    public abstract void updateMarks(int courierRecordId, double newQuality, double newPoliteness, double newPunctuality, double newCommon, int newVotesNumber) throws DAOException;
+
     /**
      * Get courierRecord  from database
      *
      * @param courierRecord where must be set following properties:
-//     *      *               <br> - {@link CourierRecord #userId}
-//     *      *               <br> - {@link CourierRecord #courierLogin}
+     *      *               <br> - {@link CourierRecord #userId}
+     *      *               <br> - {@link CourierRecord #courierLogin}
      *      *               <br> - {@link CourierRecord #markQuality}
      *      *               <br> - {@link CourierRecord #markPoliteness}
      *      *               <br> - {@link CourierRecord #markPunctuality}
@@ -93,7 +119,7 @@ public  abstract class CourierDAO extends BaseDAO<CourierRecord>{
     /**
      * Set active status to courier
      *
-     * @param courierRecordId - courier courier record id
+     * @param courierRecordId - courierrecord id
      *
      * @throws DAOException if something went wrong
      */
@@ -102,7 +128,7 @@ public  abstract class CourierDAO extends BaseDAO<CourierRecord>{
     /**
      * Set not available status to courier
      *
-     * @param courierRecordId - courier courier record id
+     * @param courierRecordId - courier record id
      *
      * @throws DAOException if something went wrong
      */

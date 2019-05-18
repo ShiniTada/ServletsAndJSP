@@ -7,8 +7,6 @@ import com.epam.couriers.dao.manager.TransactionManager;
 import com.epam.couriers.entity.RoleEnum;
 import com.epam.couriers.entity.User;
 import com.epam.couriers.service.UserService;
-import com.epam.couriers.service.errormessage.AllErrorMessages;
-import com.epam.couriers.service.errormessage.Message;
 import com.epam.couriers.service.exception.ServiceException;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.logging.log4j.LogManager;
@@ -33,7 +31,7 @@ public class UserServiceImpl implements UserService {
                 transactionManager.endTransaction();
                 return user;
             } else {
-                Message.getInstanse().setMessage(AllErrorMessages.NOT_CORRECT_LOGIN_OR_PASSWORD);
+//                Message.getInstanse().setMessage(AllErrorMessages.NOT_CORRECT_LOGIN_OR_PASSWORD);
                 LOGGER.debug("Incorrect login or password");
                 return null;
             }

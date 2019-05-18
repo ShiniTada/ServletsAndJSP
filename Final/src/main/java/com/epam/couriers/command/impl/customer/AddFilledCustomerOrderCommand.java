@@ -7,12 +7,15 @@ import com.epam.couriers.constants.GeneralConstant;
 import com.epam.couriers.entity.CourierRecord;
 import com.epam.couriers.entity.CustomerOrder;
 import com.epam.couriers.entity.User;
+import com.epam.couriers.service.CourierService;
+import com.epam.couriers.service.CustomerService;
+import com.epam.couriers.service.exception.ServiceException;
 import com.epam.couriers.service.impl.CourierServiceImpl;
+import com.epam.couriers.service.impl.CustomerServiceImpl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class AddFilledCustomerOrderCommand implements Command {
@@ -32,15 +35,34 @@ public class AddFilledCustomerOrderCommand implements Command {
         String from = request.getParameter(GeneralConstant.FROM);
         String to = request.getParameter(GeneralConstant.TO);
         String date = request.getParameter(GeneralConstant.DELIVERY_DATE);
-        String countPoints = request.getParameter(GeneralConstant.COUNT_POINTS);
+        String numberOfGoods = request.getParameter(GeneralConstant.NUMBER_OF_GOODS);
         String weight = request.getParameter(GeneralConstant.WEIGHT);
 
-        System.out.println("customer: " + customerId + " courier: " + courierId + "what: " + whatDeliver);
-        System.out.println("from: " + from + "to: " + to);
-        System.out.println("date: " + date + "countPoints: " + countPoints + "weight: " + weight);
+        CustomerService customerService = new CustomerServiceImpl();
+        CourierService courierService = new CourierServiceImpl();
+        try {
+            customerService.addCustomerOrder(customerId, courierId, whatDeliver, from, to, date, numberOfGoods, weight);
+            session.removeAttribute(GeneralConstant.EXISTED_ORDERS);
+            session.removeAttribute(GeneralConstant.COMPLETED_ORDERS);
+            List<CustomerOrder> orders = courierService.getCustomerOrdersOfOneCustomer(user.getLogin());
+            List<CustomerOrder> existedOrders = new ArrayList<>();
+            List<CustomerOrder>  completedOrders = new ArrayList<>();
 
-        page = PathManager.getProperty(PathManager.CUSTOMER_PAGE);
+            for(CustomerOrder order : orders){
+                if(order.getStatus().getValue().equals(GeneralConstant.POSTED) || order.getStatus().getValue().equals(GeneralConstant.DELIVERED)){
+                    existedOrders.add(order);
+                }else {
+                    completedOrders.add(order);
+                }
+            }
+            session.setAttribute(GeneralConstant.EXISTED_ORDERS, existedOrders);
+            session.setAttribute(GeneralConstant.COMPLETED_ORDERS, completedOrders);
+            page = PathManager.getProperty(PathManager.CUSTOMER_PAGE);
+        } catch (ServiceException e) {
+            throw new CommandException(e);
+        }
         session.setAttribute(GeneralConstant.PAGE_ATTRIBUTE, page);
         return page;
     }
+
 }

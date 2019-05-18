@@ -5,10 +5,9 @@ import com.epam.couriers.command.exception.CommandException;
 import com.epam.couriers.command.resource.PathManager;
 import com.epam.couriers.constants.GeneralConstant;
 import com.epam.couriers.entity.CourierRecord;
-import com.epam.couriers.entity.CustomerOrder;
 import com.epam.couriers.entity.Goods;
 import com.epam.couriers.entity.Transport;
-import com.epam.couriers.service.CourierSevrice;
+import com.epam.couriers.service.CourierService;
 import com.epam.couriers.service.exception.ServiceException;
 import com.epam.couriers.service.impl.CourierServiceImpl;
 
@@ -24,15 +23,15 @@ public class MoreDetailsCommand implements Command {
         String page;
         try {
             CourierRecord courierRecord = new CourierRecord(Integer.parseInt(request.getParameter(GeneralConstant.COURIER_RECORD_ID)));
-            CourierSevrice courierSevrice = new CourierServiceImpl();
-            courierRecord = courierSevrice.getCourierRecord(courierRecord);
+            CourierService courierService = new CourierServiceImpl();
+            courierRecord = courierService.getCourierRecord(courierRecord);
 
-            List<Transport> transport = courierSevrice.getTransportsOfOneCourier(courierRecord.getId());
+            List<Transport> transport = courierService.getTransportsOfOneCourier(courierRecord.getId());
             List<String> listTransport = new ArrayList<>();
             for (Transport t : transport) {
                 listTransport.add(t.getTypeTransport().getValue());
             }
-            List<Goods> goods = courierSevrice.getGoodsOfOneCourier(courierRecord.getId());
+            List<Goods> goods = courierService.getGoodsOfOneCourier(courierRecord.getId());
             List<String> listGoods = new ArrayList<>();
             for (Goods g : goods) {
                 listGoods.add(g.getTypeGoods().getValue());

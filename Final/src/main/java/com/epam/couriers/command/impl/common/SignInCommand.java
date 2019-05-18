@@ -5,13 +5,10 @@ import com.epam.couriers.command.exception.CommandException;
 import com.epam.couriers.command.resource.PathManager;
 import com.epam.couriers.constants.GeneralConstant;
 import com.epam.couriers.entity.*;
-import com.epam.couriers.service.AdminService;
-import com.epam.couriers.service.CourierSevrice;
+import com.epam.couriers.service.CourierService;
 import com.epam.couriers.service.UserService;
 import com.epam.couriers.service.errormessage.AllErrorMessages;
-import com.epam.couriers.service.errormessage.Message;
 import com.epam.couriers.service.exception.ServiceException;
-import com.epam.couriers.service.impl.AdminServiceImpl;
 import com.epam.couriers.service.impl.CourierServiceImpl;
 import com.epam.couriers.service.impl.UserServiceImpl;
 import org.apache.logging.log4j.LogManager;
@@ -19,11 +16,8 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.apache.logging.log4j.core.impl.ThrowableFormatOptions.MESSAGE;
 
 
 /**
@@ -52,26 +46,26 @@ public class SignInCommand implements Command {
                     List<CustomerOrder> listCustomerOrder;
                     List<CustomerOrder> existedOrders;
                     List<CustomerOrder>  completedOrders;
-                    CourierSevrice courierSevrice;
+                    CourierService courierService;
                     LOGGER.debug("User \"" + user.getLogin() + "\" signed in");
                     switch (user.getRole().getValue()) {
                         case "admin":
                             page = PathManager.getProperty(PathManager.ADMIN_PAGE);
                             break;
                         case "courier":
-                            courierSevrice = new CourierServiceImpl();
-                            CourierRecord courierRecord = courierSevrice.getCourierRecord(user.getId());
-                            List<Transport> transport = courierSevrice.getTransportsOfOneCourier(courierRecord.getId());
+                            courierService = new CourierServiceImpl();
+                            CourierRecord courierRecord = courierService.getCourierRecord(user.getId());
+                            List<Transport> transport = courierService.getTransportsOfOneCourier(courierRecord.getId());
                             List<String> listTransport = new ArrayList<>();
                             for (Transport t : transport){
                                 listTransport.add(t.getTypeTransport().getValue());
                             }
-                            List<Goods> goods = courierSevrice.getGoodsOfOneCourier(courierRecord.getId());
+                            List<Goods> goods = courierService.getGoodsOfOneCourier(courierRecord.getId());
                             List<String> listGoods = new ArrayList<>();
                             for (Goods g : goods){
                                 listGoods.add(g.getTypeGoods().getValue());
                             }
-                            listCustomerOrder = courierSevrice.getCustomerOrdersOfOneCourier(user.getLogin());
+                            listCustomerOrder = courierService.getCustomerOrdersOfOneCourier(user.getLogin());
                             existedOrders = new ArrayList<>();
                             completedOrders = new ArrayList<>();
                             for(CustomerOrder order : listCustomerOrder){
@@ -89,8 +83,8 @@ public class SignInCommand implements Command {
                             page = PathManager.getProperty(PathManager.COURIER_PAGE);
                             break;
                         case "customer":
-                            courierSevrice = new CourierServiceImpl();
-                            List<CustomerOrder> orders = courierSevrice.getCustomerOrdersOfOneCustomer(user.getLogin());
+                            courierService = new CourierServiceImpl();
+                            List<CustomerOrder> orders = courierService.getCustomerOrdersOfOneCustomer(user.getLogin());
 
                             existedOrders = new ArrayList<>();
                             completedOrders = new ArrayList<>();

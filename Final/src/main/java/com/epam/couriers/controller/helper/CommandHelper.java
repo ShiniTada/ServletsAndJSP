@@ -5,9 +5,12 @@ import com.epam.couriers.command.CommandName;
 import com.epam.couriers.command.impl.UnknownCommand;
 import com.epam.couriers.command.impl.admin.*;
 import com.epam.couriers.command.impl.common.*;
+import com.epam.couriers.command.impl.courier.AcceptOrderCommand;
+import com.epam.couriers.command.impl.courier.CourierRegistrationCommand;
 import com.epam.couriers.command.impl.customer.AddFilledCustomerOrderCommand;
+import com.epam.couriers.command.impl.customer.CustomerRegistrationCommand;
 import com.epam.couriers.command.impl.customer.OpenNewOrderFormCommand;
-import com.epam.couriers.command.impl.start.*;
+import com.epam.couriers.command.impl.customer.SetMarksCommand;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -42,7 +45,10 @@ public class CommandHelper {
 
         commands.put(CommandName.OPEN_NEW_ORDER_FORM, new OpenNewOrderFormCommand());
 
-//        commands.put(CommandName.MAKE_ORDER, MakeOrderCommand());
+        commands.put(CommandName.ACCEPT_ORDER, new AcceptOrderCommand());
+
+        commands.put(CommandName.SET_MARKS, new SetMarksCommand());
+
 
 
         commands.put(CommandName.GET_NEW_COURIERS_RECORDS, new GetNewCouriersRecordsCommand());
@@ -58,8 +64,6 @@ public class CommandHelper {
         commands.put(CommandName.TABLE_PAGINATION, new TablePaginationCommand());
 
         commands.put(CommandName.ACCEPT_COURIER, new AcceptCourierCommand());
-
-        commands.put(CommandName.REJECT_COURIER, new RejectCourierCommand());
 
         commands.put(CommandName.MORE_DETAILS, new MoreDetailsCommand());
 

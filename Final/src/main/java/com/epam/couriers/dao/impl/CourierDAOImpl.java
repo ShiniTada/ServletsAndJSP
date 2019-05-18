@@ -30,7 +30,14 @@ public class CourierDAOImpl extends CourierDAO {
             "cr.markQuality, cr.markPoliteness, cr.markPunctuality, cr.status FROM courierRecord cr " +
             "INNER JOIN User u ON cr.userId = u.userId  WHERE cr.courierRecordId = ?";
 
+    private static final String SQL_GET_MARKS_AND_ID_BY_COURIER_LOGIN = "SELECT cr.courierRecordId, cr.markCommon, " +
+            "cr.markQuality, cr.markPoliteness, cr.markPunctuality, cr.votesNumber FROM courierRecord cr " +
+            "INNER JOIN User u ON cr.userId = u.userId  WHERE u.login = ?";
+
     private static final String SQL_GET_ORDERS_ID = "SELECT orderId from courier_has_customerorder WHERE courierId = ?";
+
+    private static final String SQL_UPDATE_MARKS_AND_VOTES_NUMBER = "UPDATE courierrecord SET markQuality= ?, markPoliteness= ?, markPunctuality= ?," +
+            " markCommon= ?, votesNumber=? WHERE courierRecordId = ?";
 
     private static final String QUERY_UPDATE_COURIER_RECORD_STATUS = "UPDATE courierrecord SET status= ? WHERE courierRecordId = ?";
 
@@ -76,6 +83,48 @@ public class CourierDAOImpl extends CourierDAO {
             }
             return courierRecord;
 
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    @Override
+    public CourierRecord getMarksAndIdOfOneCourier(String courierLogin) throws DAOException {
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_MARKS_AND_ID_BY_COURIER_LOGIN)) {
+            preparedStatement.setString(1, courierLogin);
+            ResultSet rs = preparedStatement.executeQuery();
+            CourierRecord courierRecord = new CourierRecord();
+            while (rs.next()) {
+                courierRecord.setId(rs.getInt(GeneralConstant.COURIER_RECORD_ID));
+                courierRecord.setMarkQuality(rs.getDouble(GeneralConstant.MARK_QUALITY));
+                courierRecord.setMarkPoliteness(rs.getDouble(GeneralConstant.MARK_POLITENESS));
+                courierRecord.setMarkPunctuality(rs.getDouble(GeneralConstant.MARK_PUNCTUALITY));
+                courierRecord.setMarkCommon(rs.getDouble(GeneralConstant.MARK_COMMON));
+                courierRecord.setVotes(rs.getInt(GeneralConstant.VOTES_NUMBER));
+            }
+            return courierRecord;
+
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    //    private static final String SQL_UPDATE_MARKS_AND_VOTES_NUMBER = "UPDATE courierrecord SET markQuality= ?, markPoliteness= ?, markPunctuality= ?," +
+    //            " markCommon= ?, votesNumber=? WHERE courierRecordId = ?";
+    //
+
+    @Override
+    public void updateMarks(int courierRecordId, double newQuality, double newPoliteness, double newPunctuality, double newCommon, int newVotesNumber) throws DAOException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_MARKS_AND_VOTES_NUMBER)) {
+            preparedStatement.setDouble(1, newQuality);
+            preparedStatement.setDouble(2, newPoliteness);
+            preparedStatement.setDouble(3, newPunctuality);
+            preparedStatement.setDouble(4, newCommon);
+            preparedStatement.setInt(5,  newVotesNumber);
+            preparedStatement.setInt(6,  courierRecordId);
+            if (preparedStatement.executeUpdate() == 0) {
+                throw new SQLException("Updating marks failed, no rows affected.");
+            }
         } catch (SQLException e) {
             throw new DAOException(e);
         }
@@ -159,7 +208,9 @@ public class CourierDAOImpl extends CourierDAO {
         try (PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE_COURIER_RECORD_STATUS)) {
             preparedStatement.setInt(1, 1);
             preparedStatement.setInt(2,courierRecordId);
-            preparedStatement.executeUpdate();
+            if (preparedStatement.executeUpdate() == 0) {
+                throw new SQLException("Creating bundle failed, no rows affected.");
+            }
         } catch (SQLException e) {
             throw new DAOException(e);
         }
@@ -170,7 +221,9 @@ public class CourierDAOImpl extends CourierDAO {
         try (PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE_COURIER_RECORD_STATUS)) {
             preparedStatement.setInt(1, 2);
             preparedStatement.setInt(2,courierRecordId);
-            preparedStatement.executeUpdate();
+            if (preparedStatement.executeUpdate() == 0) {
+                throw new SQLException("Creating bundle failed, no rows affected.");
+            }
         } catch (SQLException e) {
             throw new DAOException(e);
         }

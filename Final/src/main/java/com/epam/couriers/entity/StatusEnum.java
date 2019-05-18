@@ -2,7 +2,9 @@ package com.epam.couriers.entity;
 
 public enum StatusEnum {
     POSTED("posted"),
-    COMPLETED("completed");
+    DELIVERED("delivered"),
+    COMPLETED("completed"),
+    DENIED("denied");
     private static final String UNDERSCORE = "_";
     private static final String DASH = "-";
 
@@ -20,7 +22,4 @@ public enum StatusEnum {
         return name.replaceAll(DASH, UNDERSCORE).toUpperCase();
     }
 
-    public String toTag() {
-        return name().replaceAll(UNDERSCORE, DASH).toLowerCase();
-    }
 }

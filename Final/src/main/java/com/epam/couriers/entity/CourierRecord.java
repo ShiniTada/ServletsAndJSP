@@ -9,6 +9,7 @@ public class CourierRecord extends Entity {
     private double markPunctuality;
     private double markCommon;
     private int status;
+    private int votes;
 
     public CourierRecord(int id) {
         super(id);
@@ -32,6 +33,14 @@ public class CourierRecord extends Entity {
     }
 
     public CourierRecord() {
+    }
+
+    public int getVotes() {
+        return votes;
+    }
+
+    public void setVotes(int votes) {
+        this.votes = votes;
     }
 
     public double getMarkQuality() {
@@ -103,17 +112,13 @@ public class CourierRecord extends Entity {
             return false;
         }
         CourierRecord that = (CourierRecord) o;
-        return Double.compare(that.markQuality, markQuality) == 0 &&
-                Double.compare(that.markPoliteness, markPoliteness) == 0 &&
-                Double.compare(that.markPunctuality, markPunctuality) == 0 &&
-                Double.compare(that.markCommon, markCommon) == 0 &&
-                status == that.status &&
+        return status == that.status &&
                 Objects.equals(courier, that.courier);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(courier, markQuality, markPoliteness, markPunctuality, markCommon, status);
+        return Objects.hash(courier, status);
     }
 }
 

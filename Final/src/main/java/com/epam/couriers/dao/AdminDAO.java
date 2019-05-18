@@ -18,6 +18,7 @@ public abstract class AdminDAO extends BaseDAO<User> {
      *      *               <br> - {@link CustomerOrder #to}
      *      *               <br> - {@link CustomerOrder #introductionDate}
      *      *               <br> - {@link CustomerOrder #goodsDescription}
+     *      *               <br> - {@link CustomerOrder #price}
      *      *               <br> - {@link CustomerOrder #status}
      *
      * @return  list of customer's orders

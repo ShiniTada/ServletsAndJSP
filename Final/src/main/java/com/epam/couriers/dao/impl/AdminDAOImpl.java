@@ -15,7 +15,7 @@ public class AdminDAOImpl extends AdminDAO {
 
 
     private static final String SQL_GET_ORDERS_INF = "SELECT co.orderId, us.login AS customer, u.login AS courier, co.from, " +
-            "co.to, co.introductionDate, co.goodsDescription, co.status from CustomerOrder co " +
+            "co.to, co.introductionDate, co.goodsDescription, co.price, co.status from CustomerOrder co " +
             "INNER JOIN User us ON us.userId = co.customerId " +
             "INNER JOIN courier_has_CustomerOrder chc ON co.orderId = chc.orderId " +
             "INNER JOIN User u ON chc.courierId = u.userId;";
@@ -34,6 +34,7 @@ public class AdminDAOImpl extends AdminDAO {
                 order.setTo(rs.getString(GeneralConstant.TO));
                 order.setIntroductionDate(rs.getString(GeneralConstant.INTRODUCTION_DATE));
                 order.setGoodsDescription(rs.getString(GeneralConstant.GOOD_DESCRIPTION));
+                order.setPrice(rs.getInt(GeneralConstant.PRICE));
                 String status = StatusEnum.toEnumFormat(rs.getString(GeneralConstant.STATUS));
                 order.setStatus(StatusEnum.valueOf(status));
                 listOrders.add(order);

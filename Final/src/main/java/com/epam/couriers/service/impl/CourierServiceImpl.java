@@ -6,13 +6,13 @@ import com.epam.couriers.dao.factory.DAOFactory;
 import com.epam.couriers.dao.impl.AdminDAOImpl;
 import com.epam.couriers.dao.manager.TransactionManager;
 import com.epam.couriers.entity.*;
-import com.epam.couriers.service.CourierSevrice;
+import com.epam.couriers.service.CourierService;
 import com.epam.couriers.service.exception.ServiceException;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourierServiceImpl implements CourierSevrice {
+public class CourierServiceImpl implements CourierService {
 
     @Override
     public CourierRecord addCourierRecord(int courierId) throws ServiceException {
@@ -62,6 +62,46 @@ public class CourierServiceImpl implements CourierSevrice {
             }
         }
         return null;
+    }
+
+    @Override
+    public void acceptOrder(int orderId) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        try {
+            CustomerDAO customerDAO = DAOFactory.getCustomerDAO();
+            transactionManager.beginTransaction(customerDAO);
+            customerDAO.acceptOrder(orderId);
+            transactionManager.commit();
+            transactionManager.endTransaction();
+
+        } catch (DAOException e) {
+            try {
+                transactionManager.rollback();
+                transactionManager.endTransaction();
+            } catch (DAOException ex) {
+                throw new ServiceException("Error access database", e);
+            }
+        }
+    }
+
+    @Override
+    public void rejectOrder(int orderId) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        try {
+            CustomerDAO customerDAO = DAOFactory.getCustomerDAO();
+            transactionManager.beginTransaction(customerDAO);
+            customerDAO.rejectOrder(orderId);
+            transactionManager.commit();
+            transactionManager.endTransaction();
+
+        } catch (DAOException e) {
+            try {
+                transactionManager.rollback();
+                transactionManager.endTransaction();
+            } catch (DAOException ex) {
+                throw new ServiceException("Error access database", e);
+            }
+        }
     }
 
     @Override

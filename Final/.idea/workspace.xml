@@ -1,0 +1,1793 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Final:war" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="aa92181a-a29e-4fbf-95a0-7ac715eb307e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/courier.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/courier.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/customer_sign_up.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/customer_sign_up.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Final.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/Final.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Final/WEB-INF/classes/com/epam/couriers/dao/CourierDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Final/WEB-INF/classes/com/epam/couriers/dao/CourierDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Final/WEB-INF/classes/com/epam/couriers/entity/CourierRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Final/WEB-INF/classes/com/epam/couriers/entity/CourierRecord.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Final/jsp/courier.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Final/jsp/courier.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Final/jsp/tables/table_new_couriers_page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Final/jsp/tables/table_new_couriers_page.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Final/jsp/tables/table_orders_page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/Final/jsp/tables/table_orders_page.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/couriers/dao/CourierDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/epam/couriers/dao/CourierDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/couriers/entity/CourierRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/epam/couriers/entity/CourierRecord.class" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - good_couriers@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - good_couriers@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - good_couriers@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="good_couriers: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/tables/table_orders_page.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="42" column="33" lean-forward="true" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/dao/impl/CourierDAOImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="21" column="82" selection-start-line="21" selection-start-column="82" selection-end-line="21" selection-end-column="82" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/customer/CustomerRegistrationCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/order_form.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="165" column="50" selection-start-line="165" selection-start-column="50" selection-end-line="165" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/customer.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="81">
+              <caret line="10" column="75" lean-forward="true" selection-start-line="10" selection-start-column="75" selection-end-line="11" selection-end-column="83" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/courier.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="83" lean-forward="true" selection-start-line="12" selection-start-column="83" selection-end-line="12" selection-end-column="83" />
+              <folding>
+                <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/customer_sign_up.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="46" column="26" lean-forward="true" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/courier_sign_up.jsp">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Singleton" />
+        <option value="Interface" />
+        <option value="TestNG Test Class" />
+        <option value="Jsp File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>DataBase.</find>
+      <find>.getAllUsers</find>
+      <find>есть в</find>
+      <find>MArk</find>
+      <find>marks</find>
+      <find>local.courier.common</find>
+      <find>hov</find>
+      <find>&lt;img</find>
+      <find>headLanguage</find>
+      <find>price</find>
+      <find>request.get</find>
+      <find>${back}</find>
+      <find>margin</find>
+      <find>vail</find>
+      <find>intro</find>
+      <find>introduct</find>
+      <find>add</find>
+      <find>Number of goods</find>
+      <find>филимоно</find>
+      <find>descripr</find>
+      <find>inser</find>
+      <find>countPoints</find>
+      <find>points</find>
+      <find>'$'</find>
+      <find>deli</find>
+      <find>red</find>
+      <find>reject-</find>
+      <find>cus</find>
+      <find>mark</find>
+      <find>submi</find>
+    </findStrings>
+    <dirStrings>
+      <dir>D:\AllJava\Final\src\main\java\com\epam\couriers\controller</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/webapp/jsp/tld/mine.tld" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/webapp/jsp/customer.jsp" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/webapp/jsp/courier.jsp" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/courier/OpenNewOrderFormCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/admin/GetAllCouriersCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/controller/Controller.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/common_courier_list_page.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/admin.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/local_en.properties" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/courier_sign_up.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/local_ru.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/common/BackAfterDetailsCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/start/AddFilledCustomerOrderCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/entity/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/common/SignInCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/service/errormessage/Message.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/service/CustomerSevrice.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/entity/CustomerOrder.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/order_form.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/dao/AdminDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/dao/impl/AdminDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/customer/CustomerRegistrationCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/courier/CourierRegistrationCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/common/OpenCourierRegistrationCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/common/OpenCustomerRegistrationCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/common/OpenSignInCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/public_courier.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/service/CourierService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/service/impl/CourierServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/courier/RejectOrderCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/courier/AcceptOrderCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/entity/StatusEnum.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/admin/AcceptCourierCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/command/CommandName.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/controller/helper/CommandHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/customer/AddFilledCustomerOrderCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/local.properties" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/customer.jsp" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/entity/CourierRecord.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/constants/GeneralConstant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/dao/impl/CourierDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/dao/CourierDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/service/CustomerService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/dao/CustomerDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/dao/impl/CustomerDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/customer/SetMarksCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/epam/couriers/service/impl/CustomerServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/tables/table_new_couriers_page.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/tables/table_orders_page.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/customer_sign_up.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/courier.jsp" />
+      </list>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="935" />
+    <option name="width" value="980" />
+    <option name="height" value="1090" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <hideEmptyPackages ProjectPane="true" />
+      <autoscrollToSource ProjectPane="true" />
+      <autoscrollFromSource ProjectPane="true" />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Final" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Final" type="462c0819:PsiDirectoryNode" />
+              <item name="additional" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Final" type="462c0819:PsiDirectoryNode" />
+              <item name="additional" type="462c0819:PsiDirectoryNode" />
+              <item name="sql" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="couriers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="couriers" type="462c0819:PsiDirectoryNode" />
+              <item name="constants" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="jsp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 12 &gt;" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 12 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="java.base" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 12 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="java.base" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 12 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="java.base" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 12 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="java.sql" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 12 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="java.sql" type="462c0819:PsiDirectoryNode" />
+              <item name="sql" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: mysql:mysql-connector-java:8.0.15" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: mysql:mysql-connector-java:8.0.15" type="70bed36:NamedLibraryElementNode" />
+              <item name="mysql-connector-java-8.0.15.jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: mysql:mysql-connector-java:8.0.15" type="70bed36:NamedLibraryElementNode" />
+              <item name="mysql-connector-java-8.0.15.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="mysql" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: mysql:mysql-connector-java:8.0.15" type="70bed36:NamedLibraryElementNode" />
+              <item name="mysql-connector-java-8.0.15.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="mysql" type="462c0819:PsiDirectoryNode" />
+              <item name="cj" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: mysql:mysql-connector-java:8.0.15" type="70bed36:NamedLibraryElementNode" />
+              <item name="mysql-connector-java-8.0.15.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="mysql" type="462c0819:PsiDirectoryNode" />
+              <item name="cj" type="462c0819:PsiDirectoryNode" />
+              <item name="jdbc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: mysql:mysql-connector-java:8.0.15" type="70bed36:NamedLibraryElementNode" />
+              <item name="mysql-connector-java-8.0.15.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="mysql" type="462c0819:PsiDirectoryNode" />
+              <item name="cj" type="462c0819:PsiDirectoryNode" />
+              <item name="jdbc" type="462c0819:PsiDirectoryNode" />
+              <item name="result" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.apache.logging.log4j:log4j-core:2.11.2" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.apache.logging.log4j:log4j-core:2.11.2" type="70bed36:NamedLibraryElementNode" />
+              <item name="log4j-core-2.11.2.jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.apache.logging.log4j:log4j-core:2.11.2" type="70bed36:NamedLibraryElementNode" />
+              <item name="log4j-core-2.11.2.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.apache.logging.log4j:log4j-core:2.11.2" type="70bed36:NamedLibraryElementNode" />
+              <item name="log4j-core-2.11.2.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.apache.logging.log4j:log4j-core:2.11.2" type="70bed36:NamedLibraryElementNode" />
+              <item name="log4j-core-2.11.2.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.apache.logging.log4j:log4j-core:2.11.2" type="70bed36:NamedLibraryElementNode" />
+              <item name="log4j-core-2.11.2.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.testng:testng:6.14.3" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.testng:testng:6.14.3" type="70bed36:NamedLibraryElementNode" />
+              <item name="testng-6.14.3.jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.testng:testng:6.14.3" type="70bed36:NamedLibraryElementNode" />
+              <item name="testng-6.14.3.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="testng" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.testng:testng:6.14.3" type="70bed36:NamedLibraryElementNode" />
+              <item name="testng-6.14.3.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="testng" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Final" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.testng:testng:6.14.3" type="70bed36:NamedLibraryElementNode" />
+              <item name="testng-6.14.3.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="testng" type="462c0819:PsiDirectoryNode" />
+              <item name="internal" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="TestNG" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.TestNG" value="" />
+    <property name="database.console.LAST_STATE" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.35402298" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.epam.couriers.dao" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.epam.couriers.dao.impl" />
+      <recent name="com.epam.couriers.service.impl" />
+      <recent name="com.epam.couriers.command.impl" />
+      <recent name="com.epam.couriers.util" />
+      <recent name="com.epam.couriers.dao.connectionpool" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.epam.couriers.dao" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\AllJava\Final\src\main\webapp\WEB-INF\tld" />
+      <recent name="D:\AllJava\Final\src\main\webapp\img" />
+      <recent name="D:\AllJava\Final\src\main\webapp\WEB-INF\jsp" />
+      <recent name="D:\AllJava\Final\src\main\webapp\WEB-INF" />
+      <recent name="D:\AllJava\Final\src\main\webapp\jsp" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.epam.yanabogdanovich.dao.connectionpool" />
+      <recent name="com.epam.yanabogdanovich.util" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\AllJava\Final\src\main\webapp\jsp" />
+      <recent name="D:\AllJava\Final\src" />
+      <recent name="D:\AllJava\Final\src\main\webapp\jsp\tables" />
+      <recent name="D:\AllJava\Final\src\main\webapp" />
+      <recent name="D:\AllJava\Final\src\main\webapp\WEB-INF\jsp" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.tomcat">
+    <configuration name="remote" type="Remote">
+      <module name="Final" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="1043" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="1043" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="AdminDAOImplTest.testGetAllCouriersRecords" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Final" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.epam.couriers.dao.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.epam.couriers.dao.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.epam.couriers.dao.impl.AdminDAOImplTest" />
+      <option name="METHOD_NAME" value="testGetAllCouriersRecords" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdminDAOImplTest.testGetCustomerOrders" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Final" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.epam.couriers.dao.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.epam.couriers.dao.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.epam.couriers.dao.impl.AdminDAOImplTest" />
+      <option name="METHOD_NAME" value="testGetCustomerOrders" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CourierDAOImplTest.testGet" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Final" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.epam.couriers.dao.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.epam.couriers.dao.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.epam.couriers.dao.impl.CourierDAOImplTest" />
+      <option name="METHOD_NAME" value="testGet" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CourierDAOImplTest.testGetAllOrderId" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Final" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.epam.couriers.dao.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.epam.couriers.dao.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.epam.couriers.dao.impl.CourierDAOImplTest" />
+      <option name="METHOD_NAME" value="testGetAllOrderId" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CustomerDAOImplTest.testGet" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="Final" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.epam.couriers.dao.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.epam.couriers.dao.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.epam.couriers.dao.impl.CustomerDAOImplTest" />
+      <option name="METHOD_NAME" value="testGet" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.39" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/good-couriers.com/" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="Final:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/good-couriers.com" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_Final_2" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="50269" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Final:war" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Remote.remote" />
+      <item itemvalue="TestNG.AdminDAOImplTest.testGetAllCouriersRecords" />
+      <item itemvalue="TestNG.CourierDAOImplTest.testGet" />
+      <item itemvalue="TestNG.CustomerDAOImplTest.testGet" />
+      <item itemvalue="TestNG.AdminDAOImplTest.testGetCustomerOrders" />
+      <item itemvalue="TestNG.CourierDAOImplTest.testGetAllOrderId" />
+      <item itemvalue="Tomcat Server.tomcat" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.CourierDAOImplTest.testGetAllOrderId" />
+        <item itemvalue="TestNG.CourierDAOImplTest.testGet" />
+        <item itemvalue="TestNG.CustomerDAOImplTest.testGet" />
+        <item itemvalue="TestNG.AdminDAOImplTest.testGetAllCouriersRecords" />
+        <item itemvalue="TestNG.AdminDAOImplTest.testGetCustomerOrders" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",SHOW_INTERFACES,SHOW_ANONYMOUS" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="aa92181a-a29e-4fbf-95a0-7ac715eb307e" name="Default Changelist" comment="" />
+      <created>1554879861863</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1554879861863</updated>
+      <workItem from="1554879864464" duration="3863000" />
+      <workItem from="1554921865355" duration="1668000" />
+      <workItem from="1554961013951" duration="461000" />
+      <workItem from="1554962300775" duration="18000" />
+      <workItem from="1554962332541" duration="7399000" />
+      <workItem from="1554978863576" duration="20972000" />
+      <workItem from="1555005385094" duration="3913000" />
+      <workItem from="1555045765045" duration="726000" />
+      <workItem from="1555607749896" duration="11589000" />
+      <workItem from="1555652230968" duration="25513000" />
+      <workItem from="1555749056274" duration="19788000" />
+      <workItem from="1555784908389" duration="2051000" />
+      <workItem from="1555837700652" duration="23068000" />
+      <workItem from="1555925053114" duration="25000" />
+      <workItem from="1555925218080" duration="5459000" />
+      <workItem from="1555931926191" duration="1647000" />
+      <workItem from="1555952782635" duration="42484000" />
+      <workItem from="1556086949698" duration="12395000" />
+      <workItem from="1556108834141" duration="1662000" />
+      <workItem from="1556132072298" duration="39425000" />
+      <workItem from="1556212449262" duration="1372000" />
+      <workItem from="1556213832799" duration="46853000" />
+      <workItem from="1556288973299" duration="731000" />
+      <workItem from="1556293447427" duration="6308000" />
+      <workItem from="1556300144048" duration="3293000" />
+      <workItem from="1556353859139" duration="4827000" />
+      <workItem from="1556361784812" duration="1013000" />
+      <workItem from="1556437791172" duration="54000" />
+      <workItem from="1556438754784" duration="8619000" />
+      <workItem from="1556461245696" duration="76000" />
+      <workItem from="1556487019118" duration="14000" />
+      <workItem from="1556559918597" duration="829000" />
+      <workItem from="1556896774231" duration="85000" />
+      <workItem from="1557323344170" duration="1380000" />
+      <workItem from="1557573222454" duration="5233000" />
+      <workItem from="1557579125460" duration="17441000" />
+      <workItem from="1557598606342" duration="20426000" />
+      <workItem from="1557652172356" duration="19078000" />
+      <workItem from="1557671908116" duration="5945000" />
+      <workItem from="1557678374274" duration="1685000" />
+      <workItem from="1557680072073" duration="31000" />
+      <workItem from="1557680111977" duration="8648000" />
+      <workItem from="1557688782408" duration="1667000" />
+      <workItem from="1557692064731" duration="7189000" />
+      <workItem from="1557724935198" duration="3621000" />
+      <workItem from="1557733957612" duration="1834000" />
+      <workItem from="1557737632929" duration="545000" />
+      <workItem from="1557738508310" duration="186000" />
+      <workItem from="1557762185411" duration="3802000" />
+      <workItem from="1557847092470" duration="18989000" />
+      <workItem from="1557869715369" duration="2603000" />
+      <workItem from="1557897910290" duration="23909000" />
+      <workItem from="1557943374011" duration="18622000" />
+      <workItem from="1557983920021" duration="5815000" />
+      <workItem from="1557997303529" duration="17822000" />
+      <workItem from="1558015384889" duration="348000" />
+      <workItem from="1558020300319" duration="283000" />
+      <workItem from="1558038064838" duration="665000" />
+      <workItem from="1558073414320" duration="34000" />
+      <workItem from="1558104986716" duration="19251000" />
+      <workItem from="1558128892357" duration="41000" />
+      <workItem from="1558129296143" duration="115000" />
+      <workItem from="1558165115694" duration="24816000" />
+    </task>
+    <task id="LOCAL-00001" summary="Start. Configure Web">
+      <created>1554883898847</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1554883898847</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add main page.">
+      <created>1555004138775</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1555004138775</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add db properties and connection pool.">
+      <created>1555614589687</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1555614589687</updated>
+    </task>
+    <task id="LOCAL-00004" summary="change db. Add entities.">
+      <created>1555664067627</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1555664067627</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Covered all the DOCUMENTATION.&#10;Added (AbstractDAO), BaseDAO, UserDAO, UserDAOImpl.&#10;Added class DBParameter.&#10;Separated connectionPool and PolledConnection. Changed a lot of ConnectionPool. Add test on creating Connection.&#10;Added Controller. &#10;Added path.properties and log4j.properties.&#10;Added Command, CommandException, PathManager.">
+      <created>1555767760049</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1555767760049</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fix">
+      <created>1555769686844</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1555769686844</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Fix">
+      <created>1555842920260</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1555842920260</updated>
+    </task>
+    <task id="LOCAL-00008" summary="HashPassword. Begin service">
+      <created>1555851238674</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1555851238674</updated>
+    </task>
+    <task id="LOCAL-00009" summary="add filter but fail images!!!">
+      <created>1555932611277</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1555932611278</updated>
+    </task>
+    <task id="LOCAL-00010" summary="- servlet; images load">
+      <created>1555933568287</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1555933568287</updated>
+    </task>
+    <task id="LOCAL-00011" summary="properties">
+      <created>1556004902826</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1556004902826</updated>
+    </task>
+    <task id="LOCAL-00012" summary="time session">
+      <created>1556040125520</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1556040125520</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add commands in jsp, change jsp, normal properties, Work command, but don't work ConnectionPool.close!">
+      <created>1556066659816</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1556066659816</updated>
+    </task>
+    <task id="LOCAL-00014" summary="full &quot;get courier records&quot;&#10;(32 warn)">
+      <created>1556100998949</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1556100998949</updated>
+    </task>
+    <task id="LOCAL-00015" summary="полностью новый connection pool.&#10;path.properties другие&#10;работают комманды.">
+      <created>1556216385579</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1556216385579</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Написаны собственные теги, но не искользуются. Добавлена валидация. И полностью регистрация курьера. Проверить нет возможности. 63-100">
+      <created>1557685574393</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1557685574393</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Теги работают, добавление курьера работает. Валится вывод новых курьеров у админа. 68-72">
+      <created>1557688603173</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1557688603173</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Добавлен разный вид страницы курьера. У администратора есть переходы и кнопки. Добавлен стартовый переход на &quot;вход&quot; и &quot;регистрацию&quot; 0-98">
+      <created>1557961873969</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1557961873969</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Добавлена регистрация пользователя. Удалены неработающие скрипты. Добавлена валидация. 0-28">
+      <created>1557990460260</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1557990460260</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Добавлена страница пользователя. Добавлен просмотр курьеров со страницы пользователя. Удалена ошибка администратора.&#10;Изменена страница курьера. ClickHouse? 5-11">
+      <created>1558015162268</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1558015162268</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Добавлена страница нового заказа. Решена проблема кнопки &quot;назад&quot;. Начат контроллер по добавлению заказа. ПРинята идея добавить цену. 5-35">
+      <created>1558127171258</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1558127171258</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Добавлено добавление нового заказа, подсчет цены(изменена бд), возможность принять его и отклонить заказ.&#10;После принятия реализовано оценивание работы сотрудника. Теперь есть 4 статуса заказа. Они прекрасно сменяют друг друга. 8-33">
+      <created>1558190778696</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1558190778696</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="CustomerDAOImplTest_testGet - 2019.05.15 at 08h 31m 12s.xml">
+      <configuration name="CustomerDAOImplTest.testGet" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="CourierDAOImplTest_testGetAllOrderId - 2019.05.15 at 08h 37m 27s.xml">
+      <configuration name="CourierDAOImplTest.testGetAllOrderId" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="CourierDAOImplTest_testGetAllOrderId - 2019.05.15 at 08h 37m 40s.xml">
+      <configuration name="CourierDAOImplTest.testGetAllOrderId" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="CourierDAOImplTest_testGetAllOrderId - 2019.05.15 at 08h 39m 49s.xml">
+      <configuration name="CourierDAOImplTest.testGetAllOrderId" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="CourierDAOImplTest_testGetAllOrderId - 2019.05.15 at 08h 40m 00s.xml">
+      <configuration name="CourierDAOImplTest.testGetAllOrderId" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="CourierDAOImplTest_testGet - 2019.05.15 at 08h 40m 08s.xml">
+      <configuration name="CourierDAOImplTest.testGet" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="CourierDAOImplTest_testGet - 2019.05.15 at 08h 43m 30s.xml">
+      <configuration name="CourierDAOImplTest.testGet" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="CourierDAOImplTest_testGet - 2019.05.15 at 08h 43m 58s.xml">
+      <configuration name="CourierDAOImplTest.testGet" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="CourierDAOImplTest_testGetAllOrderId - 2019.05.15 at 08h 44m 18s.xml">
+      <configuration name="CourierDAOImplTest.testGetAllOrderId" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="CourierDAOImplTest_testGetAllOrderId - 2019.05.15 at 08h 45m 48s.xml">
+      <configuration name="CourierDAOImplTest.testGetAllOrderId" configurationId="TestNG" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="530224000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Structure" order="0" sideWeight="0.18048781" side_tool="true" weight="0.18791947" />
+      <window_info id="Designer" order="1" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Web" order="6" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="7" sideWeight="0.8195122" visible="true" weight="0.19261745" />
+      <window_info anchor="bottom" id="Universe Logs" order="0" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" sideWeight="0.49932885" weight="0.3297587" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4986577" weight="0.14879356" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.40884718" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" weight="0.3297587" />
+      <window_info anchor="bottom" id="Application Servers" order="8" weight="0.3297587" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5013423" side_tool="true" weight="0.3297587" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.4986577" weight="0.33378017" />
+      <window_info anchor="bottom" id="Java Enterprise" order="13" weight="0.3297587" />
+      <window_info anchor="bottom" id="Database Changes" order="14" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="15" weight="0.28686327" />
+      <window_info anchor="bottom" id="Database Console" order="16" sideWeight="0.4986577" weight="0.3297587" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.24966443" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" visible="true" weight="0.13892618" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="JSF" order="9" />
+      <window_info anchor="right" id="CDI" order="10" />
+      <window_info anchor="right" id="Bean Validation" order="11" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Structure" order="0" sideWeight="0.18048781" side_tool="true" visible="true" weight="0.18791947" />
+      <window_info id="Designer" order="1" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Web" order="6" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="7" sideWeight="0.8195122" visible="true" weight="0.18791947" />
+      <window_info anchor="bottom" id="Universe Logs" order="0" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" sideWeight="0.49932885" weight="0.3297587" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4986577" visible="true" weight="0.45040214" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.04021448" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" weight="0.3297587" />
+      <window_info anchor="bottom" id="Application Servers" order="8" weight="0.3297587" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5013423" side_tool="true" weight="0.3297587" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.4986577" weight="0.35790884" />
+      <window_info anchor="bottom" id="Java Enterprise" order="13" weight="0.3297587" />
+      <window_info anchor="bottom" id="Database Changes" order="14" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="15" weight="0.28686327" />
+      <window_info anchor="bottom" id="Database Console" order="16" sideWeight="0.4986577" weight="0.3297587" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.24966443" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" visible="true" weight="0.13892618" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="JSF" order="9" />
+      <window_info anchor="right" id="CDI" order="10" />
+      <window_info anchor="right" id="Bean Validation" order="11" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="- servlet; images load" />
+    <MESSAGE value="properties" />
+    <MESSAGE value="time session" />
+    <MESSAGE value="Add commands in jsp, change jsp, normal properties, Work command, but don't work ConnectionPool.close!" />
+    <MESSAGE value="full &quot;get courier records&quot;" />
+    <MESSAGE value="full &quot;get courier records&quot;&#10;(32 warn)" />
+    <MESSAGE value="полностью новый connection pool.&#10;path.properties другие&#10;работают комманды." />
+    <MESSAGE value="чтобы подключить css /good-couriers.com в маппиенг сервлета в web.xml" />
+    <MESSAGE value="admin красиво таблицы" />
+    <MESSAGE value="Написаны собственные теги, но не искользуются. Добавлена валидация. И полностью регистрация курьера. Проверить нет возможности." />
+    <MESSAGE value="Написаны собственные теги, но не искользуются. Добавлена валидация. И полностью регистрация курьера. Проверить нет возможности. 63-100" />
+    <MESSAGE value="Теги работают, добавление курьера работает. Валится вывод новых курьеров у админа" />
+    <MESSAGE value="Теги работают, добавление курьера работает. Валится вывод новых курьеров у админа. 68-72" />
+    <MESSAGE value="Добавлен разный вид страницы курьера. У администратора есть переходы и кнопки. Добавлен стартовый переход на &quot;вход&quot; и &quot;регистрацию&quot;" />
+    <MESSAGE value="Добавлен разный вид страницы курьера. У администратора есть переходы и кнопки. Добавлен стартовый переход на &quot;вход&quot; и &quot;регистрацию&quot; 0-98" />
+    <MESSAGE value="Добавлена регистрация пользователя. Удалены неработающие скрипты. Добавлена валидация." />
+    <MESSAGE value="Добавлена регистрация пользователя. Удалены неработающие скрипты. Добавлена валидация. 0-28" />
+    <MESSAGE value="Добавлена страница пользователя. Добавлен просмотр курьеров со страницы пользователя. Удалена ошибка администратора.&#10;Изменена страница курьера." />
+    <MESSAGE value="Добавлена страница пользователя. Добавлен просмотр курьеров со страницы пользователя. Удалена ошибка администратора.&#10;Изменена страница курьера. ClickHouse?" />
+    <MESSAGE value="Добавлена страница пользователя. Добавлен просмотр курьеров со страницы пользователя. Удалена ошибка администратора.&#10;Изменена страница курьера. ClickHouse? 7-11" />
+    <MESSAGE value="Добавлена страница пользователя. Добавлен просмотр курьеров со страницы пользователя. Удалена ошибка администратора.&#10;Изменена страница курьера. ClickHouse? 5-11" />
+    <MESSAGE value="Добавлена страница нового заказа. Решена проблема кнопки &quot;назад&quot;. Начат контроллер по добавлению заказа. ПРинята идея добавить цену." />
+    <MESSAGE value="Добавлена страница нового заказа. Решена проблема кнопки &quot;назад&quot;. Начат контроллер по добавлению заказа. ПРинята идея добавить цену. 5-35" />
+    <MESSAGE value="Добавлено добавление нового заказа, подсчет цены(изменена бд), возможность принять его и отклонить заказ.&#10;После принятия реализовано оценивание работы сотрудника. Теперь есть 4 статуса заказа. Они прекрасно сменяют друг друга." />
+    <MESSAGE value="Добавлено добавление нового заказа, подсчет цены(изменена бд), возможность принять его и отклонить заказ.&#10;После принятия реализовано оценивание работы сотрудника. Теперь есть 4 статуса заказа. Они прекрасно сменяют друг друга. 8-33" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлено добавление нового заказа, подсчет цены(изменена бд), возможность принять его и отклонить заказ.&#10;После принятия реализовано оценивание работы сотрудника. Теперь есть 4 статуса заказа. Они прекрасно сменяют друг друга. 8-33" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/common/BackAfterDetailsCommand.java</url>
+          <line>17</line>
+          <properties />
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/common/BackAfterDetailsCommand.java</url>
+          <line>16</line>
+          <properties />
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/common/BackAfterDetailsCommand.java</url>
+          <line>14</line>
+          <properties />
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/common/BackAfterDetailsCommand.java</url>
+          <line>15</line>
+          <properties />
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/common/BackAfterDetailsCommand.java</url>
+          <line>24</line>
+          <properties />
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/common/BackAfterDetailsCommand.java</url>
+          <line>25</line>
+          <properties />
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Final$tomcat.ic" NAME="tomcat Coverage Results" MODIFIED="1556439284248" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>SELECT t.typeTransport, u.name from Transport t &quot; +             &quot;INNER JOIN CourierRecord cr ON t.courierRecordId = cr.courierRecordId &quot; +             &quot;INNER JOIN User u ON cr.userId = u.userId ORDER BY t.typeTransport  WHERE cr.status = '1';</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>request.getServletContext().getContextPath()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/entity/CustomerOrder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1653">
+          <caret line="141" lean-forward="true" selection-start-line="141" selection-end-line="141" />
+          <folding>
+            <element signature="e#1308#1309#0" expanded="true" />
+            <element signature="e#1336#1337#0" expanded="true" />
+            <element signature="e#1375#1376#0" expanded="true" />
+            <element signature="e#1409#1410#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/service/impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/customer/OpenNewOrderFormCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/common/SetLocaleCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/exception/CommandException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+          <folding>
+            <element signature="e#358#359#0" expanded="true" />
+            <element signature="e#386#387#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://65eb1889-74fb-449c-96f0-07c761b34238/schema/good_couriers/table/courier_has_customerorder">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/dao/BaseDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/dao/impl/AdminDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="36" column="62" selection-start-line="36" selection-start-column="62" selection-end-line="36" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/common/OpenCourierRegistrationCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/common/OpenCustomerRegistrationCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/common/OpenSignInCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/public_courier.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="78" column="107" selection-start-line="78" selection-start-column="66" selection-end-line="78" selection-end-column="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/common/SignInCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="76" column="29" lean-forward="true" selection-start-line="67" selection-start-column="27" selection-end-line="76" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/service/impl/AdminServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="148" column="31" lean-forward="true" selection-start-line="148" selection-start-column="31" selection-end-line="148" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/service/AdminService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="70" column="7" lean-forward="true" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/entity/UserHasCustomerOrder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/courier/RejectOrderCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="19" column="33" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/entity/StatusEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/admin/RejectCourierCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/admin/AcceptCourierCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/courier/AcceptOrderCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="29" column="17" selection-start-line="26" selection-start-column="12" selection-end-line="30" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/customer/AddFilledCustomerOrderCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="51" column="143" selection-start-line="51" selection-start-column="143" selection-end-line="51" selection-end-column="143" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/CommandName.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/local.properties">
+      <provider editor-type-id="ResourceBundle" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="118" column="31" selection-start-line="118" selection-start-column="31" selection-end-line="118" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/common/MoreDetailsCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://65eb1889-74fb-449c-96f0-07c761b34238/schema/good_couriers/table/user">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/constants/GeneralConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/dao/CourierDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="67" column="31" selection-start-line="67" selection-start-column="31" selection-end-line="67" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/entity/CourierRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#1036#1037#0" expanded="true" />
+            <element signature="e#1064#1065#0" expanded="true" />
+            <element signature="e#1103#1104#0" expanded="true" />
+            <element signature="e#1137#1138#0" expanded="true" />
+            <element signature="e#2800#2801#0" expanded="true" />
+            <element signature="e#2851#2852#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/controller/helper/CommandHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="67" column="51" selection-start-line="67" selection-start-column="51" selection-end-line="67" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/service/CourierService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/service/impl/CourierServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="72" column="30" lean-forward="true" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
+          <folding>
+            <element signature="method#rejectOrder#0;class#CourierServiceImpl#0" />
+            <element signature="method#getCourierRecord#1;class#CourierServiceImpl#0" />
+            <element signature="method#addAllTransports#0;class#CourierServiceImpl#0" />
+            <element signature="method#getTransportsOfOneCourier#0;class#CourierServiceImpl#0" />
+            <element signature="method#addAllGoods#0;class#CourierServiceImpl#0" />
+            <element signature="method#getGoodsOfOneCourier#0;class#CourierServiceImpl#0" />
+            <element signature="method#getCustomerOrdersOfOneCourier#0;class#CourierServiceImpl#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/dao/CustomerDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="61" column="31" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/dao/impl/CustomerDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="116" column="24" selection-start-line="116" selection-start-column="24" selection-end-line="116" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/customer/SetMarksCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="45" column="31" lean-forward="true" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://65eb1889-74fb-449c-96f0-07c761b34238/schema/good_couriers/table/customerorder">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/service/impl/CustomerServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="103" column="48" selection-start-line="103" selection-start-column="48" selection-end-line="103" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://65eb1889-74fb-449c-96f0-07c761b34238/schema/good_couriers/table/courierrecord">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/service/CustomerService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="28" column="75" lean-forward="true" selection-start-line="28" selection-start-column="75" selection-end-line="28" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/tables/table_new_couriers_page.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47">
+          <caret line="42" column="92" selection-start-line="42" selection-start-column="92" selection-end-line="42" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/tables/table_orders_page.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="42" column="33" lean-forward="true" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/dao/impl/CourierDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="21" column="82" selection-start-line="21" selection-start-column="82" selection-end-line="21" selection-end-column="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/customer/CustomerRegistrationCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/dao/AdminDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="30" column="43" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/epam/couriers/command/impl/courier/CourierRegistrationCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/order_form.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="165" column="50" selection-start-line="165" selection-start-column="50" selection-end-line="165" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/customer_sign_up.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="46" column="26" lean-forward="true" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/courier_sign_up.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/customer.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="10" column="75" lean-forward="true" selection-start-line="10" selection-start-column="75" selection-end-line="11" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/courier.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="83" lean-forward="true" selection-start-line="12" selection-start-column="83" selection-end-line="12" selection-end-column="83" />
+          <folding>
+            <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>Final:war exploded</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.35402298" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="Copyright.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Web</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.35402298" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.35402298" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>12</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.35402298" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Final</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.35402298" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: mysql:mysql-connector-java:8.0.15</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.35402298" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

@@ -25,14 +25,17 @@ final public class GeneralConstant {
     public static final String MARK_POLITENESS = "markPoliteness";
     public static final String MARK_PUNCTUALITY = "markPunctuality";
     public static final String MARK_COMMON = "markCommon";
+    public static final String VOTES_NUMBER = "votesNumber";
     public static final String TYPE_TRANSPORT = "typeTransport";
     public static final String TYPE_GOODS = "typeGoods";
     public static final String ORDER_ID = "orderId";
     public static final String FROM = "from";
     public static final String TO = "to";
     public static final String CUSTOMER_ID = "customerId";
+    public static final String COURIER_LOGIN = "courierLogin";
     public static final String INTRODUCTION_DATE = "introductionDate";
     public static final String STATUS = "status";
+    public static final String PRICE = "price";
     public static final String GOOD_DESCRIPTION = "goodsDescription";
     public static final String BACK = "back";
 
@@ -44,6 +47,10 @@ final public class GeneralConstant {
     public static final String LIST_COURIER_RECORDS = "listCourierRecords";
     public static final String LIST_ORDERS = "listOrders";
     public static final String EXISTED_ORDERS = "existedOrders";
+    public static final String POSTED = "posted";
+    public static final String DELIVERED = "delivered";
+    public static final String COMPLETED = "completed";
+    public static final String DENIED = "denied";
     public static final String COMPLETED_ORDERS = "completedOrders";
 
     public static final String FOOD_ATTRIBUTE = "food";
@@ -66,7 +73,7 @@ final public class GeneralConstant {
     public static final String LOCALE = "locale";
 
     public static final String WHAT_DELIVER = "whatDeliver";
-    public static final String COUNT_POINTS = "countPoints";
+    public static final String NUMBER_OF_GOODS = "numberOfGoods";
     public static final String WEIGHT = "weight";
     public static final String DELIVERY_DATE = "deliveryDate";
 

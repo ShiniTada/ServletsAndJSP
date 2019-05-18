@@ -21,6 +21,11 @@ public class AcceptCourierCommand  implements Command {
         String page;
         try {
             AdminService adminService = new AdminServiceImpl();
+            if(request.getParameter(GeneralConstant.ACCEPT) != null) {
+                adminService.acceptCourier(Integer.parseInt(request.getParameter(GeneralConstant.ACCEPT)));
+            } else {
+                adminService.rejectCourier(Integer.parseInt(request.getParameter(GeneralConstant.REJECT)));
+            }
             adminService.acceptCourier(Integer.parseInt(request.getParameter(GeneralConstant.ACCEPT)));
             session.removeAttribute(GeneralConstant.LIST_NEW_COURIER_RECORDS);
 

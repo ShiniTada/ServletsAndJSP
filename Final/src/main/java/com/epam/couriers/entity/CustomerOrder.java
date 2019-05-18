@@ -10,11 +10,22 @@ public class CustomerOrder extends Entity {
     private String goodsDescription;
     private User customer;
     private User courier;
+    private int price;
 
     public CustomerOrder() {
     }
+    public CustomerOrder(String from, String to, String introductionDate, StatusEnum status, String goodsDescription, User customer, User courier , int price) {
+        this.from = from;
+        this.to = to;
+        this.introductionDate = introductionDate;
+        this.status = status;
+        this.goodsDescription = goodsDescription;
+        this.customer = customer;
+        this.courier = courier;
+        this.price = price;
+    }
 
-    public CustomerOrder(int id, String from, String to, String introductionDate, StatusEnum status, String goodsDescription, User customer, User courier) {
+    public CustomerOrder(int id, String from, String to, String introductionDate, StatusEnum status, String goodsDescription, User customer, User courier , int price) {
         super(id);
         this.from = from;
         this.to = to;
@@ -23,6 +34,15 @@ public class CustomerOrder extends Entity {
         this.goodsDescription = goodsDescription;
         this.customer = customer;
         this.courier = courier;
+        this.price = price;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public String getFrom() {
@@ -91,6 +111,7 @@ public class CustomerOrder extends Entity {
                 ", goodsDescription='" + goodsDescription + '\'' +
                 ", customer=" + customer +
                 ", courier=" + courier +
+                ", price=" + price +
                 '}';
     }
 
@@ -102,18 +123,19 @@ public class CustomerOrder extends Entity {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CustomerOrder that = (CustomerOrder) o;
-        return Objects.equals(from, that.from) &&
-                Objects.equals(to, that.to) &&
-                Objects.equals(introductionDate, that.introductionDate) &&
-                status == that.status &&
-                Objects.equals(goodsDescription, that.goodsDescription) &&
-                Objects.equals(customer, that.customer) &&
-                Objects.equals(courier, that.courier);
+        CustomerOrder order = (CustomerOrder) o;
+        return price == order.price &&
+                Objects.equals(from, order.from) &&
+                Objects.equals(to, order.to) &&
+                Objects.equals(introductionDate, order.introductionDate) &&
+                status == order.status &&
+                Objects.equals(goodsDescription, order.goodsDescription) &&
+                Objects.equals(customer, order.customer) &&
+                Objects.equals(courier, order.courier);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(from, to, introductionDate, status, goodsDescription, customer, courier);
+        return Objects.hash(from, to, introductionDate, status, goodsDescription, customer, courier, price);
     }
 }
