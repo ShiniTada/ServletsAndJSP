@@ -15,26 +15,26 @@ public class TablePaginationCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         HttpSession session =  request.getSession();
-        String pag=  request.getParameter(PAGINATION_ATTRIBUTE);
-        request.setAttribute(PAGINATION_ATTRIBUTE, pag);
-        switch (pag){
-            case "2":
-                request.setAttribute(BEGIN_PAG, 5);
-                request.setAttribute(END_PAG, 9);
-                break;
-            case "3":
-                request.setAttribute(BEGIN_PAG, 10);
-                request.setAttribute(END_PAG, 14);
-                break;
-            case "4":
-                request.setAttribute(BEGIN_PAG, 15);
-                request.setAttribute(END_PAG, 19);
-                break;
-            case "1":
-            default:
-                request.setAttribute(BEGIN_PAG, 0);
-                request.setAttribute(END_PAG, 4);
-        }
+//        String pag=  request.getParameter(PAGINATION_ATTRIBUTE);
+//        request.setAttribute(PAGINATION_ATTRIBUTE, pag);
+//        switch (pag){
+//            case "2":
+//                request.setAttribute(BEGIN_PAG, 5);
+//                request.setAttribute(END_PAG, 9);
+//                break;
+//            case "3":
+//                request.setAttribute(BEGIN_PAG, 10);
+//                request.setAttribute(END_PAG, 14);
+//                break;
+//            case "4":
+//                request.setAttribute(BEGIN_PAG, 15);
+//                request.setAttribute(END_PAG, 19);
+//                break;
+//            case "1":
+//            default:
+//                request.setAttribute(BEGIN_PAG, 0);
+//                request.setAttribute(END_PAG, 4);
+//        }
         return (String) session.getAttribute(PAGE_ATTRIBUTE);
     }
 }

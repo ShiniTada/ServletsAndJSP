@@ -12,7 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="shortcut icon" href="${pageContext.servletContext.contextPath}/img/greenlogo.png" type="image/png">
-
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
 
 
@@ -42,14 +41,11 @@
 
 </head>
 
-
-
-
 <body>
 
 <div class="main-page">
     <div class="w3-container w3-teal main-panel-header ">
-        <a href="<c:url value="/"/>" class="w3-bar-item w3-button w3-padding-large w3-hide-small">
+        <a class="w3-bar-item w3-button w3-padding-large w3-hide-small">
             Good-Couriers.com
         </a>
 

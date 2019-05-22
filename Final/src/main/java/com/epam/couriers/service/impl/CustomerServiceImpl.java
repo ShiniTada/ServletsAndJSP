@@ -124,7 +124,26 @@ public class CustomerServiceImpl implements CustomerService {
         }
     }
 
+    @Override
+    public void deleteOrder(int orderId) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        try {
+            CustomerDAO customerDAO = DAOFactory.getCustomerDAO();
+            transactionManager.beginTransaction(customerDAO);
+            customerDAO.deleteBundle(orderId);
+            customerDAO.deleteOrder(orderId);
+            transactionManager.commit();
+            transactionManager.endTransaction();
 
+        } catch (DAOException e) {
+            try {
+                transactionManager.rollback();
+                transactionManager.endTransaction();
+            } catch (DAOException ex) {
+                throw new ServiceException("Error access database", e);
+            }
+        }
+    }
 
 
 }

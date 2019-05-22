@@ -3,7 +3,6 @@ package com.epam.couriers.service.impl;
 import com.epam.couriers.dao.*;
 import com.epam.couriers.dao.exception.DAOException;
 import com.epam.couriers.dao.factory.DAOFactory;
-import com.epam.couriers.dao.impl.AdminDAOImpl;
 import com.epam.couriers.dao.manager.TransactionManager;
 import com.epam.couriers.entity.*;
 import com.epam.couriers.service.CourierService;
@@ -216,9 +215,9 @@ public class CourierServiceImpl implements CourierService {
     public List<CustomerOrder> getCustomerOrdersOfOneCourier(String courierLogin) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         try {
-            AdminDAO adminDAO = new AdminDAOImpl();
-            transactionManager.beginTransaction(adminDAO);
-            List<CustomerOrder> orders = adminDAO.getCustomerOrders();
+            CustomerDAO customerDAO = DAOFactory.getCustomerDAO();
+            transactionManager.beginTransaction(customerDAO);
+            List<CustomerOrder> orders = customerDAO.getCustomerOrders();
             List<CustomerOrder> needOrders = new ArrayList<>();
             for(CustomerOrder order : orders){
                 if(order.getCourier().getLogin().equals(courierLogin)){
@@ -245,9 +244,9 @@ public class CourierServiceImpl implements CourierService {
     public List<CustomerOrder> getCustomerOrdersOfOneCustomer(String customerLogin) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         try {
-            AdminDAO adminDAO = new AdminDAOImpl();
-            transactionManager.beginTransaction(adminDAO);
-            List<CustomerOrder> orders = adminDAO.getCustomerOrders();
+            CustomerDAO customerDAO = DAOFactory.getCustomerDAO();
+            transactionManager.beginTransaction(customerDAO);
+            List<CustomerOrder> orders = customerDAO.getCustomerOrders();
             List<CustomerOrder> needOrders = new ArrayList<>();
             for(CustomerOrder order : orders){
                 if(order.getCustomer().getLogin().equals(customerLogin)){

@@ -1,7 +1,6 @@
 package com.epam.couriers.dao.connectionpool;
 
 import com.epam.couriers.constants.GeneralConstant;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,8 +10,7 @@ import java.util.ResourceBundle;
 
 
 class ConnectionPoolConfig {
-
-    private final static Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger(ConnectionPoolConfig.class);
     private final Properties properties;
     private String url;
 
@@ -33,11 +31,11 @@ class ConnectionPoolConfig {
             properties.put(GeneralConstant.ConnectionPool.CAPACITY, resourceBundle.getString(GeneralConstant.ConnectionPool.CAPACITY));
 
         } catch (ClassNotFoundException e) {
-            LOGGER.log(Level.FATAL, "Connection pool will nowhere create. ", e);
+            LOGGER.fatal("Connection pool will nowhere create. ", e);
             throw new RuntimeException("Driver not found. ", e);
 
         } catch (MissingResourceException e) {
-            LOGGER.log(Level.FATAL, "Connection pool will nowhere create. ", e);
+            LOGGER.fatal("Connection pool will nowhere create. ", e);
             throw new RuntimeException("Data base configuration file not found. ", e);
 
         }

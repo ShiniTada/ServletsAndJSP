@@ -8,8 +8,9 @@
     <title>Good-Couriers</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="shortcut icon" href="../img/greenlogo.png" type="image/png">
+    <link rel="shortcut icon" href="../../img/logo.jpg" type="image/png">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
+
     <fmt:setLocale value="${sessionScope.locale}"/>
     <fmt:setBundle basename="local" var="loc"/>
 
@@ -46,8 +47,12 @@
     <fmt:message bundle="${loc}" key="local.main_footer" var="main_footer"/>
 </head>
 <body>
+<c:if test="${not sessionScope.user.role.getValue().equals('customer')}">
+    <c:redirect url="error/error404.jsp"/>
+</c:if>
+
 <div class="w3-container w3-teal main-panel-header ">
-    <a href="<c:url value="/"/>" class="w3-bar-item w3-button w3-padding-large w3-hide-small">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-small">
         Good-Couriers.com
     </a>
 
@@ -128,9 +133,9 @@
                                                                     <p>${punctuality}: </p>
                                                                 </div>
                                                                 <div class="w3-container w3-cell" style="width:35%">
-                                                                    <p><input type="number" name="markQuality" min="1" max="10"></p>
-                                                                    <p><input type="number" name="markPoliteness" min="1" max="10"></p>
-                                                                    <p><input type="number" name="markPunctuality" min="1" max="10"></p>
+                                                                    <p><input type="number" name="markQuality" required min="1" max="10"></p>
+                                                                    <p><input type="number" name="markPoliteness" required min="1" max="10"></p>
+                                                                    <p><input type="number" name="markPunctuality" required min="1" max="10"></p>
                                                                 </div>
                                                             </div>
                                                             <button class="w3-block w3-round w3-center w3-teal w3-button" style="max-width:150px"  name="courierLogin" value="${elem.courier.login}">${evaluate}</button>
@@ -210,7 +215,7 @@
                                     <form action="Controller" method="post">
                                         <input type="hidden" name="command" value="delete-order"/>
                                         <button class="w3-block w3-round w3-center w3-flat-alizarin
-                                         w3-button" name="deletedOrderId" value="${elem.id}" style="  max-width:150px">${delete}</button>
+                                         w3-button" name="deletedOrderId" value="${elem.id}" style="max-width:150px">${delete}</button>
                                     </form>
                                 </td>
                             </tr>

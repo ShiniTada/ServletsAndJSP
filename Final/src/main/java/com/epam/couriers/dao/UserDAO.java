@@ -1,7 +1,7 @@
 package com.epam.couriers.dao;
 
-import com.epam.couriers.entity.User;
 import com.epam.couriers.dao.exception.DAOException;
+import com.epam.couriers.entity.User;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public abstract class UserDAO extends BaseDAO<User>{
 
     /**
      * Check if there is a user in the database. If he is, give all the information about him.
-     * @param user
+     * @param user - user
      * @return <code>User</code>
      * @throws DAOException if something went wrong
      */
@@ -45,13 +45,15 @@ public abstract class UserDAO extends BaseDAO<User>{
     public abstract User insert(User user) throws DAOException;
 
 
+    @Override
+    public void delete(int userId) {}
+
     /**
-     * Deletes the user with the specified id
-     *
-     * @param userId id of an entity to delete
+     * @param user where must be set following properties:
+     *      *               <br> - {@link User #id} of user
+     *      *               <br> - {@link User #password} - new user password
      * @throws DAOException if something went wrong
      */
-    @Override
-    public abstract  void delete(int userId) throws DAOException;
+    public abstract void update(User user)throws DAOException;
 }
 

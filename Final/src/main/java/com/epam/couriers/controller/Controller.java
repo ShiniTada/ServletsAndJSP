@@ -21,21 +21,20 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/Controller")
 public class Controller extends HttpServlet {
 
-    private static final Logger LOGGER = LogManager.getLogger(Controller.class);
     private static final String COMMAND_NAME = "command";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
+        processRequest(request, response, false);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
+        processRequest(request, response, true);
     }
 
 
-    private void processRequest(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+    private void processRequest(HttpServletRequest request, HttpServletResponse response, boolean toRedirect)  throws ServletException, IOException {
         String page;
         CommandHelper commandHelper = new CommandHelper();
         try {
@@ -46,8 +45,10 @@ public class Controller extends HttpServlet {
         } catch (CommandException e) {
             page = PathManager.getProperty(PathManager.ERROR_PAGE_404);
         }
+        if (toRedirect) {
+            response.sendRedirect(page);
+        } else {
             request.getRequestDispatcher(page).forward(request, response);
-//            response.sendRedirect(page);
-
+        }
     }
 }

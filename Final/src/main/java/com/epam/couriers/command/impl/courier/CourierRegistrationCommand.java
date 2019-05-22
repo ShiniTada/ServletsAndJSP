@@ -4,6 +4,7 @@ import com.epam.couriers.command.Command;
 import com.epam.couriers.command.exception.CommandException;
 import com.epam.couriers.command.resource.PathManager;
 import com.epam.couriers.constants.GeneralConstant;
+import com.epam.couriers.dao.factory.DAOFactory;
 import com.epam.couriers.entity.CourierRecord;
 import com.epam.couriers.entity.RoleEnum;
 import com.epam.couriers.entity.User;
@@ -33,22 +34,22 @@ public class CourierRegistrationCommand implements Command {
         List<User> allUsers = (List<User>) session.getAttribute(GeneralConstant.LIST_USERS);
         for (User u : allUsers) {
             if(u.getLogin().equalsIgnoreCase(realLogin)) {
-                request.setAttribute(GeneralConstant.MESSAGE_ATRIBUTE, AllErrorMessages.LOGIN_BAD);
+               request.setAttribute(GeneralConstant.MESSAGE_ATTRIBUTE, AllErrorMessages.LOGIN_BAD);
                 return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
             }
         }
 
         String realPassword = request.getParameter(GeneralConstant.USER_PASSWORD);
         if(!realPassword.equals(request.getParameter(GeneralConstant.USER_REPEATED_PASSWORD))){
-            request.setAttribute(GeneralConstant.MESSAGE_ATRIBUTE, AllErrorMessages.NOT_EQUALS_PASSWORDS);
+            request.setAttribute(GeneralConstant.MESSAGE_ATTRIBUTE, AllErrorMessages.NOT_EQUALS_PASSWORDS);
             return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
         }
         if(realLogin.equals("")) {
-            request.setAttribute(GeneralConstant.MESSAGE_ATRIBUTE, AllErrorMessages.EMPTY_LOGIN);
+            request.setAttribute(GeneralConstant.MESSAGE_ATTRIBUTE, AllErrorMessages.EMPTY_LOGIN);
             return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
         }
         if(realPassword.equals("")) {
-            request.setAttribute(GeneralConstant.MESSAGE_ATRIBUTE, AllErrorMessages.EMPTY_PASSWORD);
+            request.setAttribute(GeneralConstant.MESSAGE_ATTRIBUTE, AllErrorMessages.EMPTY_PASSWORD);
             return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
         }
 
@@ -66,7 +67,7 @@ public class CourierRegistrationCommand implements Command {
             transport.add(GeneralConstant.TRUCK_ATTRIBUTE);
         }
         if(transport.size() == 0) {
-            request.setAttribute(GeneralConstant.MESSAGE_ATRIBUTE, AllErrorMessages.EMPTY_TRANSPORT);
+            request.setAttribute(GeneralConstant.MESSAGE_ATTRIBUTE, AllErrorMessages.EMPTY_TRANSPORT);
             return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
         }
         List<String> goods = new ArrayList<>();
@@ -83,13 +84,13 @@ public class CourierRegistrationCommand implements Command {
             goods.add(GeneralConstant.EASY_TO_BEAT_ATTRIBUTE);
         }
         if(goods.size() == 0) {
-            request.setAttribute(GeneralConstant.MESSAGE_ATRIBUTE, AllErrorMessages.EMPTY_GOODS);
+            request.setAttribute(GeneralConstant.MESSAGE_ATTRIBUTE, AllErrorMessages.EMPTY_GOODS);
             return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
         }
 
         try {
             User user;
-            UserService userService = new UserServiceImpl();
+            UserService userService = new UserServiceImpl(DAOFactory.getUserDAO());
             user = userService.registration(realLogin, request.getParameter(GeneralConstant.USER_PASSWORD), RoleEnum.COURIER);
 
             CourierRecord courierRecord;
@@ -108,7 +109,7 @@ public class CourierRegistrationCommand implements Command {
         }
         session.setAttribute(GeneralConstant.PAGE_ATTRIBUTE, page);
         session.removeAttribute(GeneralConstant.LIST_USERS);
-        session.removeAttribute(GeneralConstant.MESSAGE_ATRIBUTE);
+        session.removeAttribute(GeneralConstant.MESSAGE_ATTRIBUTE);
         return page;
     }
 }

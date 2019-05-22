@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
-    <link rel="shortcut icon" href="../img/greenlogo.png" type="image/png">
+    <link rel="shortcut icon" href="../../img/greenlogo.png" type="image/png">
 
     <fmt:setLocale value="${sessionScope.locale}"/>
     <fmt:setBundle basename="local" var="loc"/>
@@ -25,7 +25,7 @@
     <fmt:message bundle="${loc}" key="local.registration_form.repeated_password" var="repeated_password"/>
     <fmt:message bundle="${loc}" key="local.sign_in_form.sign_in" var="sign_in"/>
     <fmt:message bundle="${loc}" key="local.registration_form.warning.not_equal" var="not_equal"/>
-    <fmt:message bundle="${loc}" key="local.registration_form.registrate" var="registrate"/>
+    <fmt:message bundle="${loc}" key="local.registration_form.register" var="register"/>
 
 
 
@@ -45,7 +45,7 @@
 </head>
 <body>
 <div class="w3-container w3-teal main-panel-header ">
-    <a href="<c:url value="/"/>" class="w3-bar-item w3-button w3-padding-large w3-hide-small">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-small">
         Good-Couriers.com
     </a>
     <my:headLanguage/>
@@ -58,25 +58,25 @@
 </div>
 
 <div class="w3-container w3-round w3-border w3-card-4 w3-border-black w3-teal"  style="margin-left:36%; margin-right:36%; margin-top:140px;">
-    <form name="customer-registration-form" onsubmit="return validateForm()" method="post" action="Controller">
+    <form name="customer-registration-form" method="post" action="Controller">
         <input type="hidden" name="command" value="customer-registration"/>
         <div class="w3-cell-row">
             <div class="w3-container w3-cell">
                 <br>
                 <br>
                 <div>${login}</div>
-                <input class="w3-input w3-border" id ="login" type="text" name="login"> <br>
+                <input class="w3-input w3-border" id ="login" type="text" required minlength="3" name="login"> <br>
                 <div>${password}</div>
-                <input class="w3-input w3-border" id="password" type="password"  name="password"> <br>
+                <input class="w3-input w3-border" id="password" type="password" required minlength="3" name="password"> <br>
                 <div>${repeated_password}</div>
-                <input class="w3-input w3-border" id="repeatedPassword" type="password"  name="repeatedPassword">
+                <input class="w3-input w3-border" id="repeatedPassword" type="password" required minlength="3" name="repeatedPassword">
                 <br><br>
             </div>
         </div>
         <div class="w3-cell-row ">
             <div class="w3-container  w3-cell" style="width:10%;"> </div>
             <div class="w3-container  w3-cell" style="width:40%;">
-                <button class="w3-button w3-round btn-block w3-green"  type="submit">${registrate}</button>
+                <button class="w3-button w3-round btn-block w3-green"  type="submit">${register}</button>
                 <br>
             </div>
             <div class="w3-container  w3-cell" style="width:40%;">
@@ -126,6 +126,7 @@
         -o-background-size: 100%;
         background-size: 100%;
     }
+
 </style>
 
 </html>

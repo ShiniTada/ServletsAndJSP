@@ -23,7 +23,7 @@ public abstract class BaseDAO<E extends Entity> {
     /**
      * Removes entity with the specified id
      *
-     * @param id id of a question to delete
+     * @param id - id record which would delete
      * @throws DAOException if something went wrong
      */
     public abstract void delete(int id) throws DAOException;

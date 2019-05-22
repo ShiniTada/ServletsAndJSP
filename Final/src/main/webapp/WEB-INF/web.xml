@@ -6,30 +6,181 @@
         version="3.1"
         metadata-complete="true">
   <display-name>Couriers Servlet</display-name>
-  <servlet>
-      <display-name>CouriersServlet</display-name>
-      <servlet-name>Controller</servlet-name>
-      <servlet-class>com.epam.couriers.controller.Controller</servlet-class>
+    <servlet>
+        <display-name>CouriersServlet</display-name>
+        <servlet-name>Controller</servlet-name>
+        <servlet-class>com.epam.couriers.controller.Controller</servlet-class>
     </servlet>
+
+    <welcome-file-list>
+        <welcome-file>index</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>Index</servlet-name>
+        <jsp-file>/WEB-INF/index.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomerProfile</servlet-name>
+        <jsp-file>/WEB-INF/jsp/customer.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminProfile</servlet-name>
+        <jsp-file>/WEB-INF/jsp/admin.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CourierProfile</servlet-name>
+        <jsp-file>/WEB-INF/jsp/courier.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CommonCourierList</servlet-name>
+        <jsp-file>/WEB-INF/jsp/common_courier_list_page.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>PublicCourierProfile</servlet-name>
+        <jsp-file>/WEB-INF/jsp/public_courier.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>Error404</servlet-name>
+        <jsp-file>/WEB-INF/jsp/error/error404.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>Error500</servlet-name>
+        <jsp-file>/WEB-INF/jsp/error/error500.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>SignIn</servlet-name>
+        <jsp-file>/WEB-INF/jsp/sign_in.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomerSignUp</servlet-name>
+        <jsp-file>/WEB-INF/jsp/customer_sign_up.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CourierSignUp</servlet-name>
+        <jsp-file>/WEB-INF/jsp/courier_sign_up.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderForm</servlet-name>
+        <jsp-file>/WEB-INF/jsp/order_form.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>TableNewCouriersPage</servlet-name>
+        <jsp-file>/WEB-INF/jsp/tables/table_new_couriers_page.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>TableCouriersPage</servlet-name>
+        <jsp-file>/WEB-INF/jsp/tables/table_couriers_page.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>TableGoodsPage</servlet-name>
+        <jsp-file>/WEB-INF/jsp/tables/table_goods_page.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>TableTransportPage</servlet-name>
+        <jsp-file>/WEB-INF/jsp/tables/table_transport_page.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>TableOrdersPage</servlet-name>
+        <jsp-file>/WEB-INF/jsp/tables/table_orders_page.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>Settings</servlet-name>
+        <jsp-file>/WEB-INF/jsp/settings.jsp</jsp-file>
+    </servlet>
+
 
     <servlet-mapping>
       <servlet-name>Controller</servlet-name>
       <url-pattern>/</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Index</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerProfile</servlet-name>
+        <url-pattern>/customer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminProfile</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CourierProfile</servlet-name>
+        <url-pattern>/courier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommonCourierList</servlet-name>
+        <url-pattern>/commonCourierList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PublicCourierProfile</servlet-name>
+        <url-pattern>/publicCourier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Error404</servlet-name>
+        <url-pattern>/error404</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Error500</servlet-name>
+        <url-pattern>/error500</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>SignIn</servlet-name>
+    <url-pattern>/signIn</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerSignUp</servlet-name>
+        <url-pattern>/customerSignUp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CourierSignUp</servlet-name>
+        <url-pattern>/courierSignUp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderForm</servlet-name>
+        <url-pattern>/orderForm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TableNewCouriersPage</servlet-name>
+        <url-pattern>/tableNewCouriersPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TableCouriersPage</servlet-name>
+        <url-pattern>/tableCouriersPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TableGoodsPage</servlet-name>
+        <url-pattern>/tableGoodsPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TableTransportPage</servlet-name>
+        <url-pattern>/tableTransportPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TableOrdersPage</servlet-name>
+        <url-pattern>/tableOrdersPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Settings</servlet-name>
+        <url-pattern>/settings</url-pattern>
+    </servlet-mapping>
 
-        <error-page>
+
+    <error-page>
             <error-code>404</error-code>
-            <location>/jsp/error/error404.jsp</location>
+            <location>/WEB-INF/jsp/error/error404.jsp</location>
         </error-page>
         <error-page>
             <error-code>500</error-code>
-            <location>/jsp/error/error500.jsp</location>
+            <location>/WEB-INF/jsp/error/error500.jsp</location>
         </error-page>
 
     <jsp-config>
         <taglib>
             <taglib-uri>mine</taglib-uri>
-            <taglib-location>/jsp/tld/mine.tld</taglib-location>
+            <taglib-location>/WEB-INF/jsp/tld/mine.tld</taglib-location>
         </taglib>
     </jsp-config>
 

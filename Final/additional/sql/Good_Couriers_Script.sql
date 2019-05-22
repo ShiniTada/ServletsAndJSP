@@ -23,7 +23,6 @@ USE `Good_Couriers` ;
 CREATE TABLE IF NOT EXISTS `Good_Couriers`.`User` (
   `userId` INT NOT NULL AUTO_INCREMENT,
   `login` VARCHAR(128) NOT NULL,
-  `login` VARCHAR(45) NOT NULL,
   `role` ENUM('admin', 'courier', 'customer') NOT NULL,
   `hashPassword` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`userId`))

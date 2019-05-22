@@ -22,22 +22,39 @@ import java.util.List;
  */
 public class GetAllCouriersCommand implements Command {
 
+    private static final int COUNT_OF_COURIERS_ON_ONE_PAGE = 5;
+
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute(GeneralConstant.USER);
         String page;
+        AdminService adminService = new AdminServiceImpl();
+        List<CourierRecord> listCourierRecords;
         try {
-            HttpSession session = request.getSession();
-            AdminService adminService = new AdminServiceImpl();
-            List<CourierRecord> listCourierRecords = adminService.getAllCouriersRecords();
-            session.setAttribute(GeneralConstant.LIST_COURIER_RECORDS, listCourierRecords);
-            User user = (User) session.getAttribute(GeneralConstant.USER);
-            if(user.getRole().getValue().equals("admin")) {
+            if(user.getRole().getValue().equals(RoleEnum.ADMIN.getValue())) {
+                int pageNumber;
+                if(request.getParameter(GeneralConstant.PAGE_NUMBER) != null) {
+                    pageNumber = Integer.parseInt(request.getParameter(GeneralConstant.PAGE_NUMBER));
+                }
+                else {
+                    pageNumber = (Integer) session.getAttribute(GeneralConstant.PAGE_NUMBER);
+                }
+                int startIndex = (pageNumber - 1) * COUNT_OF_COURIERS_ON_ONE_PAGE;
+
+                listCourierRecords = adminService.findWithLimitCouriersRecords(startIndex, COUNT_OF_COURIERS_ON_ONE_PAGE);
+                int totalCount = adminService.findTotalCountOfCourierRecords();
                 page = PathManager.getProperty(PathManager.TABLE_COURIERS_PAGE);
+                session.setAttribute(GeneralConstant.LIMIT_COUNT, COUNT_OF_COURIERS_ON_ONE_PAGE);
+                session.setAttribute(GeneralConstant.TOTAL_COUNT, totalCount);
+
             } else {
                 String previousPage = (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
                 session.setAttribute(GeneralConstant.PREVIOUS_COURIER_PAGE_ATTRIBUTE, previousPage);
+                listCourierRecords = adminService.getCouriersRecordsForCustomer();
                 page = PathManager.getProperty(PathManager.COMMON_COURIER_LIST_PAGE);
             }
+            session.setAttribute(GeneralConstant.LIST_COURIER_RECORDS, listCourierRecords);
             session.setAttribute(GeneralConstant.PAGE_ATTRIBUTE, page);
             return page;
         } catch (ServiceException e) {

@@ -17,16 +17,15 @@ public class Transport extends Entity {
         this.typeTransport = typeTransport;
     }
 
-    public Transport(int id, TransportEnum typeTransport, User courier, int orderId) {
+    public Transport(int id, TransportEnum typeTransport, User courier) {
         super(id);
         this.typeTransport = typeTransport;
         this.courier = courier;
-        this.orderId = orderId;
     }
 
-    public Transport(TransportEnum typeTransport, int orderId) {
+    public Transport(TransportEnum typeTransport, User courier) {
         this.typeTransport = typeTransport;
-        this.orderId = orderId;
+        this.courier = courier;
     }
 
     public TransportEnum getTypeTransport() {

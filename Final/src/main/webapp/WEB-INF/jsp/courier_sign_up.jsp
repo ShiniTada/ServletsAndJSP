@@ -8,8 +8,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
-    <link rel="shortcut icon" href="../img/greenlogo.png" type="image/png">
-
+    <link rel="shortcut icon" href="../../img/greenlogo.png" type="image/png">
 
     <fmt:setLocale value="${sessionScope.locale}"/>
     <fmt:setBundle basename="local" var="loc"/>
@@ -28,7 +27,7 @@
     <fmt:message bundle="${loc}" key="local.registration_form.tech" var="tech"/>
      <fmt:message bundle="${loc}" key="local.registration_form.furniture" var="furniture"/>
     <fmt:message bundle="${loc}" key="local.registration_form.easy_to_beat" var="easy_to_beat"/>
-    <fmt:message bundle="${loc}" key="local.registration_form.registrate" var="registrate"/>
+    <fmt:message bundle="${loc}" key="local.registration_form.register" var="registrate"/>
 
 
     <fmt:message bundle="${loc}" key="local.registration_form.warning.empty_login" var="empty_login"/>
@@ -65,17 +64,17 @@
 </div>
 
 <div class="w3-container w3-round w3-card-4 w3-border w3-border-black w3-teal" style="margin-left:32%; margin-right:32%; margin-top:140px;">
-    <form name="courier-registration-form" method="post" action="Controller">
+    <form name="courier-registration-form"  method="post" action="Controller">
         <input type="hidden" name="command" value="courier-registration"/>
         <div class="w3-cell-row">
             <div class="w3-container w3-cell" style="width:45%">
                 <br>
-                <div>${login}</div>
-                <input class="w3-input w3-border" id ="login" type="text" name="login"> <br>
-                <div>${password}</div>
-                <input class="w3-input w3-border" id="password" type="password"  name="password"> <br>
-                <div>${repeated_password}</div>
-                <input class="w3-input w3-border" id="repeatedPassword" type="password"  name="repeatedPassword">
+                    <div>${login}</div>
+                    <input class="w3-input w3-border" id ="login" type="text" required minlength="3" name="login"> <br>
+                    <div>${password}</div>
+                    <input class="w3-input w3-border" id="password" type="password" required minlength="3"  name="password"> <br>
+                    <div>${repeated_password}</div>
+                    <input class="w3-input w3-border" id="repeatedPassword" type="password" required minlength="3"  name="repeatedPassword">
                 <br><br>
             </div>
             <div class="w3-container w3-cell" style="width:10%;"> </div>
@@ -120,7 +119,7 @@
     </form>
     <c:choose>
         <c:when test="${requestScope.message eq 'loginBad'}">
-            <h5 class="w3-text-flat-alizarin  w3-center">${bad_login}</h5>
+            <h5 class="w3-text-flat-alizarin w3-center">${bad_login}</h5>
         </c:when>
         <c:when test="${requestScope.message eq 'notEqualsPasswords'}">
             <h5 class="w3-text-flat-alizarin w3-center">${not_equal}</h5>
@@ -144,6 +143,7 @@
     ${main_footer}
 </footer>
 </body>
+
 <style>
     .main-footer {
         position: fixed;
@@ -164,3 +164,4 @@
 </style>
 
 </html>
+<%--//<script type="scripts.js"></script>--%>

@@ -9,13 +9,10 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
-    <link rel="shortcut icon" href="../img/greenlogo.png" type="image/png">
+    <link rel="shortcut icon" href="../../img/greenlogo.png" type="image/png">
 
     <fmt:setLocale value="${sessionScope.locale}"/>
     <fmt:setBundle basename="local" var="loc"/>
-    <fmt:message bundle="${loc}" key="local.header.language" var="language"/>
-    <fmt:message bundle="${loc}" key="local.header.language.english" var="english"/>
-    <fmt:message bundle="${loc}" key="local.header.language.russian" var="russian"/>
 
     <fmt:message bundle="${loc}" key="local.sign_in_form.header.sign_in" var="header_sign_in"/>
     <fmt:message bundle="${loc}" key="local.sign_in_form.enter_login" var="enter_login"/>
@@ -30,20 +27,6 @@
 
     <fmt:message bundle="${loc}" key="local.main_footer" var="main_footer"/>
 
-    <script>
-        function validateForm() {
-            var x1 = document.forms["sign-form"]["login"].value;
-            if (x1 == "") {
-                alert("${empty_login}");
-                return false;
-            }
-            var x2 = document.forms["sign-form"]["password"].value;
-            if (x2 == "") {
-                alert("${empty_password}");
-                return false;
-            }
-        }
-    </script>
 
     <title>
         ${header_sign_in}
@@ -52,7 +35,7 @@
 </head>
 <body>
     <div class="w3-container w3-teal main-panel-header ">
-        <a href="<c:url value="/"/>" class="w3-bar-item w3-button w3-padding-large w3-hide-small">
+        <a class="w3-bar-item w3-button w3-padding-large w3-hide-small">
             Good-Couriers.com
         </a>
         <my:headLanguage/>
@@ -65,7 +48,7 @@
         </div>
 
     <div class="w3-container w3-round w3-center  w3-border w3-border-black w3-teal"  style="margin-left:40%; margin-right:40%; margin-top:140px;">
-    <form name="sign-form" onsubmit="return validateForm()" method="post" action="Controller" >
+    <form name="sign-form" method="post" action="Controller" >
     <input type="hidden" name="command" value="sign-in"/>
         <div class="w3-cell-row">
             <div class="w3-container w3-cell">

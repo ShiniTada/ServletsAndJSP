@@ -9,6 +9,13 @@ public class User extends Entity {
 
     public User() {
     }
+
+    public User(String login, String password, RoleEnum role) {
+        this.login = login;
+        this.password = password;
+        this.role = role;
+    }
+
     public User(int id) {
         super(id);
     }

@@ -9,7 +9,7 @@
     <title>Title</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="shortcut icon" href="../img/greenlogo.png" type="image/png">
+    <link rel="shortcut icon" href="../../img/greenlogo.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
 
@@ -40,14 +40,28 @@
 
     <fmt:message bundle="${loc}" key="local.admin.couriers_table.accept" var="accept"/>
     <fmt:message bundle="${loc}" key="local.admin.couriers_table.reject" var="reject"/>
+    <fmt:message bundle="${loc}" key="local.admin.couriers_table.block" var="block"/>
+    <fmt:message bundle="${loc}" key="local.admin.couriers_table.unblock" var="unblock"/>
+    <fmt:message bundle="${loc}" key="local.customer.delete" var="delete"/>
+
+    <fmt:message bundle="${loc}" key="local.registration_form.cycle" var="cycle"/>
+    <fmt:message bundle="${loc}" key="local.registration_form.motorcycle" var="motorcycle" />
+    <fmt:message bundle="${loc}" key="local.registration_form.car" var="car" />
+    <fmt:message bundle="${loc}" key="local.registration_form.truck" var="truck"/>
+    <fmt:message bundle="${loc}" key="local.registration_form.food" var="food" />
+    <fmt:message bundle="${loc}" key="local.registration_form.tech" var="tech"/>
+    <fmt:message bundle="${loc}" key="local.registration_form.furniture" var="furniture"/>
+    <fmt:message bundle="${loc}" key="local.registration_form.easy_to_beat" var="easy_to_beat"/>
 
     <fmt:message bundle="${loc}" key="local.main_footer" var="main_footer"/>
 
 </head>
 <body>
-
+<c:if test="${(not sessionScope.user.role.getValue().equals('customer')) and (not sessionScope.user.role.getValue().equals('admin'))}">
+    <c:redirect url="error/error404.jsp"/>
+</c:if>
 <div class="w3-container w3-teal main-panel-header ">
-    <a href="<c:url value="/"/>" class="w3-bar-item w3-button w3-padding-large w3-hide-small">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-small">
         Good-Couriers.com
     </a>
     <my:headName role="${sessionScope.user.role}" login="${sessionScope.user.login}" settings="${settings}" sign_out="${sign_out}"/>
@@ -82,14 +96,45 @@
                                 <div class="w3-cell w3-container" style="width:1%;"></div>
                                 <div class="w3-cell w3-container" style="width:7%;">
                                     <form action="Controller" method="post">
-                                        <input type="hidden" name="command" value="reject_courier"/>
+                                        <input type="hidden" name="command" value="accept_courier"/>
                                         <button class="w3-block w3-cell-row w3-right w3-round w3-center w3-flat-alizarin
                                          w3-button" name="reject" value="${sessionScope.courierRecord.id}" style="max-width:150px">${reject}</button>
                                     </form>
                                 </div>
                             </c:when>
                             <c:when test="${sessionScope.courierRecord.status == 1}">
-                                <div class="w3-cell w3-container" style="width:20%;"></div>
+                                <div class="w3-cell w3-container" style="width:7%;">
+                                    <form action="Controller" method="post">
+                                        <input type="hidden" name="command" value="accept_courier"/>
+                                        <button class="w3-block w3-cell-row w3-right w3-round w3-center w3-khaki
+                                         w3-button" name="block" value="${sessionScope.courierRecord.id}" >${block}</button>
+                                    </form>
+                                </div>
+                                <div class="w3-cell w3-container" style="width:1%;"></div>
+                                <div class="w3-cell w3-container" style="width:7%;">
+                                    <form action="Controller" method="post">
+                                        <input type="hidden" name="command" value="accept_courier"/>
+                                        <button class="w3-block w3-cell-row w3-right w3-round w3-center w3-flat-alizarin
+                                         w3-button" name="reject" value="${sessionScope.courierRecord.id}" >${delete}</button>
+                                    </form>
+                                </div>
+                            </c:when>
+                            <c:when test="${sessionScope.courierRecord.status == 3}">
+                                <div class="w3-cell w3-container" style="width:7%;">
+                                    <form action="Controller" method="post">
+                                        <input type="hidden" name="command" value="accept_courier"/>
+                                        <button class="w3-block w3-cell-row w3-right w3-round w3-center w3-khaki
+                                         w3-button" name="unblock" value="${sessionScope.courierRecord.id}" style="max-width:150px">${unblock}</button>
+                                    </form>
+                                </div>
+                                <div class="w3-cell w3-container" style="width:1%;"></div>
+                                <div class="w3-cell w3-container" style="width:7%;">
+                                    <form action="Controller" method="post">
+                                        <input type="hidden" name="command" value="accept_courier"/>
+                                        <button class="w3-block w3-cell-row w3-right w3-round w3-center w3-flat-alizarin
+                                         w3-button" name="reject" value="${sessionScope.courierRecord.id}" style="max-width:150px">${delete}</button>
+                                    </form>
+                                </div>
                             </c:when>
                         </c:choose>
                     </c:when>
@@ -150,7 +195,12 @@
                         <h4 class="w3-opacity"><b>${transport}</b></h4>
                         <ul class=" w3-large">
                             <c:forEach var="elem" items="${sessionScope.listTransport}">
-                                <li><c:out value="${elem}"/> </li>
+                                <c:choose>
+                                    <c:when test="${elem eq 'cycle'}"> <li><c:out value="${cycle}"/> </li></c:when>
+                                    <c:when test="${elem eq 'motorcycle'}"> <li><c:out value="${motorcycle}"/> </li></c:when>
+                                    <c:when test="${elem eq 'car'}"> <li><c:out value="${car}"/> </li></c:when>
+                                    <c:when test="${elem eq 'truck'}"> <li><c:out value="${truck}"/> </li></c:when>
+                                </c:choose>
                             </c:forEach>
                         </ul>
 
@@ -160,7 +210,12 @@
                         <h4 class="w3-opacity"><b>${goods}</b></h4>
                         <ul class=" w3-large">
                             <c:forEach var="elem" items="${sessionScope.listGoods}">
-                                <li><c:out value="${elem}"/> </li>
+                                <c:choose>
+                                    <c:when test="${elem eq 'food'}"><li><c:out value="${food}"/> </li></c:when>
+                                    <c:when test="${elem eq 'tech'}"><li><c:out value="${tech}"/> </li></c:when>
+                                    <c:when test="${elem eq 'furniture'}"><li><c:out value="${furniture}"/> </li></c:when>
+                                    <c:when test="${elem eq 'easy-to-beat'}"><li><c:out value="${easy_to_beat}"/> </li></c:when>
+                                </c:choose>
                             </c:forEach>
                         </ul>
                     </div>

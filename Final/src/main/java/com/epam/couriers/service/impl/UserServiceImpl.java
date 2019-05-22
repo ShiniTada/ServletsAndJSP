@@ -2,7 +2,6 @@ package com.epam.couriers.service.impl;
 
 import com.epam.couriers.dao.UserDAO;
 import com.epam.couriers.dao.exception.DAOException;
-import com.epam.couriers.dao.factory.DAOFactory;
 import com.epam.couriers.dao.manager.TransactionManager;
 import com.epam.couriers.entity.RoleEnum;
 import com.epam.couriers.entity.User;
@@ -13,7 +12,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class UserServiceImpl implements UserService {
-    private static final Logger LOGGER = LogManager.getLogger(UserService.class);
+    private static final Logger LOGGER = LogManager.getLogger(UserServiceImpl.class);
+
+    private final UserDAO userDAO;
+
+    public UserServiceImpl(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
 
     @Override
     public User logIn(String login, String password) throws ServiceException {
@@ -23,7 +28,6 @@ public class UserServiceImpl implements UserService {
         user.setPassword(hashPassword);
         TransactionManager transactionManager = new TransactionManager();
         try {
-            UserDAO userDAO = DAOFactory.getUserDAO();
             transactionManager.beginTransaction(userDAO);
             user = userDAO.authorization(user);
             if (user != null) {
@@ -31,8 +35,7 @@ public class UserServiceImpl implements UserService {
                 transactionManager.endTransaction();
                 return user;
             } else {
-//                Message.getInstanse().setMessage(AllErrorMessages.NOT_CORRECT_LOGIN_OR_PASSWORD);
-                LOGGER.debug("Incorrect login or password");
+                LOGGER.info("Incorrect login or password");
                 return null;
             }
         } catch (DAOException e) {
@@ -56,7 +59,6 @@ public class UserServiceImpl implements UserService {
         user.setPassword(hashPassword);
         TransactionManager transactionManager = new TransactionManager();
         try {
-            UserDAO userDAO = DAOFactory.getUserDAO();
             transactionManager.beginTransaction(userDAO);
             user = userDAO.insert(user);
             transactionManager.commit();
@@ -72,6 +74,29 @@ public class UserServiceImpl implements UserService {
             }
         }
         return null;
+    }
+
+    @Override
+    public void changePassword(int userId, String newPassword) throws ServiceException {
+        User user = new User();
+        user.setId(userId);
+        String hashPassword = DigestUtils.md5Hex(newPassword);
+        user.setPassword(hashPassword);
+        TransactionManager transactionManager = new TransactionManager();
+        try {
+            transactionManager.beginTransaction(userDAO);
+            userDAO.update(user);
+            transactionManager.commit();
+            transactionManager.endTransaction();
+        } catch (DAOException e) {
+            try {
+                transactionManager.rollback();
+
+                transactionManager.endTransaction();
+            } catch (DAOException ex) {
+                throw new ServiceException("Error access database", e);
+            }
+        }
     }
 
 }

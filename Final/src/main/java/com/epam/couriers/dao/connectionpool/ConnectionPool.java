@@ -1,7 +1,6 @@
 package com.epam.couriers.dao.connectionpool;
 
 import com.epam.couriers.dao.exception.ConnectionPoolException;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,7 +18,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class ConnectionPool {
 
-    private final static Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger(ConnectionPool.class);
     private static Lock locker = new ReentrantLock();
     private static AtomicBoolean isCreated = new AtomicBoolean(false);
     private static ConnectionPool instance;
@@ -47,7 +46,7 @@ public class ConnectionPool {
             if (instance == null) {
                 instance = new ConnectionPool();
                 isCreated.set(true);
-                LOGGER.log(Level.INFO, "Connection pool successfully created");
+                LOGGER.info("Connection pool successfully created");
             }
             locker.unlock();
         }
@@ -56,7 +55,7 @@ public class ConnectionPool {
 
     private ProxyConnection createConnection() throws SQLException {
         Connection connection = DriverManager.getConnection(config.getUrl(), config.getProperties());
-        LOGGER.log(Level.INFO, "New connection created");
+        LOGGER.info("New connection created");
         return new ProxyConnection(connection);
     }
 

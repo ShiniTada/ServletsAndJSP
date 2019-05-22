@@ -41,7 +41,6 @@ public  abstract class CourierDAO extends BaseDAO<CourierRecord>{
      */
     public abstract CourierRecord get(int courierId) throws DAOException;
 
-
     /**
      * @param courierLogin - courier login
      * The method gets only:
@@ -62,15 +61,14 @@ public  abstract class CourierDAO extends BaseDAO<CourierRecord>{
      *      *               <br> - {@link CourierRecord #markPoliteness}
      *      *               <br> - {@link CourierRecord #markPunctuality}
      *      *               <br> - {@link CourierRecord #markCommon}
-     *     *               <br> - {@link CourierRecord #votesNumber}
+     *      *               <br> - {@link CourierRecord #votesNumber}
      * @throws DAOException if something went wrong
      */
     public abstract void updateMarks(int courierRecordId, double newQuality, double newPoliteness, double newPunctuality, double newCommon, int newVotesNumber) throws DAOException;
 
     /**
      * Get courierRecord  from database
-     *
-     * @param courierRecord where must be set following properties:
+     * The method gets courier record from database with filled:
      *      *               <br> - {@link CourierRecord #userId}
      *      *               <br> - {@link CourierRecord #courierLogin}
      *      *               <br> - {@link CourierRecord #markQuality}
@@ -78,12 +76,16 @@ public  abstract class CourierDAO extends BaseDAO<CourierRecord>{
      *      *               <br> - {@link CourierRecord #markPunctuality}
      *      *               <br> - {@link CourierRecord #markCommon}
      *      *               <br> - {@link CourierRecord #status}
+     * @param courierRecord where must be set following properties:
+     *      *               <br> - {@link CourierRecord #userId}
      * @return {@link CourierRecord } with all filled properties
      * @throws DAOException if something went wrong
      */
     public abstract CourierRecord get(CourierRecord courierRecord) throws DAOException;
+
     /**
-     * Get list of courier's records.
+     * Get {@code countOfCouriersOnOnePage} courier's records with active
+     * and blocked status, which started with {@code startIndex}.
      *
      * This method get only:
      *      *               <br> - {@link CourierRecord #courierId}
@@ -93,7 +95,33 @@ public  abstract class CourierDAO extends BaseDAO<CourierRecord>{
      * @return  listCourierRecords - list of courier's records
      * @throws DAOException if something went wrong
      */
-    public abstract List<CourierRecord> getAllCouriersRecords() throws DAOException;
+    public abstract List<CourierRecord> findWithLimitCouriersRecords(int startIndex, int countOfCouriersOnOnePage) throws DAOException;
+
+    /**
+     * Get {@code countOfCouriersOnOnePage} courier's records with active
+     * status, which started with {@code startIndex}.
+     *
+     * This method get only:
+     *      *               <br> - {@link CourierRecord #courierId}
+     *      *               <br> - {@link User #name}
+     *      *               <br> - {@link User #mark}
+     *
+     * @return  listCourierRecords - list of courier's records
+     * @throws DAOException if something went wrong
+     */
+    public abstract List<CourierRecord> getCouriersRecordsForCustomer() throws DAOException;
+
+    /**
+     * @return count of courier records with active and blocked status
+     * @throws DAOException if something went wrong
+     */
+    public abstract int findTotalCountOfCourierRecords()throws DAOException;
+
+    /**
+     * @return count of courier records with active status
+     * @throws DAOException if something went wrong
+     */
+    public abstract int findTotalCountOfCourierRecordsForCustomer()throws DAOException;
 
     /**
      * Get list of new courier's records.
@@ -107,14 +135,6 @@ public  abstract class CourierDAO extends BaseDAO<CourierRecord>{
      * @throws DAOException if something went wrong
      */
     public abstract List<CourierRecord> getNewCouriersRecords() throws DAOException;
-
-    /**
-     * Get list of id of orders which courier should does
-     *
-     * @return  allOrderId - list of id of orders
-     * @throws DAOException if something went wrong
-     */
-    public abstract List<Integer> getAllOrderId(int courierId) throws DAOException;
 
     /**
      * Set active status to courier
@@ -134,8 +154,16 @@ public  abstract class CourierDAO extends BaseDAO<CourierRecord>{
      */
     public abstract void rejectCourier(int courierRecordId)throws DAOException;
 
-    @Override
-    public void delete(int id) throws DAOException {
+    /**
+     * Set blocked status to courier
+     *
+     * @param courierRecordId - courier record id
+     *
+     * @throws DAOException if something went wrong
+     */
+    public abstract void blockCourier(int courierRecordId)throws DAOException;
 
+    @Override
+    public void delete(int id){
     }
 }

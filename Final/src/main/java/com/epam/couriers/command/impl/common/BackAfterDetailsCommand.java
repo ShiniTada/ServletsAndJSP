@@ -15,7 +15,7 @@ public class BackAfterDetailsCommand implements Command {
         if (typeBack.equals("afterAllCouriers")) {
             page = (String) session.getAttribute(GeneralConstant.PREVIOUS_COURIER_PAGE_ATTRIBUTE);
         } else if (typeBack.equals("afterOrderForm")) {
-                page = (String) session.getAttribute(GeneralConstant.PREVIOUS_COURIER_PAGE_ATTRIBUTE);
+                page = (String) session.getAttribute(GeneralConstant.CUSTOMER_HOME);
                 } else{
                     session.removeAttribute(GeneralConstant.COURIER_RECORD);
                     session.removeAttribute(GeneralConstant.LIST_TRANSPORT);

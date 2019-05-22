@@ -15,6 +15,7 @@ public enum CommandName {
     OPEN_NEW_ORDER_FORM,
     ACCEPT_ORDER,
     SET_MARKS,
+    DELETE_ORDER,
 
     GET_NEW_COURIERS_RECORDS,
     GET_ALL_COURIERS,
@@ -24,7 +25,9 @@ public enum CommandName {
     TABLE_PAGINATION,
     ACCEPT_COURIER,
     MORE_DETAILS,
-    BACK_AFTER_DETAILS
+    BACK_AFTER_DETAILS,
+    OPEN_SETTINGS,
+    SETTINGS
 
 
 }

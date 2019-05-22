@@ -13,7 +13,7 @@
         <fmt:message bundle="${loc}" key="local.error_page.button.takeMeHome" var="takeMeHome"/>
         <fmt:message bundle="${loc}" key="local.main_footer" var="main_footer"/>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="shortcut icon" href="../img/greenlogo.png" type="image/png">
+        <link rel="shortcut icon" href="../../../img/greenlogo.png" type="image/png">
 
         <title>${title}</title>
     </head>
@@ -30,13 +30,13 @@
                     <div class="error-actions">
                         <c:choose>
                             <c:when test="${sessionScope.user.role eq 'admin'}}">
-                                <a class="w3-button w3-round w3-teal" href="<c:url value="/jsp/admin.jsp"/>">${takeMeHome}</a>
+                                <a class="w3-button w3-round w3-teal" href="<c:url value="../admin.jsp"/>">${takeMeHome}</a>
                             </c:when>
                             <c:when test="${sessionScope.user.role eq 'courier'}}">
-                                <a class="w3-button w3-round w3-teal" href="<c:url value="/jsp/courier.jsp"/>">${takeMeHome}</a>
+                                <a class="w3-button w3-round w3-teal" href="<c:url value="../courier.jsp"/>">${takeMeHome}</a>
                             </c:when>
                             <c:when test="${sessionScope.user.role eq 'customer'}}">
-                                <a class="w3-button w3-round w3-teal" href="<c:url value="/jsp/customer.jsp"/>">${takeMeHome}</a>
+                                <a class="w3-button w3-round w3-teal" href="<c:url value="../customer.jsp"/>">${takeMeHome}</a>
                             </c:when>
                             <c:otherwise>
                                 <a class="w3-button w3-round w3-teal" href="<c:url value="/"/>">${takeMeHome}</a>

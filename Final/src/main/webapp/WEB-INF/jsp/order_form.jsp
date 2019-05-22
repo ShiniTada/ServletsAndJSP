@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" href="../img/greenlogo.png" type="image/png">
+    <link rel="shortcut icon" href="../../img/greenlogo.png" type="image/png">
 
     <fmt:setLocale value="${sessionScope.locale}"/>
     <fmt:setBundle basename="local" var="loc"/>
@@ -44,9 +44,11 @@
     </title>
 </head>
 <body>
-
+<c:if test="${not sessionScope.user.role.getValue().equals('customer')}">
+    <c:redirect url="error/error404.jsp"/>
+</c:if>
 <div class="w3-container w3-teal main-panel-header ">
-    <a href="<c:url value="/"/>" class="w3-bar-item w3-button w3-padding-large w3-hide-small">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-small">
         Good-Couriers.com
     </a>
     <my:headName role="${sessionScope.user.role}" login="${sessionScope.user.login}" settings="${settings}" sign_out="${sign_out}"/>
@@ -68,7 +70,7 @@
                 ${what_deliver}
             </div>
             <div class="w3-container w3-cell" style="width:65%">
-                <input class="w3-input w3-border" type="text" name="whatDeliver" placeholder="${enter_what_deliver}">
+                <input class="w3-input w3-border" type="text" name="whatDeliver" required placeholder="${enter_what_deliver}">
             </div>
         </div>
         <br>
@@ -79,7 +81,7 @@
                 ${from}
             </div>
             <div class="w3-container w3-cell" style="width:65%">
-                <input class="w3-input w3-border" type="text"  name="from"  placeholder="${enter_from}">
+                <input class="w3-input w3-border" type="text"  name="from" required placeholder="${enter_from}">
             </div>
         </div>
         <div class="w3-cell-row" style="margin-top:20px;">
@@ -87,7 +89,7 @@
                 ${to}
             </div>
             <div class="w3-container w3-cell" style="width:65%">
-                <input class="w3-input w3-border" type="text"  name="to"  placeholder="${enter_to}">
+                <input class="w3-input w3-border" type="text"  name="to" required  placeholder="${enter_to}">
             </div>
         </div>
         <br>
@@ -98,7 +100,7 @@
                 <i class="fa fa-calendar" style="font-size:25px"></i>
             </div>
             <div class="w3-container w3-cell" style="width:65%">
-                <input type="date" name="deliveryDate" autofocus>
+                <input type="date" name="deliveryDate" required autofocus>
             </div>
         </div>
         <br>
@@ -126,46 +128,16 @@
         <br>
 
         <div class="w3-cell-row ">
-            <div class="w3-container w3-cell" style="width:25%;"> </div>
-            <div class="w3-container w3-cell" style="width:20%;">
-                <button class="w3-button w3-round btn-block w3-green" type="submit">${add}</button>
-                <br>
+            <div class="w3-container w3-cell" style="width:35%;"> </div>
+            <div class="w3-container w3-center w3-cell" style="width:30%;">
+                <button class="w3-button w3-center w3-round btn-block w3-green" type="submit">${add}</button>
             </div>
-
-            <div class="w3-container  w3-cell" style="width:10%;"> </div>
-            <div class="w3-container  w3-cell" style="width:20%;">
-<%--                    <form action="Controller" method="post">--%>
-<%--                        <input type="hidden" name="command" value="back_after_details"/>--%>
-                        <button class="w3-block w3-round w3-center w3-flat-alizarin w3-button w3-cell w3-right"  name="back" value="afterOrderForm"
-                                style="max-width:100px">${back}</button>
-<%--                    </form>--%>
-            </div>
-            <div class="w3-container  w3-cell" style="width:25%;"> </div>
+            <div class="w3-container  w3-cell" style="width:35%;"> </div>
         </div>
     </form>
 </div>
 <br><br><br><br>
 
-    <c:choose>
-    <c:when test="${requestScope.message eq 'loginBad'}">
-    <h5 class="w3-text-flat-alizarin  w3-center">${bad_login}</h5>
-    </c:when>
-    <c:when test="${requestScope.message eq 'notEqualsPasswords'}">
-    <h5 class="w3-text-flat-alizarin w3-center">${not_equal}</h5>
-    </c:when>
-    <c:when test="${requestScope.message eq 'emptyLogin'}">
-    <h5 class="w3-text-flat-alizarin w3-center">${empty_login}</h5>
-    </c:when>
-    <c:when test="${requestScope.message eq 'emptyPassword'}">
-    <h5 class="w3-text-flat-alizarin w3-center">${empty_password}</h5>
-    </c:when>
-    <c:when test="${requestScope.message eq 'emptyTransport'}">
-    <h5 class="w3-text-flat-alizarin w3-center">${empty_transport}</h5>
-    </c:when>
-    <c:when test="${requestScope.message eq 'emptyGoods'}">
-    <h5 class="w3-text-flat-alizarin w3-center">${empty_goods}</h5>
-    </c:when>
-    </c:choose>
 
 <footer class="main-footer">
     ${main_footer}
@@ -187,6 +159,12 @@
         -webkit-background-size: 100%;
         -o-background-size: 100%;
         background-size: 100%;
+    }
+    input:required:valid {
+        border-color: green;
+    }
+    input:required:invalid {
+        border-color: red;
     }
 </style>
 </html>

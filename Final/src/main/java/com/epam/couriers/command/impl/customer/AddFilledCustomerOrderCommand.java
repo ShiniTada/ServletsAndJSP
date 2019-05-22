@@ -9,6 +9,7 @@ import com.epam.couriers.entity.CustomerOrder;
 import com.epam.couriers.entity.User;
 import com.epam.couriers.service.CourierService;
 import com.epam.couriers.service.CustomerService;
+import com.epam.couriers.service.errormessage.AllErrorMessages;
 import com.epam.couriers.service.exception.ServiceException;
 import com.epam.couriers.service.impl.CourierServiceImpl;
 import com.epam.couriers.service.impl.CustomerServiceImpl;
@@ -32,12 +33,32 @@ public class AddFilledCustomerOrderCommand implements Command {
         int courierId = courierRecord.getCourier().getId();
 
         String whatDeliver = request.getParameter(GeneralConstant.WHAT_DELIVER);
+        if(whatDeliver.equals("")) {
+            return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
+        }
         String from = request.getParameter(GeneralConstant.FROM);
+        if(from.equals("")) {
+            return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
+        }
         String to = request.getParameter(GeneralConstant.TO);
+        if(to.equals("")) {
+            return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
+        }
+        if(request.getParameter(GeneralConstant.DELIVERY_DATE) == null) {
+            return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
+        }
         String date = request.getParameter(GeneralConstant.DELIVERY_DATE);
-        String numberOfGoods = request.getParameter(GeneralConstant.NUMBER_OF_GOODS);
+        if(date.equals("")) {
+            return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
+        }
+        if(request.getParameter(GeneralConstant.NUMBER_OF_GOODS) == null) {
+            return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
+        }
+        String numberOfGoods =request.getParameter(GeneralConstant.NUMBER_OF_GOODS);
+        if(request.getParameter(GeneralConstant.WEIGHT) == null) {
+            return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
+        }
         String weight = request.getParameter(GeneralConstant.WEIGHT);
-
         CustomerService customerService = new CustomerServiceImpl();
         CourierService courierService = new CourierServiceImpl();
         try {

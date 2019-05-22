@@ -37,7 +37,10 @@ public class HeadNameTag extends TagSupport {
                         " \n" +
                         "          <button class=\" w3-button w3-padding-large\">" + login + "</button>\n" +
                         "         <div class=\"w3-dropdown-content w3-bar-block w3-card-4\">\n" +
-                        "             <a href=\"#\" class=\"w3-bar-item w3-button w3-text-teal \">" + settings + "</a>\n" +
+                        "             <form action=\"Controller\" method=\"get\">\n" +
+                        "                  <input type=\"hidden\" name=\"command\" value=\"open-settings\"/>\n" +
+                        "                 <button class=\"w3-button w3-right w3-bar-item   w3-text-teal w3-white w3-hover-light-grey w3-padding-large\" >" + settings + "</button>\n" +
+                        "              </form>\n" +
                         "             <form action=\"Controller\" method=\"post\">\n" +
                         "                  <input type=\"hidden\" name=\"command\" value=\"sign-out\"/>\n" +
                         "                 <button class=\"w3-button w3-right w3-bar-item   w3-text-teal w3-white w3-hover-light-grey w3-padding-large\" >" + sign_out + "</button>\n" +

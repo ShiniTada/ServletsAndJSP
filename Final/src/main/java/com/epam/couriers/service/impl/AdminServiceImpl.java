@@ -55,12 +55,12 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<CourierRecord> getAllCouriersRecords() throws ServiceException {
+    public List<CourierRecord> findWithLimitCouriersRecords(int startIndex, int countOfCouriersOnOnePage) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         try {
             CourierDAO courierDAO = DAOFactory.getCourierDAO();
             transactionManager.beginTransaction(courierDAO);
-            List<CourierRecord> courierRecords = courierDAO.getAllCouriersRecords();
+            List<CourierRecord> courierRecords = courierDAO.findWithLimitCouriersRecords(startIndex, countOfCouriersOnOnePage);
             transactionManager.commit();
             transactionManager.endTransaction();
             return  courierRecords;
@@ -76,12 +76,33 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<CustomerOrder> getCustomerOrders() throws ServiceException {
+    public List<CourierRecord> getCouriersRecordsForCustomer() throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         try {
-            AdminDAO adminDAO = DAOFactory.getAdminDAO();
-            transactionManager.beginTransaction(adminDAO);
-            List<CustomerOrder> customerOrders = adminDAO.getCustomerOrders();
+            CourierDAO courierDAO = DAOFactory.getCourierDAO();
+            transactionManager.beginTransaction(courierDAO);
+            List<CourierRecord> courierRecords = courierDAO.getCouriersRecordsForCustomer();
+            transactionManager.commit();
+            transactionManager.endTransaction();
+            return  courierRecords;
+        } catch (DAOException e) {
+            try {
+                transactionManager.rollback();
+                transactionManager.endTransaction();
+            } catch (DAOException ex) {
+                throw new ServiceException("Error access database", e);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<CustomerOrder> findWithLimitCustomerOrders(int startIndex, int countOfOrdersOnOnePage) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        try {
+            CustomerDAO customerDAO = DAOFactory.getCustomerDAO();
+            transactionManager.beginTransaction(customerDAO);
+            List<CustomerOrder> customerOrders = customerDAO.findWithLimitCustomerOrders(startIndex, countOfOrdersOnOnePage);
             transactionManager.commit();
             transactionManager.endTransaction();
             return  customerOrders;
@@ -97,16 +118,15 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<Transport> getCourierTransports() throws ServiceException {
+    public List<Goods> findWithLimitGoods(int startIndex, int countOfGoodsOnOnePage) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         try {
-            TransportDAO transportDAO = DAOFactory.getTransportDAO();
-            transactionManager.beginTransaction(transportDAO);
-            List<Transport> transport = transportDAO.getCourierTransports();
+            GoodsDAO goodsDAO = DAOFactory.getGoodsDAO();
+            transactionManager.beginTransaction(goodsDAO);
+            List<Goods> goods = goodsDAO.findWithLimitGoods(startIndex, countOfGoodsOnOnePage);
             transactionManager.commit();
             transactionManager.endTransaction();
-            return  transport;
-
+            return  goods;
         } catch (DAOException e) {
             try {
                 transactionManager.rollback();
@@ -119,16 +139,15 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<Goods> getCourierGoods() throws ServiceException {
+    public List<Transport> findWithLimitTransport(int startIndex, int countOfTransportOnOnePage) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
         try {
-            GoodsDAO goodsDAO = DAOFactory.getGoodsDAO();
-            transactionManager.beginTransaction(goodsDAO);
-            List<Goods> goods = goodsDAO.getCourierGoods();
+            TransportDAO transportDAO = DAOFactory.getTransportDAO();
+            transactionManager.beginTransaction(transportDAO);
+            List<Transport> transport = transportDAO.findWithLimitTransport(startIndex, countOfTransportOnOnePage);
             transactionManager.commit();
             transactionManager.endTransaction();
-            return goods;
-
+            return transport;
         } catch (DAOException e) {
             try {
                 transactionManager.rollback();
@@ -139,6 +158,112 @@ public class AdminServiceImpl implements AdminService {
         }
         return null;
     }
+
+    @Override
+    public int findTotalCountOfCourierRecords() throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        try {
+            CourierDAO courierDAO = DAOFactory.getCourierDAO();
+            transactionManager.beginTransaction(courierDAO);
+            int count = courierDAO.findTotalCountOfCourierRecords();
+            transactionManager.commit();
+            transactionManager.endTransaction();
+            return  count;
+        } catch (DAOException e) {
+            try {
+                transactionManager.rollback();
+                transactionManager.endTransaction();
+            } catch (DAOException ex) {
+                throw new ServiceException("Error access database", e);
+            }
+        }
+        return 0;
+    }
+
+    @Override
+    public int findTotalCountOfCourierRecordsForCouriers() throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        try {
+            CourierDAO courierDAO = DAOFactory.getCourierDAO();
+            transactionManager.beginTransaction(courierDAO);
+            int count = courierDAO.findTotalCountOfCourierRecordsForCustomer();
+            transactionManager.commit();
+            transactionManager.endTransaction();
+            return  count;
+        } catch (DAOException e) {
+            try {
+                transactionManager.rollback();
+                transactionManager.endTransaction();
+            } catch (DAOException ex) {
+                throw new ServiceException("Error access database", e);
+            }
+        }
+        return 0;
+    }
+
+    @Override
+    public int findTotalCountOfCustomerOrders() throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        try {
+            CustomerDAO customerDAO = DAOFactory.getCustomerDAO();
+            transactionManager.beginTransaction(customerDAO);
+            int count = customerDAO.findTotalCountOfCustomerOrders();
+            transactionManager.commit();
+            transactionManager.endTransaction();
+            return  count;
+        } catch (DAOException e) {
+            try {
+                transactionManager.rollback();
+                transactionManager.endTransaction();
+            } catch (DAOException ex) {
+                throw new ServiceException("Error access database", e);
+            }
+        }
+        return 0;
+    }
+
+    @Override
+    public int findTotalCountOfGoods() throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        try {
+            GoodsDAO goodsDAO = DAOFactory.getGoodsDAO();
+            transactionManager.beginTransaction(goodsDAO);
+            int count = goodsDAO.findTotalCountOfGoods();
+            transactionManager.commit();
+            transactionManager.endTransaction();
+            return  count;
+        } catch (DAOException e) {
+            try {
+                transactionManager.rollback();
+                transactionManager.endTransaction();
+            } catch (DAOException ex) {
+                throw new ServiceException("Error access database", e);
+            }
+        }
+        return 0;
+    }
+
+    @Override
+    public int findTotalCountOfTransport() throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        try {
+            TransportDAO transportDAO = DAOFactory.getTransportDAO();
+            transactionManager.beginTransaction(transportDAO);
+            int count = transportDAO.findTotalCountOfTransport();
+            transactionManager.commit();
+            transactionManager.endTransaction();
+            return  count;
+        } catch (DAOException e) {
+            try {
+                transactionManager.rollback();
+                transactionManager.endTransaction();
+            } catch (DAOException ex) {
+                throw new ServiceException("Error access database", e);
+            }
+        }
+        return 0;
+    }
+
 
     @Override
     public void acceptCourier(int courierRecordId) throws ServiceException {
@@ -163,10 +288,36 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public void rejectCourier(int courierRecordId) throws ServiceException {
         TransactionManager transactionManager = new TransactionManager();
+        CourierDAO courierDAO = DAOFactory.getCourierDAO();
+        TransportDAO transportDAO = DAOFactory.getTransportDAO();
+        GoodsDAO goodsDAO = DAOFactory.getGoodsDAO();
         try {
-            CourierDAO courierDAO = DAOFactory.getCourierDAO();
             transactionManager.beginTransaction(courierDAO);
+            transportDAO.delete(courierRecordId);
+            goodsDAO.delete(courierRecordId);
             courierDAO.rejectCourier(courierRecordId);
+
+            transactionManager.commit();
+            transactionManager.endTransaction();
+
+        } catch (DAOException e) {
+            try {
+                transactionManager.rollback();
+                transactionManager.endTransaction();
+            } catch (DAOException ex) {
+                throw new ServiceException("Error access database", e);
+            }
+        }
+    }
+
+    @Override
+    public void blockCourier(int courierRecordId) throws ServiceException {
+        TransactionManager transactionManager = new TransactionManager();
+        CourierDAO courierDAO = DAOFactory.getCourierDAO();
+        try {
+            transactionManager.beginTransaction(courierDAO);
+            courierDAO.blockCourier(courierRecordId);
+
             transactionManager.commit();
             transactionManager.endTransaction();
 

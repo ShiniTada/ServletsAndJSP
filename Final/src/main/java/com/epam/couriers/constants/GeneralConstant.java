@@ -8,7 +8,7 @@ final public class GeneralConstant {
     public static final String DB_PROPERTIES = "db";
 
 
-    public static final String MESSAGE_ATRIBUTE = "message";
+    public static final String MESSAGE_ATTRIBUTE = "message";
 
     public static final String PAGE_ATTRIBUTE = "page";
     public static final String PREVIOUS_PAGE_ATTRIBUTE = "previousPage";
@@ -21,6 +21,10 @@ final public class GeneralConstant {
     public static final String USER_LOGIN = "login";
     public static final String USER_PASSWORD = "password";
     public static final String USER_REPEATED_PASSWORD = "repeatedPassword";
+    public static final String USER_CURRENT_PASSWORD = "currentPassword";
+    public static final String USER_NEW_PASSWORD = "newPassword";
+    public static final String USER_REPEATED_NEW_PASSWORD = "repeatedNewPassword";
+
     public static final String MARK_QUALITY = "markQuality";
     public static final String MARK_POLITENESS = "markPoliteness";
     public static final String MARK_PUNCTUALITY = "markPunctuality";
@@ -38,6 +42,7 @@ final public class GeneralConstant {
     public static final String PRICE = "price";
     public static final String GOOD_DESCRIPTION = "goodsDescription";
     public static final String BACK = "back";
+    public static final String CUSTOMER_HOME = "customerHome";
 
 
     public static final String LIST_GOODS = "listGoods";
@@ -67,10 +72,16 @@ final public class GeneralConstant {
 
     public static final String ACCEPT = "accept";
     public static final String REJECT = "reject";
+    public static final String BLOCK = "block";
+    public static final String UNBLOCK = "unblock";
+    public static final String DELETED_ORDER_ID= "deletedOrderId";
 
 
     public static final String USER = "user";
     public static final String LOCALE = "locale";
+    public static final String PAGE_NUMBER = "pageNumber";
+    public static final String TOTAL_COUNT = "totalCount";
+    public static final String LIMIT_COUNT = "limitCount";
 
     public static final String WHAT_DELIVER = "whatDeliver";
     public static final String NUMBER_OF_GOODS = "numberOfGoods";

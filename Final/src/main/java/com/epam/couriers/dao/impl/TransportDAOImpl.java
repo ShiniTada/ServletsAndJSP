@@ -21,9 +21,15 @@ public class TransportDAOImpl extends TransportDAO {
             "WHERE t.courierRecordId = ?";
 
 
-    private static final String SQL_GET_TRANSPORT_INF = "SELECT t.typeTransport, u.login from Transport t " +
+    private static final String SQL_GET_TRANSPORT_INF_WITH_LIMIT = "SELECT t.typeTransport, u.login from Transport t " +
             "INNER JOIN CourierRecord cr ON t.courierRecordId = cr.courierRecordId " +
-            "INNER JOIN User u ON cr.userId = u.userId  WHERE cr.status = '1' ORDER BY t.typeTransport;";
+            "INNER JOIN User u ON cr.userId = u.userId  WHERE cr.status = '1' OR cr.status = '3' ORDER BY t.typeTransport LIMIT ?,?;;";
+
+    private static final String SQL_GET_COUNT_OF_TRANSPORT = "SELECT COUNT(transportId) " +
+            "FROM transport ORDER BY transportId;";
+
+    private static final String SQL_DELETE_TRANSPORT_ONE_CUSTOMER = "DELETE FROM transport WHERE courierRecordId = ?";
+
 
 
     @Override
@@ -61,9 +67,11 @@ public class TransportDAOImpl extends TransportDAO {
 
 
     @Override
-    public List<Transport> getCourierTransports() throws DAOException {
+    public List<Transport> findWithLimitTransport(int startIndex, int countOfTransportOnOnePage) throws DAOException {
         List<Transport> listCourierTransports = new ArrayList<>();
-        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_TRANSPORT_INF)) {
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_TRANSPORT_INF_WITH_LIMIT)) {
+            preparedStatement.setInt(1, startIndex);
+            preparedStatement.setInt(2, countOfTransportOnOnePage);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 Transport transport = new Transport();
@@ -74,6 +82,33 @@ public class TransportDAOImpl extends TransportDAO {
             }
             return listCourierTransports;
 
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    @Override
+    public int findTotalCountOfTransport() throws DAOException {
+        int count = 0;
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_COUNT_OF_TRANSPORT)) {
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+            return count;
+
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    @Override
+    public void delete(int courierRecordId) throws DAOException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_TRANSPORT_ONE_CUSTOMER)) {
+            preparedStatement.setInt(1, courierRecordId);
+            if (preparedStatement.executeUpdate() == 0) {
+                throw new SQLException("Deleting transport of courier '"+ courierRecordId + "'  failed, no rows affected.");
+            }
         } catch (SQLException e) {
             throw new DAOException(e);
         }

@@ -41,4 +41,6 @@ public interface CustomerService {
      * Changes the order stratus: delivered -> completed
      */
     void setOrderCompleted(int orderId) throws ServiceException;
+
+    void deleteOrder(int orderId) throws ServiceException;
 }

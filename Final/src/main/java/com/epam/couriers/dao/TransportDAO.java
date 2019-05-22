@@ -3,6 +3,7 @@ package com.epam.couriers.dao;
 import com.epam.couriers.dao.exception.DAOException;
 import com.epam.couriers.entity.Transport;
 import com.epam.couriers.entity.User;
+import com.epam.couriers.service.exception.ServiceException;
 
 import java.util.List;
 
@@ -38,13 +39,24 @@ public  abstract class TransportDAO extends BaseDAO<Transport>{
      * @return  listCourierTransports -  list of courier's transport
      * @throws DAOException if something went wrong
      */
-    public abstract List<Transport> getCourierTransports() throws DAOException;
+    public abstract List<Transport> findWithLimitTransport(int startIndex, int countOfTransportOnOnePage) throws DAOException;
+
+
+    /**
+     * @return count of transport
+     * @throws ServiceException if error happens during execution
+     */
+    public abstract int findTotalCountOfTransport()throws ServiceException, DAOException;
+
+    /**
+     * @param courierRecordId - courier record id
+     * @throws DAOException  if something went wrong
+     */
+    @Override
+    public abstract void delete(int courierRecordId) throws DAOException;
 
     @Override
-    public Transport insert(Transport entity) throws DAOException {
+    public Transport insert(Transport entity){
         return null;
-    }
-    @Override
-    public void delete(int id) throws DAOException {
     }
 }

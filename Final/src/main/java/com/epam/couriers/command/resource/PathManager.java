@@ -30,6 +30,7 @@ public final class PathManager {
 
     public static final String COMMON_COURIER_LIST_PAGE = "page.common_courier_list_page";
     public static final String ORDER_FORM_PAGE = "page.order_form_page";
+    public static final String SETTINGS_PAGE = "page.settings_page";
 
 
 

@@ -4,6 +4,7 @@ import com.epam.couriers.constants.GeneralConstant;
 import com.epam.couriers.dao.CourierDAO;
 import com.epam.couriers.dao.exception.DAOException;
 import com.epam.couriers.entity.*;
+import com.epam.couriers.service.exception.ServiceException;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,11 +18,20 @@ public class CourierDAOImpl extends CourierDAO {
     private static final String QUERY_ADD_NEW_COURIER_RECORD = "INSERT INTO courierrecord (userId, markQuality, markPoliteness, markPunctuality, " +
             "markCommon, status) VALUES (?,?,?,?,?,?);";
     private static final String SQL_GET_COURIER_RECORD_INF = "SELECT courierRecordId, status, markQuality, markPoliteness, markPunctuality," +
-            " markCommon FROM courierRecord WHERE userId= ?";
+            " markCommon FROM courierRecord WHERE userId= ?;";
 
-    private static final String SQL_GET_COURIER_INF = "SELECT cr.courierRecordId, u.login, cr.markCommon " +
+    private static final String SQL_GET_COURIER_INF_WITH_LIMIT = "SELECT cr.courierRecordId, u.login, cr.markCommon " +
+            "FROM courierRecord cr INNER JOIN User u ON cr.userId = u.userId  WHERE (cr.status = '1' OR cr.status = '3') LIMIT ?, ?;";
+
+
+    private static final String SQL_GET_COURIER_INF_FOR_CUSTOMER = "SELECT cr.courierRecordId, u.login, cr.markCommon " +
             "FROM courierRecord cr INNER JOIN User u ON cr.userId = u.userId  WHERE cr.status = '1';";
 
+    private static final String SQL_GET_COUNT_OF_COURIER_RECORDS = "SELECT COUNT(courierRecordId) " +
+            "FROM courierRecord WHERE (status = '1' OR status = '3') ORDER BY courierRecordId;";
+
+    private static final String SQL_GET_COUNT_OF_COURIER_RECORDS_FOR_CUSTOMER = "SELECT COUNT(courierRecordId) " +
+            "FROM courierRecord WHERE status = '1' ORDER BY courierRecordId;";
 
     private static final String SQL_GET_NEW_COURIER_INF = "SELECT cr.courierRecordId, u.login " +
             "FROM courierRecord cr INNER JOIN User u ON cr.userId = u.userId  WHERE cr.status = '0';";
@@ -34,7 +44,6 @@ public class CourierDAOImpl extends CourierDAO {
             "cr.markQuality, cr.markPoliteness, cr.markPunctuality, cr.votesNumber FROM courierRecord cr " +
             "INNER JOIN User u ON cr.userId = u.userId  WHERE u.login = ?";
 
-    private static final String SQL_GET_ORDERS_ID = "SELECT orderId from courier_has_customerorder WHERE courierId = ?";
 
     private static final String SQL_UPDATE_MARKS_AND_VOTES_NUMBER = "UPDATE courierrecord SET markQuality= ?, markPoliteness= ?, markPunctuality= ?," +
             " markCommon= ?, votesNumber=? WHERE courierRecordId = ?";
@@ -109,10 +118,6 @@ public class CourierDAOImpl extends CourierDAO {
         }
     }
 
-    //    private static final String SQL_UPDATE_MARKS_AND_VOTES_NUMBER = "UPDATE courierrecord SET markQuality= ?, markPoliteness= ?, markPunctuality= ?," +
-    //            " markCommon= ?, votesNumber=? WHERE courierRecordId = ?";
-    //
-
     @Override
     public void updateMarks(int courierRecordId, double newQuality, double newPoliteness, double newPunctuality, double newCommon, int newVotesNumber) throws DAOException {
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_MARKS_AND_VOTES_NUMBER)) {
@@ -149,10 +154,13 @@ public class CourierDAOImpl extends CourierDAO {
             throw new DAOException(e);
         }
     }
+
     @Override
-    public List<CourierRecord> getAllCouriersRecords() throws DAOException {
+    public List<CourierRecord> findWithLimitCouriersRecords(int startIndex, int countOfCouriersOnOnePage) throws DAOException {
         List<CourierRecord> listCourierRecords = new ArrayList<>();
-        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_COURIER_INF)) {
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_COURIER_INF_WITH_LIMIT)) {
+            preparedStatement.setInt(1, startIndex);
+            preparedStatement.setInt(2, countOfCouriersOnOnePage);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 CourierRecord courierRecord = new CourierRecord();
@@ -168,6 +176,57 @@ public class CourierDAOImpl extends CourierDAO {
             throw new DAOException(e);
         }
     }
+
+    @Override
+    public List<CourierRecord> getCouriersRecordsForCustomer() throws DAOException {
+        List<CourierRecord> listCourierRecords = new ArrayList<>();
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_COURIER_INF_FOR_CUSTOMER)) {
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                CourierRecord courierRecord = new CourierRecord();
+                courierRecord.setId(rs.getInt(GeneralConstant.COURIER_RECORD_ID));
+                courierRecord.setCourier(new User(rs.getString(GeneralConstant.USER_LOGIN)));
+                courierRecord.setMarkCommon(rs.getDouble(GeneralConstant.MARK_COMMON));
+                courierRecord.setStatus(1);
+                listCourierRecords.add(courierRecord);
+            }
+            return listCourierRecords;
+
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    @Override
+    public int findTotalCountOfCourierRecords() throws DAOException {
+        int count = 0;
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_COUNT_OF_COURIER_RECORDS)) {
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+            return count;
+
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    @Override
+    public int findTotalCountOfCourierRecordsForCustomer() throws DAOException {
+        int count = 0;
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_COUNT_OF_COURIER_RECORDS_FOR_CUSTOMER)) {
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+            return count;
+
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
 
     @Override
     public List<CourierRecord> getNewCouriersRecords() throws DAOException {
@@ -187,21 +246,7 @@ public class CourierDAOImpl extends CourierDAO {
         }
     }
 
-    @Override
-    public List<Integer> getAllOrderId(int courierId) throws DAOException {
-        List<Integer> allOrderId = new ArrayList<>();
-        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_ORDERS_ID)) {
-            preparedStatement.setInt(1, courierId);
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                allOrderId.add(rs.getInt(GeneralConstant.ORDER_ID));
-            }
-            return allOrderId;
 
-        } catch (SQLException e) {
-            throw new DAOException(e);
-        }
-    }
 
     @Override
     public void acceptCourier(int courierRecordId) throws DAOException {
@@ -220,6 +265,19 @@ public class CourierDAOImpl extends CourierDAO {
     public void rejectCourier(int courierRecordId) throws DAOException {
         try (PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE_COURIER_RECORD_STATUS)) {
             preparedStatement.setInt(1, 2);
+            preparedStatement.setInt(2,courierRecordId);
+            if (preparedStatement.executeUpdate() == 0) {
+                throw new SQLException("Creating bundle failed, no rows affected.");
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    @Override
+    public void blockCourier(int courierRecordId) throws DAOException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE_COURIER_RECORD_STATUS)) {
+            preparedStatement.setInt(1, 3);
             preparedStatement.setInt(2,courierRecordId);
             if (preparedStatement.executeUpdate() == 0) {
                 throw new SQLException("Creating bundle failed, no rows affected.");
