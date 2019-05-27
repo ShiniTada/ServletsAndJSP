@@ -4,7 +4,6 @@ import com.epam.couriers.command.Command;
 import com.epam.couriers.command.exception.CommandException;
 import com.epam.couriers.command.resource.PathManager;
 import com.epam.couriers.constants.GeneralConstant;
-import com.epam.couriers.entity.CourierRecord;
 import com.epam.couriers.entity.CustomerOrder;
 import com.epam.couriers.entity.User;
 import com.epam.couriers.service.CourierService;
@@ -16,6 +15,9 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This command get to courier the opportunity to accept or reject customer order
+ */
 public class AcceptOrderCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
@@ -24,7 +26,7 @@ public class AcceptOrderCommand implements Command {
         String page;
         try {
             CourierService courierService = new CourierServiceImpl();
-            if(request.getParameter(GeneralConstant.ACCEPT) != null) {
+            if (request.getParameter(GeneralConstant.ACCEPT) != null) {
                 courierService.acceptOrder(Integer.parseInt(request.getParameter(GeneralConstant.ACCEPT)));
             } else {
                 courierService.rejectOrder(Integer.parseInt(request.getParameter(GeneralConstant.REJECT)));
@@ -32,13 +34,13 @@ public class AcceptOrderCommand implements Command {
             session.removeAttribute(GeneralConstant.EXISTED_ORDERS);
             session.removeAttribute(GeneralConstant.COMPLETED_ORDERS);
 
-           List<CustomerOrder> listCustomerOrder = courierService.getCustomerOrdersOfOneCourier(user.getLogin());
-           List<CustomerOrder> existedOrders = new ArrayList<>();
+            List<CustomerOrder> listCustomerOrder = courierService.getCustomerOrdersOfOneCourier(user.getLogin());
+            List<CustomerOrder> existedOrders = new ArrayList<>();
             List<CustomerOrder> completedOrders = new ArrayList<>();
-            for(CustomerOrder order : listCustomerOrder){
-                if(order.getStatus().getValue().equals(GeneralConstant.POSTED) || order.getStatus().getValue().equals(GeneralConstant.DELIVERED)){
+            for (CustomerOrder order : listCustomerOrder) {
+                if (order.getStatus().getValue().equals(GeneralConstant.POSTED) || order.getStatus().getValue().equals(GeneralConstant.DELIVERED)) {
                     existedOrders.add(order);
-                }else {
+                } else {
                     completedOrders.add(order);
                 }
             }

@@ -6,6 +6,8 @@ import com.epam.couriers.dao.exception.DAOException;
 import com.epam.couriers.entity.Transport;
 import com.epam.couriers.entity.TransportEnum;
 import com.epam.couriers.entity.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TransportDAOImpl extends TransportDAO {
+
+    private static final Logger LOGGER = LogManager.getLogger(TransportDAO.class);
+
     private static final String QUERY_ADD_NEW_COURIER_TRANSPORT = "INSERT INTO transport (typeTransport, courierRecordId) " +
             "VALUES (?,?);";
 
@@ -31,14 +36,14 @@ public class TransportDAOImpl extends TransportDAO {
     private static final String SQL_DELETE_TRANSPORT_ONE_CUSTOMER = "DELETE FROM transport WHERE courierRecordId = ?";
 
 
-
     @Override
     public void insert(int courierRecordId, String transport) throws DAOException {
         try (PreparedStatement preparedStatement = connection.prepareStatement(QUERY_ADD_NEW_COURIER_TRANSPORT)) {
-            preparedStatement.setString(1,transport);
+            preparedStatement.setString(1, transport);
             preparedStatement.setInt(2, courierRecordId);
             if (preparedStatement.executeUpdate() == 0) {
-                throw new SQLException("Creating courierRecord failed, no rows affected.");
+                LOGGER.warn("Insert transport failed, no rows affected.");
+                throw new SQLException("Insert transport failed, no rows affected.");
             }
         } catch (SQLException e) {
             throw new DAOException(e);
@@ -48,8 +53,8 @@ public class TransportDAOImpl extends TransportDAO {
     @Override
     public List<Transport> getTransportsOfOneCourier(int courierRecordId) throws DAOException {
         List<Transport> listCourierTransports = new ArrayList<>();
-        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_TRANSPORT_INF_OF_ONE_COURIER )) {
-            preparedStatement.setInt(1,courierRecordId);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_TRANSPORT_INF_OF_ONE_COURIER)) {
+            preparedStatement.setInt(1, courierRecordId);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 Transport transport = new Transport();
@@ -69,7 +74,7 @@ public class TransportDAOImpl extends TransportDAO {
     @Override
     public List<Transport> findWithLimitTransport(int startIndex, int countOfTransportOnOnePage) throws DAOException {
         List<Transport> listCourierTransports = new ArrayList<>();
-        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_TRANSPORT_INF_WITH_LIMIT)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_TRANSPORT_INF_WITH_LIMIT)) {
             preparedStatement.setInt(1, startIndex);
             preparedStatement.setInt(2, countOfTransportOnOnePage);
             ResultSet rs = preparedStatement.executeQuery();
@@ -90,7 +95,7 @@ public class TransportDAOImpl extends TransportDAO {
     @Override
     public int findTotalCountOfTransport() throws DAOException {
         int count = 0;
-        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_COUNT_OF_TRANSPORT)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_COUNT_OF_TRANSPORT)) {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 count = rs.getInt(1);
@@ -107,7 +112,8 @@ public class TransportDAOImpl extends TransportDAO {
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_TRANSPORT_ONE_CUSTOMER)) {
             preparedStatement.setInt(1, courierRecordId);
             if (preparedStatement.executeUpdate() == 0) {
-                throw new SQLException("Deleting transport of courier '"+ courierRecordId + "'  failed, no rows affected.");
+                LOGGER.warn("Deleting transport of courier '\"+ courierRecordId + \"' failed, no rows affected.");
+                throw new SQLException("Deleting transport of courier '" + courierRecordId + "'  failed, no rows affected.");
             }
         } catch (SQLException e) {
             throw new DAOException(e);

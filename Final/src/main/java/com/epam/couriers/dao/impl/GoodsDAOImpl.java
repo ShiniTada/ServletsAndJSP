@@ -3,8 +3,12 @@ package com.epam.couriers.dao.impl;
 import com.epam.couriers.constants.GeneralConstant;
 import com.epam.couriers.dao.GoodsDAO;
 import com.epam.couriers.dao.exception.DAOException;
-import com.epam.couriers.entity.*;
-import com.epam.couriers.service.exception.ServiceException;
+import com.epam.couriers.entity.Goods;
+import com.epam.couriers.entity.GoodsEnum;
+import com.epam.couriers.entity.TransportEnum;
+import com.epam.couriers.entity.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GoodsDAOImpl extends GoodsDAO {
+
+    private static final Logger LOGGER = LogManager.getLogger(GoodsDAOImpl.class);
+
     private static final String QUERY_ADD_NEW_COURIER_GOODS = "INSERT INTO goods (typeGoods, courierRecordId) VALUES (?,?);";
 
     private static final String SQL_GET_GOODS_INF_WITH_LIMIT = "SELECT g.typeGoods, u.login FROM Goods g " +
@@ -33,7 +40,8 @@ public class GoodsDAOImpl extends GoodsDAO {
             preparedStatement.setString(1, goods);
             preparedStatement.setInt(2, courierRecordId);
             if (preparedStatement.executeUpdate() == 0) {
-                throw new SQLException("Creating courierRecord failed, no rows affected.");
+                LOGGER.warn("Insert goods failed, no rows affected.");
+                throw new SQLException("Insert goods  failed, no rows affected.");
             }
         } catch (SQLException e) {
             throw new DAOException(e);
@@ -43,8 +51,8 @@ public class GoodsDAOImpl extends GoodsDAO {
     @Override
     public List<Goods> getGoodsOfOneCourier(int courierRecordId) throws DAOException {
         List<Goods> listCourierGoods = new ArrayList<>();
-        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_GOODS_INF_OF_ONE_COURIER)) {
-            preparedStatement.setInt(1,courierRecordId);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_GOODS_INF_OF_ONE_COURIER)) {
+            preparedStatement.setInt(1, courierRecordId);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 Goods goods = new Goods();
@@ -63,7 +71,7 @@ public class GoodsDAOImpl extends GoodsDAO {
     @Override
     public List<Goods> findWithLimitGoods(int startIndex, int countOfGoodsOnOnePage) throws DAOException {
         List<Goods> listCourierGoods = new ArrayList<>();
-        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_GOODS_INF_WITH_LIMIT)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_GOODS_INF_WITH_LIMIT)) {
             preparedStatement.setInt(1, startIndex);
             preparedStatement.setInt(2, countOfGoodsOnOnePage);
             ResultSet rs = preparedStatement.executeQuery();
@@ -84,7 +92,7 @@ public class GoodsDAOImpl extends GoodsDAO {
     @Override
     public int findTotalCountOfGoods() throws DAOException {
         int count = 0;
-        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_COUNT_OF_GOODS)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_COUNT_OF_GOODS)) {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 count = rs.getInt(1);
@@ -101,7 +109,8 @@ public class GoodsDAOImpl extends GoodsDAO {
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_GOODS_ONE_CUSTOMER)) {
             preparedStatement.setInt(1, courierRecordId);
             if (preparedStatement.executeUpdate() == 0) {
-                throw new SQLException("Deleting goods of courier '"+ courierRecordId + "'  failed, no rows affected.");
+                LOGGER.warn("Deleting goods of courier '\"+ courierRecordId + \"' failed, no rows affected.");
+                throw new SQLException("Deleting goods of courier '" + courierRecordId + "'  failed, no rows affected.");
             }
         } catch (SQLException e) {
             throw new DAOException(e);

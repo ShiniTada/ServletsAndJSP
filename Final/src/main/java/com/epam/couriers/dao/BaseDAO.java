@@ -2,8 +2,8 @@ package com.epam.couriers.dao;
 
 
 import com.epam.couriers.dao.connectionpool.ProxyConnection;
-import com.epam.couriers.entity.Entity;
 import com.epam.couriers.dao.exception.DAOException;
+import com.epam.couriers.entity.Entity;
 
 /**
  * Base interface for all DAO's
@@ -11,6 +11,7 @@ import com.epam.couriers.dao.exception.DAOException;
 public abstract class BaseDAO<E extends Entity> {
 
     protected ProxyConnection connection;
+
     /**
      * Inserts new answer into database
      *
@@ -18,7 +19,7 @@ public abstract class BaseDAO<E extends Entity> {
      * @return {@link Entity} entity with all filled properties
      * @throws DAOException if something went wrong
      */
-    public abstract  E insert(E entity) throws DAOException;
+    public abstract E insert(E entity) throws DAOException;
 
     /**
      * Removes entity with the specified id

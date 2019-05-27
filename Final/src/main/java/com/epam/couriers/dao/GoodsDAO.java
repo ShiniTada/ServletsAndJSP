@@ -12,30 +12,31 @@ public abstract class GoodsDAO extends BaseDAO<Goods> {
      * Inserts goods into database
      *
      * @param courierRecordId - id of owner
-     * @param  goods - type goods
+     * @param goods           - type goods
      * @throws DAOException if something went wrong
      */
-    public  abstract void insert(int courierRecordId, String goods) throws DAOException;
+    public abstract void insert(int courierRecordId, String goods) throws DAOException;
 
     /**
      * Get list of type goods which use one courier.
-     *
+     * <p>
      * This method get only:
-     *      *               <br> - {@link Goods #typeTransport}
-     *      *               <br> - {@link User #name}
+     * *               <br> - {@link Goods #typeTransport}
+     * *               <br> - {@link User #name}
      *
-     * @return  listCourierGoods -  list of courier goods
+     * @return listCourierGoods -  list of courier goods
      * @throws DAOException if something went wrong
      */
-    public  abstract List<Goods> getGoodsOfOneCourier(int courierRecordId) throws DAOException;
+    public abstract List<Goods> getGoodsOfOneCourier(int courierRecordId) throws DAOException;
+
     /**
      * Get list of type goods which couriers deliver.
-     *
+     * <p>
      * This method get only:
-     *      *               <br> - {@link Goods #typeGoods}
-     *      *               <br> - {@link User #name}
+     * *               <br> - {@link Goods #typeGoods}
+     * *               <br> - {@link User #name}
      *
-     * @return  listCourierTransports -  list of courier's transports
+     * @return listCourierTransports -  list of courier's transports
      * @throws DAOException if something went wrong
      */
     public abstract List<Goods> findWithLimitGoods(int startIndex, int countOfGoodsOnOnePage) throws DAOException;
@@ -44,17 +45,17 @@ public abstract class GoodsDAO extends BaseDAO<Goods> {
      * @return count of goods
      * @throws ServiceException if error happens during execution
      */
-    public abstract int findTotalCountOfGoods()throws ServiceException, DAOException;
+    public abstract int findTotalCountOfGoods() throws ServiceException, DAOException;
 
     /**
      * @param courierRecordId - courier record id
-     * @throws DAOException  if something went wrong
+     * @throws DAOException if something went wrong
      */
     @Override
     public abstract void delete(int courierRecordId) throws DAOException;
 
     @Override
-    public Goods insert(Goods entity){
+    public Goods insert(Goods entity) {
         return null;
     }
 }

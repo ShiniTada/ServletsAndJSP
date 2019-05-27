@@ -136,8 +136,6 @@ class Paginator {
 
     /**
      * Generate previous link.
-     *
-     * @param builder
      */
     private void generatePreviousLink(StringBuilder builder) {
         generateLink(builder, 1, 1, pageNumber - 1);
@@ -145,9 +143,6 @@ class Paginator {
 
     /**
      * Generate next link.
-     *
-     * @param builder
-     * @param lastPage asdasdasd
      */
     private void generateNextLink(StringBuilder builder, int lastPage) {
         generateLink(builder, pageNumber, lastPage, pageNumber + 1);

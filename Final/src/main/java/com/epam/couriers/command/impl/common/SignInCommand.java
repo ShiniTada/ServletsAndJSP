@@ -22,7 +22,7 @@ import java.util.List;
 
 
 /**
- * Sign in user on site
+ * Sign in customer or courier on site
  */
 public class SignInCommand implements Command {
 
@@ -34,75 +34,75 @@ public class SignInCommand implements Command {
         HttpSession session = request.getSession();
         try {
             User user;
-                UserService userService = new UserServiceImpl(DAOFactory.getUserDAO());
-                user = userService.logIn(request.getParameter(GeneralConstant.USER_LOGIN), request.getParameter(GeneralConstant.USER_PASSWORD));
-                if (user != null) {
-                    session.removeAttribute(GeneralConstant.LIST_USERS);
-                    session.setAttribute(GeneralConstant.USER, user);
+            UserService userService = new UserServiceImpl(DAOFactory.getUserDAO());
+            user = userService.logIn(request.getParameter(GeneralConstant.USER_LOGIN), request.getParameter(GeneralConstant.USER_PASSWORD));
+            if (user != null) {
+                session.removeAttribute(GeneralConstant.LIST_USERS);
+                session.setAttribute(GeneralConstant.USER, user);
 
-                    List<CustomerOrder> listCustomerOrder;
-                    List<CustomerOrder> existedOrders;
-                    List<CustomerOrder>  completedOrders;
-                    CourierService courierService;
-                    LOGGER.debug("User \"" + user.getLogin() + "\" signed in");
-                    session.setAttribute(GeneralConstant.PAGE_NUMBER, 1);
-                    switch (user.getRole().getValue()) {
-                        case "admin":
-                            page = PathManager.getProperty(PathManager.ADMIN_PAGE);
-                            break;
-                        case "courier":
-                            courierService = new CourierServiceImpl();
-                            CourierRecord courierRecord = courierService.getCourierRecord(user.getId());
-                            List<Transport> transport = courierService.getTransportsOfOneCourier(courierRecord.getId());
-                            List<String> listTransport = new ArrayList<>();
-                            for (Transport t : transport){
-                                listTransport.add(t.getTypeTransport().getValue());
+                List<CustomerOrder> listCustomerOrder;
+                List<CustomerOrder> existedOrders;
+                List<CustomerOrder> completedOrders;
+                CourierService courierService;
+                LOGGER.debug("User \"" + user.getLogin() + "\" signed in");
+                session.setAttribute(GeneralConstant.PAGE_NUMBER, 1);
+                switch (user.getRole().getValue()) {
+                    case "admin":
+                        page = PathManager.getProperty(PathManager.ADMIN_PAGE);
+                        break;
+                    case "courier":
+                        courierService = new CourierServiceImpl();
+                        CourierRecord courierRecord = courierService.getCourierRecord(user.getId());
+                        List<Transport> transport = courierService.getTransportsOfOneCourier(courierRecord.getId());
+                        List<String> listTransport = new ArrayList<>();
+                        for (Transport t : transport) {
+                            listTransport.add(t.getTypeTransport().getValue());
+                        }
+                        List<Goods> goods = courierService.getGoodsOfOneCourier(courierRecord.getId());
+                        List<String> listGoods = new ArrayList<>();
+                        for (Goods g : goods) {
+                            listGoods.add(g.getTypeGoods().getValue());
+                        }
+                        listCustomerOrder = courierService.getCustomerOrdersOfOneCourier(user.getLogin());
+                        existedOrders = new ArrayList<>();
+                        completedOrders = new ArrayList<>();
+                        for (CustomerOrder order : listCustomerOrder) {
+                            if (order.getStatus().getValue().equals("posted") || order.getStatus().getValue().equals("delivered")) {
+                                existedOrders.add(order);
+                            } else {
+                                completedOrders.add(order);
                             }
-                            List<Goods> goods = courierService.getGoodsOfOneCourier(courierRecord.getId());
-                            List<String> listGoods = new ArrayList<>();
-                            for (Goods g : goods){
-                                listGoods.add(g.getTypeGoods().getValue());
-                            }
-                            listCustomerOrder = courierService.getCustomerOrdersOfOneCourier(user.getLogin());
-                            existedOrders = new ArrayList<>();
-                            completedOrders = new ArrayList<>();
-                            for(CustomerOrder order : listCustomerOrder){
-                                if(order.getStatus().getValue().equals("posted") || order.getStatus().getValue().equals("delivered")){
-                                    existedOrders.add(order);
-                                }else {
-                                    completedOrders.add(order);
-                                }
-                            }
-                            session.setAttribute(GeneralConstant.COURIER_RECORD, courierRecord);
-                            session.setAttribute(GeneralConstant.LIST_TRANSPORT, listTransport);
-                            session.setAttribute(GeneralConstant.LIST_GOODS, listGoods);
-                            session.setAttribute(GeneralConstant.EXISTED_ORDERS, existedOrders);
-                            session.setAttribute(GeneralConstant.COMPLETED_ORDERS, completedOrders);
-                            page = PathManager.getProperty(PathManager.COURIER_PAGE);
-                            break;
-                        case "customer":
-                            courierService = new CourierServiceImpl();
-                            List<CustomerOrder> orders = courierService.getCustomerOrdersOfOneCustomer(user.getLogin());
+                        }
+                        session.setAttribute(GeneralConstant.COURIER_RECORD, courierRecord);
+                        session.setAttribute(GeneralConstant.LIST_TRANSPORT, listTransport);
+                        session.setAttribute(GeneralConstant.LIST_GOODS, listGoods);
+                        session.setAttribute(GeneralConstant.EXISTED_ORDERS, existedOrders);
+                        session.setAttribute(GeneralConstant.COMPLETED_ORDERS, completedOrders);
+                        page = PathManager.getProperty(PathManager.COURIER_PAGE);
+                        break;
+                    case "customer":
+                        courierService = new CourierServiceImpl();
+                        List<CustomerOrder> orders = courierService.getCustomerOrdersOfOneCustomer(user.getLogin());
 
-                            existedOrders = new ArrayList<>();
-                            completedOrders = new ArrayList<>();
-                            for(CustomerOrder order : orders){
-                                if(order.getStatus().getValue().equals("posted") || order.getStatus().getValue().equals("delivered")){
-                                    existedOrders.add(order);
-                                }else {
-                                    completedOrders.add(order);
-                                }
+                        existedOrders = new ArrayList<>();
+                        completedOrders = new ArrayList<>();
+                        for (CustomerOrder order : orders) {
+                            if (order.getStatus().getValue().equals("posted") || order.getStatus().getValue().equals("delivered")) {
+                                existedOrders.add(order);
+                            } else {
+                                completedOrders.add(order);
                             }
-                            session.setAttribute(GeneralConstant.EXISTED_ORDERS, existedOrders);
-                            session.setAttribute(GeneralConstant.COMPLETED_ORDERS, completedOrders);
-                            page = PathManager.getProperty(PathManager.CUSTOMER_PAGE);
-                            session.setAttribute(GeneralConstant.CUSTOMER_HOME, page);
-                            break;
-                    }
-                } else {
-                    request.setAttribute(GeneralConstant.MESSAGE_ATTRIBUTE, AllErrorMessages.NOT_CORRECT_LOGIN_OR_PASSWORD);
-                    page = PathManager.getProperty(PathManager.SIGN_IN_PAGE);
+                        }
+                        session.setAttribute(GeneralConstant.EXISTED_ORDERS, existedOrders);
+                        session.setAttribute(GeneralConstant.COMPLETED_ORDERS, completedOrders);
+                        page = PathManager.getProperty(PathManager.CUSTOMER_PAGE);
+                        session.setAttribute(GeneralConstant.CUSTOMER_HOME, page);
+                        break;
                 }
+            } else {
+                request.setAttribute(GeneralConstant.MESSAGE_ATTRIBUTE, AllErrorMessages.NOT_CORRECT_LOGIN_OR_PASSWORD);
+                page = PathManager.getProperty(PathManager.SIGN_IN_PAGE);
+            }
         } catch (ServiceException e) {
             throw new CommandException(e);
         }

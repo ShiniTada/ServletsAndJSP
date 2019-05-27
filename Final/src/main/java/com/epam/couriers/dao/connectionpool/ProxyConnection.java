@@ -10,6 +10,7 @@ final public class ProxyConnection implements Connection, AutoCloseable {
 
     /**
      * Default constructor.
+     *
      * @param connection connection
      */
     ProxyConnection(Connection connection) {
@@ -38,7 +39,7 @@ final public class ProxyConnection implements Connection, AutoCloseable {
 
     @Override
     public boolean getAutoCommit() throws SQLException {
-       return connection.getAutoCommit();
+        return connection.getAutoCommit();
     }
 
     @Override

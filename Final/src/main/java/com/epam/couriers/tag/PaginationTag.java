@@ -1,20 +1,14 @@
 package com.epam.couriers.tag;
 
 import com.epam.couriers.constants.GeneralConstant;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
 
-@SuppressWarnings("serial")
 public class PaginationTag extends TagSupport {
-
-    private static final Logger LOGGER = LogManager.getLogger();
 
     /**
      * The name of the command to correctly form the request
@@ -45,14 +39,14 @@ public class PaginationTag extends TagSupport {
 
     @Override
     public int doStartTag() throws JspException {
-        if(limit >= total) {
+        if (limit >= total) {
             return SKIP_BODY;
         }
         int pageParam = 0;
         HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
         Paginator paginator = new Paginator(limit, total, command);
 
-        if(request.getParameter(GeneralConstant.PAGE_NUMBER) != null) {
+        if (request.getParameter(GeneralConstant.PAGE_NUMBER) != null) {
             pageParam = Integer.parseInt(request.getParameter(GeneralConstant.PAGE_NUMBER));
         } else {
             pageParam = (Integer) request.getSession().getAttribute(GeneralConstant.PAGE_NUMBER);

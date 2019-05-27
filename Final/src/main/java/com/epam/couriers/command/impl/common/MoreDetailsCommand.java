@@ -16,6 +16,9 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This command open public courier page
+ */
 public class MoreDetailsCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) throws CommandException {

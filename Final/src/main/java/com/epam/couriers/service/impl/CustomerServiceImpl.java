@@ -41,22 +41,22 @@ public class CustomerServiceImpl implements CustomerService {
     private int calculatePrice(String numberOfGoods, String weight) {
         int partOneOfPrice = 0;
         int partTwoOfPrice = 0;
-        if(numberOfGoods.equals("lessThree")) {
+        if (numberOfGoods.equals("lessThree")) {
             partOneOfPrice = 5;
         }
-        if(numberOfGoods.equals("threeTen")) {
+        if (numberOfGoods.equals("threeTen")) {
             partOneOfPrice = 10;
         }
-        if(numberOfGoods.equals("moreTen")) {
+        if (numberOfGoods.equals("moreTen")) {
             partOneOfPrice = 20;
         }
-        if(weight.equals("lessThreeKg")) {
+        if (weight.equals("lessThreeKg")) {
             partTwoOfPrice = 5;
         }
-        if(weight.equals("threeTenKg")) {
+        if (weight.equals("threeTenKg")) {
             partTwoOfPrice = 10;
         }
-        if(weight.equals("moreTenKg")) {
+        if (weight.equals("moreTenKg")) {
             partTwoOfPrice = 20;
         }
         return partOneOfPrice + partTwoOfPrice;
@@ -96,11 +96,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     private double calculateCommonMark(double quality, double politeness, double punctuality) {
-        return (quality + politeness + punctuality)/3.0;
+        return (quality + politeness + punctuality) / 3.0;
     }
 
     private double calculateNewMark(double average, int votesNumber, double customersMark) {
-        double mark = ((average * votesNumber) + customersMark)/(votesNumber + 1.0);
+        double mark = ((average * votesNumber) + customersMark) / (votesNumber + 1.0);
         return Math.round(mark * 100.0) / 100.0;
     }
 

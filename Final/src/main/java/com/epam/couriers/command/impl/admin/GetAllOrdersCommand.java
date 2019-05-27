@@ -24,7 +24,7 @@ public class GetAllOrdersCommand implements Command {
         String page;
         HttpSession session = request.getSession();
         int pageNumber;
-        if(request.getParameter(GeneralConstant.PAGE_NUMBER) != null) {
+        if (request.getParameter(GeneralConstant.PAGE_NUMBER) != null) {
             pageNumber = Integer.parseInt(request.getParameter(GeneralConstant.PAGE_NUMBER));
         } else {
             pageNumber = (Integer) session.getAttribute(GeneralConstant.PAGE_NUMBER);

@@ -27,22 +27,22 @@ public class CustomerRegistrationCommand implements Command {
         String realLogin = request.getParameter(GeneralConstant.USER_LOGIN);
         List<User> allUsers = (List<User>) session.getAttribute(GeneralConstant.LIST_USERS);
         for (User u : allUsers) {
-            if(u.getLogin().equalsIgnoreCase(realLogin)) {
+            if (u.getLogin().equalsIgnoreCase(realLogin)) {
                 request.setAttribute(GeneralConstant.MESSAGE_ATTRIBUTE, AllErrorMessages.LOGIN_BAD);
                 return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
             }
         }
 
         String realPassword = request.getParameter(GeneralConstant.USER_PASSWORD);
-        if(!realPassword.equals(request.getParameter(GeneralConstant.USER_REPEATED_PASSWORD))){
+        if (!realPassword.equals(request.getParameter(GeneralConstant.USER_REPEATED_PASSWORD))) {
             request.setAttribute(GeneralConstant.MESSAGE_ATTRIBUTE, AllErrorMessages.NOT_EQUALS_PASSWORDS);
             return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
         }
-        if(realLogin.equals("")) {
+        if (realLogin.equals("")) {
             request.setAttribute(GeneralConstant.MESSAGE_ATTRIBUTE, AllErrorMessages.EMPTY_LOGIN);
             return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
         }
-        if(realPassword.equals("")) {
+        if (realPassword.equals("")) {
             request.setAttribute(GeneralConstant.MESSAGE_ATTRIBUTE, AllErrorMessages.EMPTY_PASSWORD);
             return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
         }

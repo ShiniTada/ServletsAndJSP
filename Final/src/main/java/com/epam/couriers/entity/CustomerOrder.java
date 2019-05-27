@@ -14,7 +14,8 @@ public class CustomerOrder extends Entity {
 
     public CustomerOrder() {
     }
-    public CustomerOrder(String from, String to, String introductionDate, StatusEnum status, String goodsDescription, User customer, User courier , int price) {
+
+    public CustomerOrder(String from, String to, String introductionDate, StatusEnum status, String goodsDescription, User customer, User courier, int price) {
         this.from = from;
         this.to = to;
         this.introductionDate = introductionDate;
@@ -25,7 +26,7 @@ public class CustomerOrder extends Entity {
         this.price = price;
     }
 
-    public CustomerOrder(int id, String from, String to, String introductionDate, StatusEnum status, String goodsDescription, User customer, User courier , int price) {
+    public CustomerOrder(int id, String from, String to, String introductionDate, StatusEnum status, String goodsDescription, User customer, User courier, int price) {
         super(id);
         this.from = from;
         this.to = to;

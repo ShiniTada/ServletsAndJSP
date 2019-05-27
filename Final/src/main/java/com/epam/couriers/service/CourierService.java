@@ -1,6 +1,9 @@
 package com.epam.couriers.service;
 
-import com.epam.couriers.entity.*;
+import com.epam.couriers.entity.CourierRecord;
+import com.epam.couriers.entity.CustomerOrder;
+import com.epam.couriers.entity.Goods;
+import com.epam.couriers.entity.Transport;
 import com.epam.couriers.service.exception.ServiceException;
 
 import java.util.List;
@@ -25,16 +28,14 @@ public interface CourierService {
     CourierRecord getCourierRecord(int courierId) throws ServiceException;
 
 
-
     void acceptOrder(int orderId) throws ServiceException;
 
 
     void rejectOrder(int orderId) throws ServiceException;
 
-
     /**
-     *
      * Get information about marks of courier
+     *
      * @param courierRecord - consist only {@code courierRecordId}
      * @return {@link CourierRecord} entity of courier record.
      * @throws ServiceException if error happens during execution
@@ -45,18 +46,15 @@ public interface CourierService {
      * Add to courier his transport
      *
      * @param courierRecordId - courier record id
-     * @param transports - list of transport
-
+     * @param transports      - list of transport
      * @throws ServiceException if error happens during execution
      */
     void addAllTransports(int courierRecordId, List<String> transports) throws ServiceException;
-
 
     /**
      * Get transport which courier may use
      *
      * @param courierRecordId - courier record id
-
      * @throws ServiceException if error happens during execution
      */
     List<Transport> getTransportsOfOneCourier(int courierRecordId) throws ServiceException;
@@ -65,8 +63,7 @@ public interface CourierService {
      * Add to courier his transport
      *
      * @param courierRecordId - courier record id
-     * @param goods - lisy of goods
-     *
+     * @param goods           - lisy of goods
      * @throws ServiceException if error happens during execution
      */
     void addAllGoods(int courierRecordId, List<String> goods) throws ServiceException;
@@ -80,18 +77,17 @@ public interface CourierService {
      */
     List<Goods> getGoodsOfOneCourier(int courierRecordId) throws ServiceException;
 
-
     /**
      * @param courierLogin - the name of courier
      * @return customer order which courier should does
      * @throws ServiceException if error happens during execution
      */
-    List<CustomerOrder>  getCustomerOrdersOfOneCourier(String courierLogin) throws ServiceException;
+    List<CustomerOrder> getCustomerOrdersOfOneCourier(String courierLogin) throws ServiceException;
 
     /**
      * @param customerLogin - the name of customer
      * @return customer order
      * @throws ServiceException if error happens during execution
      */
-    List<CustomerOrder>  getCustomerOrdersOfOneCustomer(String customerLogin) throws ServiceException;
+    List<CustomerOrder> getCustomerOrdersOfOneCustomer(String customerLogin) throws ServiceException;
 }

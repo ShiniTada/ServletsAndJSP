@@ -24,7 +24,7 @@ class ConnectionPoolConfig {
             Class.forName(resourceBundle.getString(GeneralConstant.DataBase.DRIVER));
             url = resourceBundle.getString(GeneralConstant.DataBase.URL);
             properties.put(GeneralConstant.DataBase.USER, resourceBundle.getString(GeneralConstant.DataBase.USER));
-            properties.put(GeneralConstant.DataBase.PASSWORD,"");
+            properties.put(GeneralConstant.DataBase.PASSWORD, "");
             properties.put(GeneralConstant.DataBase.USE_UNICODE, resourceBundle.getString(GeneralConstant.DataBase.USE_UNICODE));
             properties.put(GeneralConstant.DataBase.CHARACTER_ENCODING, resourceBundle.getString(GeneralConstant.DataBase.CHARACTER_ENCODING));
             properties.put(GeneralConstant.DataBase.AUTO_RECONNECT, resourceBundle.getString(GeneralConstant.DataBase.AUTO_RECONNECT));

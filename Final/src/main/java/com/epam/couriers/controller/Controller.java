@@ -2,11 +2,9 @@ package com.epam.couriers.controller;
 
 
 import com.epam.couriers.command.Command;
-import com.epam.couriers.command.resource.PathManager;
 import com.epam.couriers.command.exception.CommandException;
+import com.epam.couriers.command.resource.PathManager;
 import com.epam.couriers.controller.helper.CommandHelper;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,12 +32,12 @@ public class Controller extends HttpServlet {
     }
 
 
-    private void processRequest(HttpServletRequest request, HttpServletResponse response, boolean toRedirect)  throws ServletException, IOException {
+    private void processRequest(HttpServletRequest request, HttpServletResponse response, boolean toRedirect) throws ServletException, IOException {
         String page;
         CommandHelper commandHelper = new CommandHelper();
         try {
             String commandName = request.getParameter(COMMAND_NAME);
-            Command command =  commandHelper.getCommand(commandName);
+            Command command = commandHelper.getCommand(commandName);
             page = command.execute(request);
 
         } catch (CommandException e) {

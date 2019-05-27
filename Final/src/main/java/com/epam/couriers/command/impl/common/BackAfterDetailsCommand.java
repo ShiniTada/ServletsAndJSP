@@ -6,6 +6,9 @@ import com.epam.couriers.constants.GeneralConstant;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * This command return user on previous page
+ */
 public class BackAfterDetailsCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
@@ -15,12 +18,12 @@ public class BackAfterDetailsCommand implements Command {
         if (typeBack.equals("afterAllCouriers")) {
             page = (String) session.getAttribute(GeneralConstant.PREVIOUS_COURIER_PAGE_ATTRIBUTE);
         } else if (typeBack.equals("afterOrderForm")) {
-                page = (String) session.getAttribute(GeneralConstant.CUSTOMER_HOME);
-                } else{
-                    session.removeAttribute(GeneralConstant.COURIER_RECORD);
-                    session.removeAttribute(GeneralConstant.LIST_TRANSPORT);
-                    session.removeAttribute(GeneralConstant.LIST_GOODS);
-                    page = (String) session.getAttribute(GeneralConstant.PREVIOUS_PAGE_ATTRIBUTE);
+            page = (String) session.getAttribute(GeneralConstant.CUSTOMER_HOME);
+        } else {
+            session.removeAttribute(GeneralConstant.COURIER_RECORD);
+            session.removeAttribute(GeneralConstant.LIST_TRANSPORT);
+            session.removeAttribute(GeneralConstant.LIST_GOODS);
+            page = (String) session.getAttribute(GeneralConstant.PREVIOUS_PAGE_ATTRIBUTE);
         }
         session.setAttribute(GeneralConstant.PAGE_ATTRIBUTE, page);
         return page;

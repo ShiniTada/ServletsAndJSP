@@ -33,22 +33,22 @@ public class CourierRegistrationCommand implements Command {
         String realLogin = request.getParameter(GeneralConstant.USER_LOGIN);
         List<User> allUsers = (List<User>) session.getAttribute(GeneralConstant.LIST_USERS);
         for (User u : allUsers) {
-            if(u.getLogin().equalsIgnoreCase(realLogin)) {
-               request.setAttribute(GeneralConstant.MESSAGE_ATTRIBUTE, AllErrorMessages.LOGIN_BAD);
+            if (u.getLogin().equalsIgnoreCase(realLogin)) {
+                request.setAttribute(GeneralConstant.MESSAGE_ATTRIBUTE, AllErrorMessages.LOGIN_BAD);
                 return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
             }
         }
 
         String realPassword = request.getParameter(GeneralConstant.USER_PASSWORD);
-        if(!realPassword.equals(request.getParameter(GeneralConstant.USER_REPEATED_PASSWORD))){
+        if (!realPassword.equals(request.getParameter(GeneralConstant.USER_REPEATED_PASSWORD))) {
             request.setAttribute(GeneralConstant.MESSAGE_ATTRIBUTE, AllErrorMessages.NOT_EQUALS_PASSWORDS);
             return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
         }
-        if(realLogin.equals("")) {
+        if (realLogin.equals("")) {
             request.setAttribute(GeneralConstant.MESSAGE_ATTRIBUTE, AllErrorMessages.EMPTY_LOGIN);
             return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
         }
-        if(realPassword.equals("")) {
+        if (realPassword.equals("")) {
             request.setAttribute(GeneralConstant.MESSAGE_ATTRIBUTE, AllErrorMessages.EMPTY_PASSWORD);
             return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
         }
@@ -66,7 +66,7 @@ public class CourierRegistrationCommand implements Command {
         if (request.getParameter(GeneralConstant.TRUCK_ATTRIBUTE) != null) {
             transport.add(GeneralConstant.TRUCK_ATTRIBUTE);
         }
-        if(transport.size() == 0) {
+        if (transport.size() == 0) {
             request.setAttribute(GeneralConstant.MESSAGE_ATTRIBUTE, AllErrorMessages.EMPTY_TRANSPORT);
             return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
         }
@@ -83,7 +83,7 @@ public class CourierRegistrationCommand implements Command {
         if (request.getParameter(GeneralConstant.EASY_TO_BEAT_ATTRIBUTE) != null) {
             goods.add(GeneralConstant.EASY_TO_BEAT_ATTRIBUTE);
         }
-        if(goods.size() == 0) {
+        if (goods.size() == 0) {
             request.setAttribute(GeneralConstant.MESSAGE_ATTRIBUTE, AllErrorMessages.EMPTY_GOODS);
             return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
         }

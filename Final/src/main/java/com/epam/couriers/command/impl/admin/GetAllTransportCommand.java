@@ -4,7 +4,6 @@ import com.epam.couriers.command.Command;
 import com.epam.couriers.command.exception.CommandException;
 import com.epam.couriers.command.resource.PathManager;
 import com.epam.couriers.constants.GeneralConstant;
-import com.epam.couriers.entity.CourierRecord;
 import com.epam.couriers.entity.Transport;
 import com.epam.couriers.service.AdminService;
 import com.epam.couriers.service.exception.ServiceException;
@@ -26,7 +25,7 @@ public class GetAllTransportCommand implements Command {
         String page;
         HttpSession session = request.getSession();
         int pageNumber;
-        if(request.getParameter(GeneralConstant.PAGE_NUMBER) != null) {
+        if (request.getParameter(GeneralConstant.PAGE_NUMBER) != null) {
             pageNumber = Integer.parseInt(request.getParameter(GeneralConstant.PAGE_NUMBER));
         } else {
             pageNumber = (Integer) session.getAttribute(GeneralConstant.PAGE_NUMBER);

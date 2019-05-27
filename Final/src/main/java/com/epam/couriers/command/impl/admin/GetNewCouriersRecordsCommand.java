@@ -18,7 +18,6 @@ import java.util.List;
  */
 public class GetNewCouriersRecordsCommand implements Command {
 
-
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         String page;

@@ -131,10 +131,6 @@
                                 </c:forEach>
                     </table>
                     <br>
-<%--                    --%>
-<%--                    --%>
-<%--                    --%>
-<%--                    --%>
                 </c:otherwise>
             </c:choose>
         </div>

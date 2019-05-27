@@ -18,7 +18,7 @@ import java.util.Map;
 public class CommandHelper {
     private Map<CommandName, Command> commands = new HashMap<>();
 
-    public CommandHelper(){
+    public CommandHelper() {
 
         commands.put(CommandName.OPEN_SIGN_IN, new OpenSignInCommand());
 
@@ -49,7 +49,6 @@ public class CommandHelper {
         commands.put(CommandName.DELETE_ORDER, new DeleteOrderCommand());
 
 
-
         commands.put(CommandName.GET_NEW_COURIERS_RECORDS, new GetNewCouriersRecordsCommand());
 
         commands.put(CommandName.GET_ALL_COURIERS, new GetAllCouriersCommand());
@@ -59,8 +58,6 @@ public class CommandHelper {
         commands.put(CommandName.GET_ALL_GOODS, new GetAllGoodsCommand());
 
         commands.put(CommandName.GET_ALL_TRANSPORT, new GetAllTransportCommand());
-
-        commands.put(CommandName.TABLE_PAGINATION, new TablePaginationCommand());
 
         commands.put(CommandName.ACCEPT_COURIER, new AcceptCourierCommand());
 
@@ -74,13 +71,13 @@ public class CommandHelper {
     }
 
 
-    public Command getCommand(String commandName){
+    public Command getCommand(String commandName) {
         commandName = commandName.replace('-', '_').toUpperCase();
         CommandName key = CommandName.valueOf(commandName);
         Command command = commands.get(key);
 
-        if(command == null){
-            command =  new UnknownCommand();
+        if (command == null) {
+            command = new UnknownCommand();
         }
         return command;
     }

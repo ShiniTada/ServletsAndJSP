@@ -33,9 +33,6 @@ public final class PathManager {
     public static final String SETTINGS_PAGE = "page.settings_page";
 
 
-
-
-
     private static final String RESOURCE_NAME = "path";
     private static final ResourceBundle bundle = ResourceBundle.getBundle(RESOURCE_NAME);
 
@@ -44,6 +41,7 @@ public final class PathManager {
 
     /**
      * Returns jsp paths's property value with specified key
+     *
      * @param key key of the property.
      * @return value of property with the specified key
      */

@@ -23,7 +23,7 @@ public class LocaleFilter implements Filter {
     private List<String> supportedLocales;
 
     @Override
-    public void init(FilterConfig config) throws ServletException {
+    public void init(FilterConfig config) {
         defaultLocale = config.getInitParameter("defaultLocale");
         supportedLocales = Arrays.asList(config.getInitParameter("supportedLocales").split(","));
     }

@@ -6,13 +6,11 @@ package com.epam.couriers.constants;
 final public class GeneralConstant {
 
     public static final String DB_PROPERTIES = "db";
-
-
     public static final String MESSAGE_ATTRIBUTE = "message";
-
     public static final String PAGE_ATTRIBUTE = "page";
     public static final String PREVIOUS_PAGE_ATTRIBUTE = "previousPage";
     public static final String PREVIOUS_COURIER_PAGE_ATTRIBUTE = "previousCourierPage";
+
     public static final String COURIER_RECORD_ID = "courierRecordId";
     public static final String COURIER_RECORD = "courierRecord";
     public static final String COURIER_ID = "courierId";
@@ -41,15 +39,16 @@ final public class GeneralConstant {
     public static final String STATUS = "status";
     public static final String PRICE = "price";
     public static final String GOOD_DESCRIPTION = "goodsDescription";
+
     public static final String BACK = "back";
     public static final String CUSTOMER_HOME = "customerHome";
-
 
     public static final String LIST_GOODS = "listGoods";
     public static final String LIST_USERS = "listUsers";
     public static final String LIST_TRANSPORT = "listTransport";
     public static final String LIST_NEW_COURIER_RECORDS = "listNewCourierRecords";
     public static final String LIST_COURIER_RECORDS = "listCourierRecords";
+    public static final String CUSTOMER_ORDERS = "listCustomerOrder";
     public static final String LIST_ORDERS = "listOrders";
     public static final String EXISTED_ORDERS = "existedOrders";
     public static final String POSTED = "posted";
@@ -62,27 +61,22 @@ final public class GeneralConstant {
     public static final String TECH_ATTRIBUTE = "tech";
     public static final String FURNITURE_ATTRIBUTE = "furniture";
     public static final String EASY_TO_BEAT_ATTRIBUTE = "easy-to-beat";
-
     public static final String CYCLE_ATTRIBUTE = "cycle";
     public static final String MOTORCYCLE_ATTRIBUTE = "motorcycle";
     public static final String CAR_ATTRIBUTE = "car";
     public static final String TRUCK_ATTRIBUTE = "truck";
 
-    public static final String CUSTOMER_ORDERS = "listCustomerOrder";
-
     public static final String ACCEPT = "accept";
     public static final String REJECT = "reject";
     public static final String BLOCK = "block";
     public static final String UNBLOCK = "unblock";
-    public static final String DELETED_ORDER_ID= "deletedOrderId";
-
+    public static final String DELETED_ORDER_ID = "deletedOrderId";
 
     public static final String USER = "user";
     public static final String LOCALE = "locale";
     public static final String PAGE_NUMBER = "pageNumber";
     public static final String TOTAL_COUNT = "totalCount";
     public static final String LIMIT_COUNT = "limitCount";
-
     public static final String WHAT_DELIVER = "whatDeliver";
     public static final String NUMBER_OF_GOODS = "numberOfGoods";
     public static final String WEIGHT = "weight";
@@ -107,6 +101,5 @@ final public class GeneralConstant {
     public static class ConnectionPool {
         public static final String CAPACITY = "poolCapacity";
     }
-
 
 }

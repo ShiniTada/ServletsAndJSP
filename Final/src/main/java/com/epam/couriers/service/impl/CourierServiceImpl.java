@@ -1,6 +1,9 @@
 package com.epam.couriers.service.impl;
 
-import com.epam.couriers.dao.*;
+import com.epam.couriers.dao.CourierDAO;
+import com.epam.couriers.dao.CustomerDAO;
+import com.epam.couriers.dao.GoodsDAO;
+import com.epam.couriers.dao.TransportDAO;
 import com.epam.couriers.dao.exception.DAOException;
 import com.epam.couriers.dao.factory.DAOFactory;
 import com.epam.couriers.dao.manager.TransactionManager;
@@ -148,25 +151,25 @@ public class CourierServiceImpl implements CourierService {
 
     @Override
     public List<Transport> getTransportsOfOneCourier(int courierRecordId) throws ServiceException {
-            TransactionManager transactionManager = new TransactionManager();
-            try {
-                TransportDAO transportDAO = DAOFactory.getTransportDAO();
-                transactionManager.beginTransaction(transportDAO);
-                List<Transport> transport = transportDAO.getTransportsOfOneCourier(courierRecordId);
-                transactionManager.commit();
-                transactionManager.endTransaction();
-                return  transport;
+        TransactionManager transactionManager = new TransactionManager();
+        try {
+            TransportDAO transportDAO = DAOFactory.getTransportDAO();
+            transactionManager.beginTransaction(transportDAO);
+            List<Transport> transport = transportDAO.getTransportsOfOneCourier(courierRecordId);
+            transactionManager.commit();
+            transactionManager.endTransaction();
+            return transport;
 
-            } catch (DAOException e) {
-                try {
-                    transactionManager.rollback();
-                    transactionManager.endTransaction();
-                } catch (DAOException ex) {
-                    throw new ServiceException("Error access database", e);
-                }
+        } catch (DAOException e) {
+            try {
+                transactionManager.rollback();
+                transactionManager.endTransaction();
+            } catch (DAOException ex) {
+                throw new ServiceException("Error access database", e);
             }
-            return null;
         }
+        return null;
+    }
 
     @Override
     public void addAllGoods(int courierRecordId, List<String> goods) throws ServiceException {
@@ -219,8 +222,8 @@ public class CourierServiceImpl implements CourierService {
             transactionManager.beginTransaction(customerDAO);
             List<CustomerOrder> orders = customerDAO.getCustomerOrders();
             List<CustomerOrder> needOrders = new ArrayList<>();
-            for(CustomerOrder order : orders){
-                if(order.getCourier().getLogin().equals(courierLogin)){
+            for (CustomerOrder order : orders) {
+                if (order.getCourier().getLogin().equals(courierLogin)) {
                     needOrders.add(order);
                 }
             }
@@ -248,8 +251,8 @@ public class CourierServiceImpl implements CourierService {
             transactionManager.beginTransaction(customerDAO);
             List<CustomerOrder> orders = customerDAO.getCustomerOrders();
             List<CustomerOrder> needOrders = new ArrayList<>();
-            for(CustomerOrder order : orders){
-                if(order.getCustomer().getLogin().equals(customerLogin)){
+            for (CustomerOrder order : orders) {
+                if (order.getCustomer().getLogin().equals(customerLogin)) {
                     needOrders.add(order);
                 }
             }

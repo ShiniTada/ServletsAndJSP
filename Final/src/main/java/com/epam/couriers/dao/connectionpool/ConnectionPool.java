@@ -14,7 +14,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 
 /**
- *Class for contain connections
+ * Class for contain connections
  */
 public class ConnectionPool {
 

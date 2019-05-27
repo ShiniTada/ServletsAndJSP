@@ -3,18 +3,22 @@ package com.epam.couriers.dao.impl;
 import com.epam.couriers.constants.GeneralConstant;
 import com.epam.couriers.dao.CustomerDAO;
 import com.epam.couriers.dao.exception.DAOException;
-import com.epam.couriers.entity.*;
-import com.epam.couriers.service.exception.ServiceException;
+import com.epam.couriers.entity.CustomerOrder;
+import com.epam.couriers.entity.StatusEnum;
+import com.epam.couriers.entity.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class CustomerDAOImpl extends CustomerDAO {
+
+    private static final Logger LOGGER = LogManager.getLogger(CustomerDAOImpl.class);
 
     private static final String SQL_GET_CUSTOMER_ORDER_INF = "SELECT co.from, co.to, co.customerId, co.introductionDate, " +
             "co.goodsDescription, co.price , co.status from customerorder co WHERE co.orderId = ?;";
@@ -46,12 +50,11 @@ public class CustomerDAOImpl extends CustomerDAO {
     private static final String SQL_DELETE_COURIER_HAS_CUSTOMER_ORDER_BUNDLE = "DELETE FROM courier_has_customerorder WHERE orderId = ?";
 
 
-
     @Override
     public CustomerOrder get(int orderId) throws DAOException {
         CustomerOrder order = new CustomerOrder();
         order.setId(orderId);
-        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_CUSTOMER_ORDER_INF)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_CUSTOMER_ORDER_INF)) {
             preparedStatement.setInt(1, orderId);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
@@ -100,7 +103,7 @@ public class CustomerDAOImpl extends CustomerDAO {
     @Override
     public List<CustomerOrder> findWithLimitCustomerOrders(int startIndex, int countOfOrdersOnOnePage) throws DAOException {
         List<CustomerOrder> listOrders = new ArrayList<>();
-        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_ORDERS_INF_WITH_LIMIT)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_ORDERS_INF_WITH_LIMIT)) {
             preparedStatement.setInt(1, startIndex);
             preparedStatement.setInt(2, countOfOrdersOnOnePage);
             ResultSet rs = preparedStatement.executeQuery();
@@ -128,7 +131,7 @@ public class CustomerDAOImpl extends CustomerDAO {
     @Override
     public int findTotalCountOfCustomerOrders() throws DAOException {
         int count = 0;
-        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_COUNT_OF_CUSTOMER_ORDERS)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_COUNT_OF_CUSTOMER_ORDERS)) {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 count = rs.getInt(1);
@@ -151,12 +154,14 @@ public class CustomerDAOImpl extends CustomerDAO {
             preparedStatement.setInt(6, customerOrder.getPrice());
             preparedStatement.setInt(7, customerOrder.getCustomer().getId());
             if (preparedStatement.executeUpdate() == 0) {
+                LOGGER.warn("Creating customerOrder failed, no rows affected.");
                 throw new SQLException("Creating customerOrder failed, no rows affected.");
             }
             ResultSet keys = preparedStatement.getGeneratedKeys();
             if (keys.next()) {
                 customerOrder.setId(keys.getInt(1));
             } else {
+                LOGGER.warn("Creating customerOrder failed, no ID obtained.");
                 throw new SQLException("Creating customerOrder failed, no ID obtained.");
             }
         } catch (SQLException e) {
@@ -171,6 +176,7 @@ public class CustomerDAOImpl extends CustomerDAO {
             preparedStatement.setInt(1, customerId);
             preparedStatement.setInt(2, orderId);
             if (preparedStatement.executeUpdate() == 0) {
+                LOGGER.warn("Creating bundle failed, no rows affected.");
                 throw new SQLException("Creating bundle failed, no rows affected.");
             }
         } catch (SQLException e) {
@@ -197,6 +203,7 @@ public class CustomerDAOImpl extends CustomerDAO {
             preparedStatement.setString(1, GeneralConstant.DENIED);
             preparedStatement.setInt(2, orderId);
             if (preparedStatement.executeUpdate() == 0) {
+                LOGGER.warn("Changing status failed, no rows affected.");
                 throw new SQLException("Changing status failed, no rows affected.");
             }
         } catch (SQLException e) {
@@ -210,6 +217,7 @@ public class CustomerDAOImpl extends CustomerDAO {
             preparedStatement.setString(1, GeneralConstant.COMPLETED);
             preparedStatement.setInt(2, orderId);
             if (preparedStatement.executeUpdate() == 0) {
+                LOGGER.warn("Changing status failed, no rows affected.");
                 throw new SQLException("Changing status failed, no rows affected.");
             }
         } catch (SQLException e) {
@@ -222,7 +230,8 @@ public class CustomerDAOImpl extends CustomerDAO {
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_CUSTOMER_ORDER)) {
             preparedStatement.setInt(1, orderId);
             if (preparedStatement.executeUpdate() == 0) {
-                throw new SQLException("Deleting customer order '"+ orderId + "' failed, no rows affected.");
+                LOGGER.warn("Deleting customer order failed, no rows affected.");
+                throw new SQLException("Deleting customer order '" + orderId + "' failed, no rows affected.");
             }
         } catch (SQLException e) {
             throw new DAOException(e);
@@ -234,7 +243,9 @@ public class CustomerDAOImpl extends CustomerDAO {
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_COURIER_HAS_CUSTOMER_ORDER_BUNDLE)) {
             preparedStatement.setInt(1, orderId);
             if (preparedStatement.executeUpdate() == 0) {
-                throw new SQLException("Deleting customer order '"+ orderId + "' failed, no rows affected.");
+
+                LOGGER.warn("Deleting bundle failed, no rows affected.");
+                throw new SQLException("Deleting bundle '" + orderId + "' failed, no rows affected.");
             }
         } catch (SQLException e) {
             throw new DAOException(e);

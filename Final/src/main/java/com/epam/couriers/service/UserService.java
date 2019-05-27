@@ -8,32 +8,29 @@ public interface UserService {
     /**
      * Authorizes user
      *
-     * @param login of a user
+     * @param login    of a user
      * @param password of a user
      * @return {@link User} entity of authorized user.
-     *
-     * @throws ServiceException     if error happens during execution
+     * @throws ServiceException if error happens during execution
      */
     User logIn(String login, String password) throws ServiceException;
 
     /**
      * Registers user
      *
-     * @param login of a user
+     * @param login    of a user
      * @param password of a user
      * @return {@link User} entity of registered user.
-     *
-     * @throws ServiceException     if error happens during execution
+     * @throws ServiceException if error happens during execution
      */
     User registration(String login, String password, RoleEnum role) throws ServiceException;
 
     /**
      * Change password of user
      *
-     * @param userId - user id
+     * @param userId      - user id
      * @param newPassword - new user password
-     *
-     * @throws ServiceException     if error happens during execution
+     * @throws ServiceException if error happens during execution
      */
     void changePassword(int userId, String newPassword) throws ServiceException;
 }

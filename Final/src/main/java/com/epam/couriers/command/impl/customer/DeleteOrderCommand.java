@@ -17,6 +17,9 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This command delete order
+ */
 public class DeleteOrderCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
@@ -33,10 +36,10 @@ public class DeleteOrderCommand implements Command {
             List<CustomerOrder> listCustomerOrder = courierService.getCustomerOrdersOfOneCustomer(user.getLogin());
             List<CustomerOrder> existedOrders = new ArrayList<>();
             List<CustomerOrder> completedOrders = new ArrayList<>();
-            for(CustomerOrder order : listCustomerOrder){
-                if(order.getStatus().getValue().equals(GeneralConstant.POSTED) || order.getStatus().getValue().equals(GeneralConstant.DELIVERED)){
+            for (CustomerOrder order : listCustomerOrder) {
+                if (order.getStatus().getValue().equals(GeneralConstant.POSTED) || order.getStatus().getValue().equals(GeneralConstant.DELIVERED)) {
                     existedOrders.add(order);
-                }else {
+                } else {
                     completedOrders.add(order);
                 }
             }

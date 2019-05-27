@@ -9,7 +9,6 @@ import com.epam.couriers.entity.CustomerOrder;
 import com.epam.couriers.entity.User;
 import com.epam.couriers.service.CourierService;
 import com.epam.couriers.service.CustomerService;
-import com.epam.couriers.service.errormessage.AllErrorMessages;
 import com.epam.couriers.service.exception.ServiceException;
 import com.epam.couriers.service.impl.CourierServiceImpl;
 import com.epam.couriers.service.impl.CustomerServiceImpl;
@@ -19,9 +18,10 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This command add filled customer order
+ */
 public class AddFilledCustomerOrderCommand implements Command {
-
-
 
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
@@ -33,29 +33,29 @@ public class AddFilledCustomerOrderCommand implements Command {
         int courierId = courierRecord.getCourier().getId();
 
         String whatDeliver = request.getParameter(GeneralConstant.WHAT_DELIVER);
-        if(whatDeliver.equals("")) {
+        if (whatDeliver.equals("")) {
             return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
         }
         String from = request.getParameter(GeneralConstant.FROM);
-        if(from.equals("")) {
+        if (from.equals("")) {
             return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
         }
         String to = request.getParameter(GeneralConstant.TO);
-        if(to.equals("")) {
+        if (to.equals("")) {
             return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
         }
-        if(request.getParameter(GeneralConstant.DELIVERY_DATE) == null) {
+        if (request.getParameter(GeneralConstant.DELIVERY_DATE) == null) {
             return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
         }
         String date = request.getParameter(GeneralConstant.DELIVERY_DATE);
-        if(date.equals("")) {
+        if (date.equals("")) {
             return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
         }
-        if(request.getParameter(GeneralConstant.NUMBER_OF_GOODS) == null) {
+        if (request.getParameter(GeneralConstant.NUMBER_OF_GOODS) == null) {
             return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
         }
-        String numberOfGoods =request.getParameter(GeneralConstant.NUMBER_OF_GOODS);
-        if(request.getParameter(GeneralConstant.WEIGHT) == null) {
+        String numberOfGoods = request.getParameter(GeneralConstant.NUMBER_OF_GOODS);
+        if (request.getParameter(GeneralConstant.WEIGHT) == null) {
             return (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
         }
         String weight = request.getParameter(GeneralConstant.WEIGHT);
@@ -67,12 +67,12 @@ public class AddFilledCustomerOrderCommand implements Command {
             session.removeAttribute(GeneralConstant.COMPLETED_ORDERS);
             List<CustomerOrder> orders = courierService.getCustomerOrdersOfOneCustomer(user.getLogin());
             List<CustomerOrder> existedOrders = new ArrayList<>();
-            List<CustomerOrder>  completedOrders = new ArrayList<>();
+            List<CustomerOrder> completedOrders = new ArrayList<>();
 
-            for(CustomerOrder order : orders){
-                if(order.getStatus().getValue().equals(GeneralConstant.POSTED) || order.getStatus().getValue().equals(GeneralConstant.DELIVERED)){
+            for (CustomerOrder order : orders) {
+                if (order.getStatus().getValue().equals(GeneralConstant.POSTED) || order.getStatus().getValue().equals(GeneralConstant.DELIVERED)) {
                     existedOrders.add(order);
-                }else {
+                } else {
                     completedOrders.add(order);
                 }
             }

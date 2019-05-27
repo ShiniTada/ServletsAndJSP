@@ -84,7 +84,6 @@
     </div>
 
 
-    <%-- CENTER --%>
     <div style="margin-left:200px">
         <div class="w3-container w3-center w3-display-topmiddle" style="margin-top:170px;">
             <h2 class="title w3-center w3-text-black w3-padding-32" style="text-shadow:1px 1px 0 #444">${greeting}</h2>

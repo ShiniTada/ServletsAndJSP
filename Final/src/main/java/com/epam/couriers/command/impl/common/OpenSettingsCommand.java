@@ -7,6 +7,9 @@ import com.epam.couriers.constants.GeneralConstant;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * This command open settings form
+ */
 public class OpenSettingsCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) throws CommandException {

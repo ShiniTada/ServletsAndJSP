@@ -17,6 +17,7 @@ public class HeadNameTag extends TagSupport {
     public void setRole(String role) {
         this.role = role;
     }
+
     public void setLogin(String login) {
         this.login = login;
     }
@@ -25,14 +26,15 @@ public class HeadNameTag extends TagSupport {
         this.settings = settings;
     }
 
-    public void setSign_out(String sign_out){
+    public void setSign_out(String sign_out) {
         this.sign_out = sign_out;
     }
+
     @Override
     public int doStartTag() throws JspException {
         try {
             String s1;
-            if(admin.equalsIgnoreCase(role) || courier.equalsIgnoreCase(role) || customer.equalsIgnoreCase(role)) {
+            if (role.equalsIgnoreCase(admin) || role.equalsIgnoreCase(courier) || role.equalsIgnoreCase(customer)) {
                 s1 = " <div class=\"w3-right w3-dropdown-hover\">\n" +
                         " \n" +
                         "          <button class=\" w3-button w3-padding-large\">" + login + "</button>\n" +
@@ -54,11 +56,11 @@ public class HeadNameTag extends TagSupport {
         } catch (IOException e) {
             throw new JspException(e.getMessage());
         }
-            return SKIP_BODY;
+        return SKIP_BODY;
     }
 
     @Override
-    public int doEndTag()  {
+    public int doEndTag() {
         return EVAL_PAGE;
     }
 }

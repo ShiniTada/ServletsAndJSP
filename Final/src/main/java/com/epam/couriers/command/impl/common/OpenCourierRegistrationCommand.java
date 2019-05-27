@@ -12,6 +12,9 @@ import com.epam.couriers.service.impl.AdminServiceImpl;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+/**
+ * This command open courier registration form
+ */
 public class OpenCourierRegistrationCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) throws CommandException {

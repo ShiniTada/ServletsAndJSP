@@ -3,25 +3,23 @@ package com.epam.couriers.command.impl.common;
 import com.epam.couriers.command.Command;
 import com.epam.couriers.command.exception.CommandException;
 import com.epam.couriers.command.resource.PathManager;
-import org.apache.logging.log4j.LogManager;
+import com.epam.couriers.constants.GeneralConstant;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * This command change locale
+ */
 public class SetLocaleCommand implements Command {
-    private static final org.apache.logging.log4j.Logger LOGGER = LogManager.getLogger(SetLocaleCommand.class);
-
-    private static final String LOCALE_PARAMETER = "locale";
-    private static final String LOCALE_ATTRIBUTE = "locale";
-    private static final String PAGE_ATTRIBUTE = "page";
 
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
-        String newLocale = request.getParameter(LOCALE_PARAMETER);
+        String newLocale = request.getParameter(GeneralConstant.LOCALE);
         HttpSession session = request.getSession();
-        session.setAttribute(LOCALE_ATTRIBUTE, newLocale);
-        String page = (String) session.getAttribute(PAGE_ATTRIBUTE);
-        if(page == null){
+        session.setAttribute(GeneralConstant.LOCALE, newLocale);
+        String page = (String) session.getAttribute(GeneralConstant.PAGE_ATTRIBUTE);
+        if (page == null) {
             page = PathManager.getProperty(PathManager.HOME_PAGE);
         }
         return page;

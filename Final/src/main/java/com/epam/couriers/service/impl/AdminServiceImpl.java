@@ -21,7 +21,7 @@ public class AdminServiceImpl implements AdminService {
             List<User> users = userDAO.getAllUsers();
             transactionManager.commit();
             transactionManager.endTransaction();
-            return  users;
+            return users;
         } catch (DAOException e) {
             try {
                 transactionManager.rollback();
@@ -42,7 +42,7 @@ public class AdminServiceImpl implements AdminService {
             List<CourierRecord> courierRecords = courierDAO.getNewCouriersRecords();
             transactionManager.commit();
             transactionManager.endTransaction();
-            return  courierRecords;
+            return courierRecords;
         } catch (DAOException e) {
             try {
                 transactionManager.rollback();
@@ -63,7 +63,7 @@ public class AdminServiceImpl implements AdminService {
             List<CourierRecord> courierRecords = courierDAO.findWithLimitCouriersRecords(startIndex, countOfCouriersOnOnePage);
             transactionManager.commit();
             transactionManager.endTransaction();
-            return  courierRecords;
+            return courierRecords;
         } catch (DAOException e) {
             try {
                 transactionManager.rollback();
@@ -84,7 +84,7 @@ public class AdminServiceImpl implements AdminService {
             List<CourierRecord> courierRecords = courierDAO.getCouriersRecordsForCustomer();
             transactionManager.commit();
             transactionManager.endTransaction();
-            return  courierRecords;
+            return courierRecords;
         } catch (DAOException e) {
             try {
                 transactionManager.rollback();
@@ -105,7 +105,7 @@ public class AdminServiceImpl implements AdminService {
             List<CustomerOrder> customerOrders = customerDAO.findWithLimitCustomerOrders(startIndex, countOfOrdersOnOnePage);
             transactionManager.commit();
             transactionManager.endTransaction();
-            return  customerOrders;
+            return customerOrders;
         } catch (DAOException e) {
             try {
                 transactionManager.rollback();
@@ -126,7 +126,7 @@ public class AdminServiceImpl implements AdminService {
             List<Goods> goods = goodsDAO.findWithLimitGoods(startIndex, countOfGoodsOnOnePage);
             transactionManager.commit();
             transactionManager.endTransaction();
-            return  goods;
+            return goods;
         } catch (DAOException e) {
             try {
                 transactionManager.rollback();
@@ -168,7 +168,7 @@ public class AdminServiceImpl implements AdminService {
             int count = courierDAO.findTotalCountOfCourierRecords();
             transactionManager.commit();
             transactionManager.endTransaction();
-            return  count;
+            return count;
         } catch (DAOException e) {
             try {
                 transactionManager.rollback();
@@ -180,26 +180,6 @@ public class AdminServiceImpl implements AdminService {
         return 0;
     }
 
-    @Override
-    public int findTotalCountOfCourierRecordsForCouriers() throws ServiceException {
-        TransactionManager transactionManager = new TransactionManager();
-        try {
-            CourierDAO courierDAO = DAOFactory.getCourierDAO();
-            transactionManager.beginTransaction(courierDAO);
-            int count = courierDAO.findTotalCountOfCourierRecordsForCustomer();
-            transactionManager.commit();
-            transactionManager.endTransaction();
-            return  count;
-        } catch (DAOException e) {
-            try {
-                transactionManager.rollback();
-                transactionManager.endTransaction();
-            } catch (DAOException ex) {
-                throw new ServiceException("Error access database", e);
-            }
-        }
-        return 0;
-    }
 
     @Override
     public int findTotalCountOfCustomerOrders() throws ServiceException {
@@ -210,7 +190,7 @@ public class AdminServiceImpl implements AdminService {
             int count = customerDAO.findTotalCountOfCustomerOrders();
             transactionManager.commit();
             transactionManager.endTransaction();
-            return  count;
+            return count;
         } catch (DAOException e) {
             try {
                 transactionManager.rollback();
@@ -231,7 +211,7 @@ public class AdminServiceImpl implements AdminService {
             int count = goodsDAO.findTotalCountOfGoods();
             transactionManager.commit();
             transactionManager.endTransaction();
-            return  count;
+            return count;
         } catch (DAOException e) {
             try {
                 transactionManager.rollback();
@@ -252,7 +232,7 @@ public class AdminServiceImpl implements AdminService {
             int count = transportDAO.findTotalCountOfTransport();
             transactionManager.commit();
             transactionManager.endTransaction();
-            return  count;
+            return count;
         } catch (DAOException e) {
             try {
                 transactionManager.rollback();
@@ -271,7 +251,7 @@ public class AdminServiceImpl implements AdminService {
         try {
             CourierDAO courierDAO = DAOFactory.getCourierDAO();
             transactionManager.beginTransaction(courierDAO);
-           courierDAO.acceptCourier(courierRecordId);
+            courierDAO.acceptCourier(courierRecordId);
             transactionManager.commit();
             transactionManager.endTransaction();
 

@@ -8,10 +8,8 @@ import com.epam.couriers.entity.CourierRecord;
 import com.epam.couriers.entity.RoleEnum;
 import com.epam.couriers.entity.User;
 import com.epam.couriers.service.AdminService;
-import com.epam.couriers.service.UserService;
 import com.epam.couriers.service.exception.ServiceException;
 import com.epam.couriers.service.impl.AdminServiceImpl;
-import com.epam.couriers.service.impl.UserServiceImpl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -32,12 +30,11 @@ public class GetAllCouriersCommand implements Command {
         AdminService adminService = new AdminServiceImpl();
         List<CourierRecord> listCourierRecords;
         try {
-            if(user.getRole().getValue().equals(RoleEnum.ADMIN.getValue())) {
+            if (user.getRole().getValue().equals(RoleEnum.ADMIN.getValue())) {
                 int pageNumber;
-                if(request.getParameter(GeneralConstant.PAGE_NUMBER) != null) {
+                if (request.getParameter(GeneralConstant.PAGE_NUMBER) != null) {
                     pageNumber = Integer.parseInt(request.getParameter(GeneralConstant.PAGE_NUMBER));
-                }
-                else {
+                } else {
                     pageNumber = (Integer) session.getAttribute(GeneralConstant.PAGE_NUMBER);
                 }
                 int startIndex = (pageNumber - 1) * COUNT_OF_COURIERS_ON_ONE_PAGE;

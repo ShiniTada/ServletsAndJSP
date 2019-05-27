@@ -65,7 +65,6 @@
                 <button class="w3-button w3-round btn-block w3-green"  type="submit">${sign_in}</button>
                 <br>
             </div>
-<%--            <div class="w3-container  w3-cell" style="width:1%;"> </div>--%>
             <div class="w3-container  w3-cell" style="width:40%;">
                 <a href="<c:url value="/"/>" class="w3-button w3-round btn-block w3-flat-alizarin" style="width:90px; height:40px">
                     ${back}
